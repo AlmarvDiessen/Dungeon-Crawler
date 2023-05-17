@@ -8,18 +8,36 @@ public class InventoryManager : MonoBehaviour {
     [SerializeField] private List<IInteractable> itemsInRange = new List<IInteractable>();
 
     void Update() {
+        if(Input.GetButtonDown("Interact") && itemsInRange.Count > 0) {
+            var interactable = itemsInRange[0];
+            interactable.Interact();
 
+            //TODO: adding it to the inventory of the player 
+
+            if (!interactable.CanInteract()) {
+                itemsInRange.Remove(interactable);
+            }
+        }
     
     }
+    /// <summary>
+    /// getting the component of Interface IInteractable when colliding with a ontrigger.
+    /// making sure that iteractable is not null and can be interacted with.
+    /// to then add it to the list of items in range of the player to be picked up.
+    /// </summary>
+    /// <param name="other"></param>
 
     private void OnTriggerEnter(Collider other) {
         var interactable = other.GetComponent<IInteractable>();
-
+    
         if (interactable != null && interactable.CanInteract()) {
             itemsInRange.Add(interactable);
         }
     }
-
+    /// <summary>
+    /// when leaving the trigger just removing the ability to interact with it.
+    /// </summary>
+    /// <param name="other"></param>
     private void OnTriggerExit(Collider other) {
         var interactable = other.GetComponent<IInteractable>();
 
