@@ -22,27 +22,21 @@ public class ItemController : MonoBehaviour, IInteractable {
         if (itemData != null) {
             LoadItem(itemData);
         }
-
     }
     private void LoadItem(ItemData itemData) {
         GameObject visual = Instantiate(itemData.itemModel);
         visual.transform.SetParent(this.transform);
         visual.transform.position = (this.transform.position);
         visual.transform.rotation = Quaternion.identity;
-        CanInteract(itemData.canInteract);
     }
 
     public void Interact(GameObject player) {
+        //can the item be interacted with?
         if (!allowInteract)
             return;
-
+        
         inventoryManager = player.GetComponentInChildren<InventoryManager>();
         inventoryManager.inventory.AddItem(item);
         Destroy(gameObject);
     }
-
-    public bool CanInteract(bool value) {
-        return value;
-    }
-
 }

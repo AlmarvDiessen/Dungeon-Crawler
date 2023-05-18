@@ -20,9 +20,6 @@ public class InventoryManager : MonoBehaviour {
                 itemCount = inventory.CurrentItemCount;
                 itemsInRange.Remove(interactable);
             }
-            else {
-                Debug.Log("beep");
-            }
         }
 
     }
@@ -47,7 +44,6 @@ public class InventoryManager : MonoBehaviour {
     /// <param name="other"></param>
     private void OnTriggerExit(Collider other) {
         var interactable = other.GetComponent<IInteractable>();
-        Debug.Log("Begone");
         if (itemsInRange.Contains(interactable)) {
             itemsInRange.Remove(interactable);
         }

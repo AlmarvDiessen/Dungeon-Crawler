@@ -12,7 +12,6 @@ public class Inventory {
         get { return currentItemCount; }
     }
     public bool AddItem(ItemInstance itemToAdd) {
-
         // Finds an empty slot if there is one
         for (int i = 0; i < items.Count; i++) {
             if (items[i] == null) {
