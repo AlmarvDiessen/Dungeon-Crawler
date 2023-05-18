@@ -3,20 +3,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
-{
+public class Player : Entity {
 
-
+    [SerializeField] Entity entity;
     // Start is called before the first frame update
-    void Start()
-    {
-        
+    void Start() {
+         entity = GetComponent<Entity>();
+
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        
+    void Update() {
+
     }
 
 }

@@ -17,10 +17,9 @@ namespace Assets.Scripts {
             rb = GetComponent<Rigidbody>();
         }
 
-        private void Update() {
+        private void FixedUpdate() {
             Movement();
         }
-
 
         private void Movement() {
             PlayerMovementInput = new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical"));
@@ -28,7 +27,5 @@ namespace Assets.Scripts {
             Vector3 movement = transform.TransformDirection(PlayerMovementInput) * speed;
             rb.velocity = new Vector3(movement.x, rb.velocity.y, movement.z);
         }
-
-
     }
 }

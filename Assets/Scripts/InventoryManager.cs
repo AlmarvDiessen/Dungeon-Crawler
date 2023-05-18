@@ -6,19 +6,25 @@ using UnityEngine;
 public class InventoryManager : MonoBehaviour {
 
     [SerializeField] private List<IInteractable> itemsInRange = new List<IInteractable>();
+    [SerializeField] ItemController ItemController;
+    public Inventory inventory = new Inventory();
+    [SerializeField] private int itemCount;
 
+    private void Awake() {
+    }
     void Update() {
-        if(Input.GetButtonDown("Interact") && itemsInRange.Count > 0) {
+        if (Input.GetButtonDown("Interact") && itemsInRange.Count > 0) {
             var interactable = itemsInRange[0];
-            interactable.Interact();
-
-            //TODO: adding it to the inventory of the player 
-
-            if (!interactable.CanInteract()) {
+            if (ItemController != null) {
+                ItemController.Interact(gameObject);
+                itemCount = inventory.CurrentItemCount;
                 itemsInRange.Remove(interactable);
             }
+            else {
+                Debug.Log("beep");
+            }
         }
-    
+
     }
     /// <summary>
     /// getting the component of Interface IInteractable when colliding with a ontrigger.
@@ -29,8 +35,9 @@ public class InventoryManager : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other) {
         var interactable = other.GetComponent<IInteractable>();
-    
-        if (interactable != null && interactable.CanInteract()) {
+        ItemController = other.GetComponent<ItemController>();
+        Debug.Log("trigger");
+        if (interactable != null) {
             itemsInRange.Add(interactable);
         }
     }
@@ -40,7 +47,7 @@ public class InventoryManager : MonoBehaviour {
     /// <param name="other"></param>
     private void OnTriggerExit(Collider other) {
         var interactable = other.GetComponent<IInteractable>();
-
+        Debug.Log("Begone");
         if (itemsInRange.Contains(interactable)) {
             itemsInRange.Remove(interactable);
         }

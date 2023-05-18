@@ -5,8 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Assets.Scripts {
-    internal interface IDamagable {
+    public class ItemInstance {
+        public ItemData itemType;
 
-        void TakeDamage(int pDamage);
+        public ItemInstance(ItemData itemData) {
+            itemType = itemData;
+        }
     }
 }

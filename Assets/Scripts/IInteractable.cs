@@ -1,15 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using UnityEngine;
 
 namespace Assets.Scripts {
-    internal interface IInteractable {
-
-
-        void Interact();
-
-        bool CanInteract();
+    public interface IInteractable {
+        void Interact(GameObject player);
+        bool CanInteract(bool value);
     }
 }
