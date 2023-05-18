@@ -117,7 +117,7 @@ NavMeshSettings:
     cellSize: 0.16666667
     manualTileSize: 0
     tileSize: 256
-    accuratePlacement: 0
+    accuratePlacement: 1
     maxJobWorkers: 0
     preserveTilesOutsideBounds: 0
     debug:
@@ -149,7 +149,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 130032158}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.465, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -279,7 +279,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 283276298}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.436, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -368,9 +368,9 @@ GameObject:
   - component: {fileID: 671275990}
   - component: {fileID: 671275995}
   - component: {fileID: 671275996}
-  - component: {fileID: 671275998}
   - component: {fileID: 671275999}
   - component: {fileID: 671276000}
+  - component: {fileID: 671276001}
   m_Layer: 0
   m_Name: Capsule
   m_TagString: Untagged
@@ -491,23 +491,6 @@ MonoBehaviour:
   jump: 0
   ground: {fileID: 0}
   rb: {fileID: 0}
---- !u!114 &671275998
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 671275989}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a9883ff33073664ebe734e1cc988a36, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cam: {fileID: 1643090561}
-  player: {fileID: 671275989}
-  mouseSensitivity: 200
-  xRotation: 0
-  rb: {fileID: 0}
 --- !u!114 &671275999
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -535,6 +518,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ItemController: {fileID: 0}
   itemCount: 0
+--- !u!114 &671276001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 671275989}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a9883ff33073664ebe734e1cc988a36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  camera: {fileID: 1643090561}
+  player: {fileID: 671275989}
+  mouseSensitivity: 100
+  xRotation: 0
+  rb: {fileID: 0}
 --- !u!1 &815958853
 GameObject:
   m_ObjectHideFlags: 0
@@ -891,7 +891,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1660385037}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -15.7}
+  m_LocalPosition: {x: 0, y: -0.153, z: -15.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
