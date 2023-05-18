@@ -38,7 +38,6 @@ namespace Assets.Scripts {
             xRotation = Mathf.Clamp(xRotation, -90f, 45f);
             // rotate the camera
             camera.transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
-
             // rotate the player on the y axis
             player.transform.Rotate(Vector3.up * mouseX);
 
