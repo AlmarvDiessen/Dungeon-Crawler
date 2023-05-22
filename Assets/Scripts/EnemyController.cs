@@ -6,21 +6,24 @@ using UnityEngine.AI;
 
 
 [RequireComponent(typeof(NavMeshAgent))]
-public class EnemyController : MonoBehaviour, IDamagable {
+[RequireComponent(typeof(Health))]
+public class EnemyController : Entity {
 
     [SerializeField] private NavMeshAgent navAgent;
-    [SerializeField] private EnemyData data;
+    [SerializeField] private EnemyData enemyData;
+    [SerializeField] private Health EnemyHealth;
+
     [SerializeField] private float wanderDistance = 4f;
 
 
     void Start() {
 
-        if(navAgent == null) {
+        if (navAgent == null) {
             navAgent = GetComponent<NavMeshAgent>();
         }
 
-        if (data != null) {
-            LoadEnemy(data);
+        if (enemyData != null) {
+            LoadEnemy(enemyData);
         }
     }
 
@@ -33,24 +36,26 @@ public class EnemyController : MonoBehaviour, IDamagable {
                 DestroyImmediate(child.gameObject);
         }
 
-        GameObject visual = Instantiate(data.enemyModel);
+        GameObject visual = Instantiate(data.EnemyModel);
         visual.transform.SetParent(this.transform);
         visual.transform.localPosition = Vector3.zero;
         visual.transform.rotation = Quaternion.identity;
 
-        if(navAgent == null)
+        if (navAgent == null)
             navAgent = GetComponent<NavMeshAgent>();
 
-        this.navAgent.speed = data.speed;
-       
+        this.navAgent.speed = data.Speed;
+
+        EnemyHealth = GetComponent<Health>();
+        EnemyHealth.SetHealth(data.Health);
     }
 
     void Update() {
 
-        if (data == null)
+        if (enemyData == null)
             return;
 
-        if(navAgent.remainingDistance < 1f)
+        if (navAgent.remainingDistance < 1f)
             SetNewDestination();
     }
 
@@ -61,11 +66,5 @@ public class EnemyController : MonoBehaviour, IDamagable {
         NavMeshHit hit;
         if (NavMesh.SamplePosition(newDestination, out hit, 3f, NavMesh.AllAreas))
             navAgent.SetDestination(hit.position);
-
     }
-
-    public void TakeDamage(int pDamage) {
-
-    }
-
 }

@@ -5,11 +5,19 @@ using UnityEngine;
 [CreateAssetMenu]
 public class EnemyData : ScriptableObject {
 
-    public string enemyName;
-    public GameObject enemyModel;
-    public int health = 20;
-    public float speed = 2f;
-    public float detectRange = 10f;
-    public int damage = 1;
+    // Variables
+    [SerializeField] private string enemyName;
+    [SerializeField] private GameObject enemyModel;
+    [SerializeField] private int health = 20;
+    [SerializeField] private float speed = 2f;
+    [SerializeField] private float detectRange = 10f;
+    [SerializeField] private int damage = 1;
 
+    // Properties
+    public string EnemyName { get => enemyName; set => enemyName = value; }
+    public GameObject EnemyModel { get => enemyModel; set => enemyModel = value; }
+    public int Health { get => health; set => health = value; }
+    public float Speed { get => speed; set => speed = value; }
+    public float DetectRange { get => detectRange; set => detectRange = value; }
+    public int Damage { get => damage; set => damage = value; }
 }

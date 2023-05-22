@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Health : MonoBehaviour
 {
-    [SerializeField] int health;
+    [SerializeField] private int health;
 
     private void Update()
     {
@@ -17,5 +17,9 @@ public class Health : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+    }
+
+    public void SetHealth(int value) {
+        health = value;
     }
 }

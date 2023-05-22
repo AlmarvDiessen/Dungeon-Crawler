@@ -15,7 +15,7 @@ public class ItemController : MonoBehaviour, IInteractable {
     }
 
     public bool allowInteract {
-        get { return itemData.canInteract; }
+        get { return itemData.CanInteract; }
     }
 
     void Start() {
@@ -24,7 +24,7 @@ public class ItemController : MonoBehaviour, IInteractable {
         }
     }
     private void LoadItem(ItemData itemData) {
-        GameObject visual = Instantiate(itemData.itemModel);
+        GameObject visual = Instantiate(itemData.ItemModel);
         visual.transform.SetParent(this.transform);
         visual.transform.position = (this.transform.position);
         visual.transform.rotation = Quaternion.identity;
