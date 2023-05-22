@@ -1,25 +1,28 @@
+using Assets.Scripts;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Health : MonoBehaviour
+public class Health : MonoBehaviour, IDamagable
 {
     [SerializeField] private int health;
 
-    private void Update()
-    {
-        OnDestroy();
-    }
+    public int getHealth { get => health; set => health = value; }
 
-    private void OnDestroy()
+    public void TakeDamage(int pDamage)
     {
-        if (health == 0)
+        health -= pDamage;
+        if (health <= 0)
         {
             Destroy(this.gameObject);
         }
     }
+<<<<<<< Updated upstream
 
     public void SetHealth(int value) {
         health = value;
     }
 }
+=======
+}
+>>>>>>> Stashed changes
