@@ -1,3 +1,4 @@
+using Assets.Scripts;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,7 +6,7 @@ using UnityEngine.AI;
 
 
 [RequireComponent(typeof(NavMeshAgent))]
-public class EnemyController : MonoBehaviour {
+public class EnemyController : MonoBehaviour, IDamagable {
 
     [SerializeField] private NavMeshAgent navAgent;
     [SerializeField] private EnemyData data;
@@ -60,6 +61,10 @@ public class EnemyController : MonoBehaviour {
         NavMeshHit hit;
         if (NavMesh.SamplePosition(newDestination, out hit, 3f, NavMesh.AllAreas))
             navAgent.SetDestination(hit.position);
+
+    }
+
+    public void TakeDamage(int pDamage) {
 
     }
 
