@@ -29,8 +29,8 @@ namespace Assets.Scripts {
         // Update is called once per frame
         void FixedUpdate() {
             // get the mouse x and y axis
-            float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
-            float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
+            float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.fixedDeltaTime;
+            float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.fixedDeltaTime;
 
             // rotate the camera on the x axis
             xRotation -= mouseY;
