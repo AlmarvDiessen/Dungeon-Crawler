@@ -9,7 +9,7 @@ namespace Assets.Scripts {
     // class for the first person camera movement using mouse. this is attached to the camera object
     public class PlayerCamera : MonoBehaviour {
         // get camera gameobject
-        [SerializeField] private Camera camera;
+        [SerializeField] private new Camera camera;
         // get player gameobject
         [SerializeField] private GameObject player;
         // get the mouse sensitivity

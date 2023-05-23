@@ -3,10 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(ItemInstance))]
-public class ItemController : MonoBehaviour, IInteractable {
-    // Start is called before the first frame update
-
+public class ItemController : MonoBehaviour, IInteractable
+{
     [SerializeField] private ItemData itemData;
     [SerializeField] private InventoryManager inventoryManager;
     [SerializeField] private ItemInstance item;
@@ -34,7 +32,8 @@ public class ItemController : MonoBehaviour, IInteractable {
         //can the item be interacted with?
         if (!allowInteract)
             return;
-        
+        item = new ItemInstance(itemData);
+
         inventoryManager = player.GetComponentInChildren<InventoryManager>();
         inventoryManager.inventory.AddItem(item);
         Destroy(gameObject);
