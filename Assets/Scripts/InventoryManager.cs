@@ -9,6 +9,7 @@ public class InventoryManager : MonoBehaviour {
     [SerializeField] ItemController ItemController;
     public Inventory inventory = new Inventory();
     [SerializeField] private int itemCount;
+    [SerializeField] private GameObject itemPrefab;
 
     private void Awake() {
     }
@@ -20,9 +21,17 @@ public class InventoryManager : MonoBehaviour {
                 itemCount = inventory.CurrentItemCount;
                 itemsInRange.Remove(interactable);
             }
+            UpdateInventory();
         }
-
     }
+
+    private void UpdateInventory() {
+        foreach (ItemInstance item in inventory.Items) {
+
+        }
+    }
+
+
     /// <summary>
     /// getting the component of Interface IInteractable when colliding with a ontrigger.
     /// making sure that iteractable is not null and can be interacted with.

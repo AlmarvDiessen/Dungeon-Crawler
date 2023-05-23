@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace Assets.Scripts {
     public class ItemInstance {
-        public ItemData itemType;
+        private ItemData itemType;
+
+        public ItemData ItemData { get => itemType; set => itemType = value; }
 
         public ItemInstance(ItemData itemData) {
             itemType = itemData;

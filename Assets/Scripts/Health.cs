@@ -17,12 +17,9 @@ public class Health : MonoBehaviour, IDamagable
             Destroy(this.gameObject);
         }
     }
-<<<<<<< Updated upstream
 
     public void SetHealth(int value) {
         health = value;
     }
 }
-=======
-}
->>>>>>> Stashed changes
+

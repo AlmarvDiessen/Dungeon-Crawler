@@ -11,6 +11,11 @@ public class Inventory {
     public int CurrentItemCount {
         get { return currentItemCount; }
     }
+
+    public List<ItemInstance> Items { get => items; set => items = value; }
+
+
+
     public bool AddItem(ItemInstance itemToAdd) {
         // Finds an empty slot if there is one
         for (int i = 0; i < items.Count; i++) {
