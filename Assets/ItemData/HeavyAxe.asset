@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9f9afef89901b5b4799b08cf79c39c30, type: 3}
-  m_Name: ShortSword
+  m_Name: HeavyAxe
   m_EditorClassIdentifier: 
-  itemName: Shortsword
-  itemModel: {fileID: 3392815170379125584, guid: 4924488f6e5b0ec48b2e6bd54eac0baa,
+  itemName: Heavyaxe
+  itemModel: {fileID: 5670684855127096110, guid: e1402219fb3f46e4994d93c5cf841a3d,
     type: 3}
-  icon: {fileID: 21300000, guid: 5aa109f1b15dcaf49b05c57d9e810b25, type: 3}
-  damage: 5
-  attackSpeed: 1.5
+  icon: {fileID: 21300000, guid: a3626fa019af7824fb2f07990269eb6b, type: 3}
+  damage: 25
+  attackSpeed: 0.25
   defense: 0
   canInteract: 1

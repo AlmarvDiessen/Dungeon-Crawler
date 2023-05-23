@@ -1,7 +1,9 @@
 using Assets.Scripts;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class InventoryManager : MonoBehaviour {
 
@@ -9,7 +11,10 @@ public class InventoryManager : MonoBehaviour {
     [SerializeField] ItemController ItemController;
     public Inventory inventory = new Inventory();
     [SerializeField] private int itemCount;
+
+
     [SerializeField] private GameObject itemPrefab;
+    [SerializeField] private GameObject InventoryUI;
 
     private void Awake() {
     }
@@ -26,9 +31,13 @@ public class InventoryManager : MonoBehaviour {
     }
 
     private void UpdateInventory() {
-        foreach (ItemInstance item in inventory.Items) {
+        ItemInstance item = inventory.Items.LastOrDefault();
+        GameObject child;
+        child = Instantiate(itemPrefab, InventoryUI.transform);
 
-        }
+        Image[] itemImage = child.GetComponentsInChildren<Image>();
+        itemImage.Last().sprite = item.ItemData.Icon;
+
     }
 
 
