@@ -326,8 +326,9 @@ GameObject:
   m_Component:
   - component: {fileID: 180299237}
   - component: {fileID: 180299239}
+  - component: {fileID: 180299240}
   m_Layer: 0
-  m_Name: GameObject (1)
+  m_Name: Axe
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -361,6 +362,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &180299240
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 180299236}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e3cb37b72490d24fbe64e4b4c7db66c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemData: {fileID: 11400000, guid: 421dc10794895214684c90e82dfdd217, type: 2}
+  inventoryManager: {fileID: 0}
 --- !u!1 &221489949
 GameObject:
   m_ObjectHideFlags: 0
@@ -371,8 +386,9 @@ GameObject:
   m_Component:
   - component: {fileID: 221489950}
   - component: {fileID: 221489951}
+  - component: {fileID: 221489952}
   m_Layer: 0
-  m_Name: GameObject (2)
+  m_Name: Longsword
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -406,6 +422,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &221489952
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 221489949}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e3cb37b72490d24fbe64e4b4c7db66c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemData: {fileID: 11400000, guid: 1f86cf1f773aa5543b4e17ce91df1887, type: 2}
+  inventoryManager: {fileID: 0}
 --- !u!1 &281967280
 GameObject:
   m_ObjectHideFlags: 0
@@ -1197,8 +1227,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1568531670}
   - component: {fileID: 1568531671}
+  - component: {fileID: 1568531672}
   m_Layer: 0
-  m_Name: GameObject (3)
+  m_Name: Shortsword
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1232,6 +1263,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1568531672
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1568531669}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e3cb37b72490d24fbe64e4b4c7db66c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemData: {fileID: 11400000, guid: ef8e97c1307ba3a4e8faa7609aca7c0d, type: 2}
+  inventoryManager: {fileID: 0}
 --- !u!1 &1643090559
 GameObject:
   m_ObjectHideFlags: 0
