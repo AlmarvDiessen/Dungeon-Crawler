@@ -5,21 +5,26 @@ using UnityEngine;
 
 public class Health : MonoBehaviour, IDamagable
 {
-    [SerializeField] private int health;
+    [SerializeField] private int healthValue;
 
-    public int getHealth { get => health; set => health = value; }
+    public int getHealth { get => healthValue; set => healthValue = value; }
+
+    public static void CreateHealth(GameObject parent, Entity entity, int health) {
+
+    }
+
 
     public void TakeDamage(int pDamage)
     {
-        health -= pDamage;
-        if (health <= 0)
+        healthValue -= pDamage;
+        if (healthValue <= 0)
         {
             Destroy(this.gameObject);
         }
     }
 
     public void SetHealth(int value) {
-        health = value;
+        healthValue = value;
     }
 }
 

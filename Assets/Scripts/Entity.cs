@@ -1,35 +1,23 @@
 using Assets.Scripts;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Entity : MonoBehaviour, IDamagable
-{
-    private ScriptableObject data;
-    
-    void Start()
-    {
+public  class Entity : MonoBehaviour {
+    [SerializeField] protected ScriptableObject data;
+    [SerializeField] protected Health health;
+    [SerializeField] protected string EntityName;
+
+
+    private void Awake() {
         
-    }
-
-    void Update()
-    {
-        
-    }
-
-    public void TakeDamage(int pDamage) {
-
+        health = this.gameObject.AddComponent<Health>();
     }
 
 
-    private void OnTriggerEnter(Collider other) {
-        IDamagable damagable = other.GetComponent<IDamagable>();
-        if (damagable != null) {
-          
-        }
+    protected virtual void initialize(ScriptableObject data) {
+
     }
 
-    private void OnTriggerExit(Collider other) {
-        
-    }
 }

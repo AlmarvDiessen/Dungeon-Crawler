@@ -5,8 +5,9 @@ using UnityEngine;
 
 public class GiveDamage : MonoBehaviour
 {
-    [SerializeField] private int damage;
+    [SerializeField] private int damageValue;
     private bool giveDamage;
+
 
     private void OnTriggerEnter(Collider other)
     {
@@ -16,10 +17,14 @@ public class GiveDamage : MonoBehaviour
         {
             if (damagable != null)
             {
-                damagable.TakeDamage(damage);
+                damagable.TakeDamage(damageValue);
             }
         }
         giveDamage = false;
+    }
+
+    public void SetDamage(int value) {
+        damageValue = value;
     }
 
     private void OnTriggerExit(Collider other)
