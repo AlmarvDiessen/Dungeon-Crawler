@@ -6,22 +6,17 @@ using UnityEngine;
 public class GiveDamage : MonoBehaviour
 {
     [SerializeField] private int damage;
-    [SerializeField] private Health health;
-
-    private IDamagable damagable;
-
     private bool giveDamage;
 
     private void OnTriggerEnter(Collider other)
     {
-        health = other.GetComponent<Health>();
-        damagable = other.GetComponent<IDamagable>();
+       IDamagable damagable = other.GetComponent<IDamagable>();
 
         if (giveDamage == true)
         {
-            if (health && damagable != null)
+            if (damagable != null)
             {
-                health.TakeDamage(damage);
+                damagable.TakeDamage(damage);
             }
         }
         giveDamage = false;
