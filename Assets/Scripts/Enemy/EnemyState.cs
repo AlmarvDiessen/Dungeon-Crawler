@@ -1,13 +1,24 @@
 ﻿
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
 namespace Assets.Scripts.Enemy {
     public class EnemyState {
         public EnemyClass enemy;
+        public GameObject player;
+        public OntriggerComponent gameObject;
+        public NavMeshAgent agent;
 
-        public EnemyState(EnemyClass pEnemy, NavMeshAgent agent) {
+        public EnemyState(EnemyClass pEnemy, NavMeshAgent pAgent, OntriggerComponent gameObject) {
             enemy = pEnemy;
+            this.gameObject = gameObject;
+            agent = pAgent;
+        }
+
+        public EnemyState(EnemyClass pEnemy, NavMeshAgent pAgent) {
+            enemy = pEnemy;
+            agent = pAgent;
         }
 
         public virtual void Update() {
@@ -15,19 +26,24 @@ namespace Assets.Scripts.Enemy {
         }
 
         public void LookForPlayer() {
-            //add player ref
-            enemy.ChangeState(enemy.ChaseState);
+            player = gameObject.GetGameObject;
+            Debug.Log(player);
+            if (player != null)
+                enemy.ChangeState(enemy.ChaseState);
+            else
+                enemy.ChangeState(enemy.PatrolState);
         }
     }
 
     public class PatrolState : EnemyState {
-        public PatrolState(EnemyClass pEnemy, NavMeshAgent agent) : base(pEnemy, agent) {
+        public PatrolState(EnemyClass pEnemy, NavMeshAgent pAgent) : base(pEnemy, pAgent) {
 
         }
         public override void Update() {
-            if (enemy.NavAgent.remainingDistance < 1f)
-                LookForPlayer();
+            if (agent.remainingDistance < 1f) {
                 SetNewDestination();
+                LookForPlayer();
+            }
         }
 
         public void SetNewDestination() {
@@ -36,12 +52,16 @@ namespace Assets.Scripts.Enemy {
 
             NavMeshHit hit;
             if (NavMesh.SamplePosition(newDestination, out hit, 3f, NavMesh.AllAreas))
-                enemy.NavAgent.SetDestination(hit.position);
+                agent.SetDestination(hit.position);
         }
     }
 
     public class ChaseState : EnemyState {
-        public ChaseState(EnemyClass pEnemy, NavMeshAgent agent) : base(pEnemy, agent) {
+        public ChaseState(EnemyClass pEnemy, NavMeshAgent agent, OntriggerComponent gameObject) : base(pEnemy, agent, gameObject) {
+        }
+
+        public override void Update() {
+            Debug.Log("chasing");
         }
     }
 }
