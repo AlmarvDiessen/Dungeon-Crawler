@@ -10,6 +10,7 @@ public class EnemyData : ScriptableObject {
     [SerializeField] private GameObject enemyModel;
     [SerializeField] private int health = 20;
     [SerializeField] private float speed = 2f;
+    [SerializeField] private float wanderDistance = 4f;
     [SerializeField] private float detectRange = 10f;
     [SerializeField] private int damage = 1;
 
@@ -20,4 +21,5 @@ public class EnemyData : ScriptableObject {
     public float Speed { get => speed; set => speed = value; }
     public float DetectRange { get => detectRange; set => detectRange = value; }
     public int Damage { get => damage; set => damage = value; }
+    public float WanderDistance { get => wanderDistance; set => wanderDistance = value; }
 }
