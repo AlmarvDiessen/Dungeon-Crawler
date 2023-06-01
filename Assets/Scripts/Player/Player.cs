@@ -12,14 +12,14 @@ public class Player : Entity {
 
     private void Awake() {
         if (data != null) {
-            initialize(data);
+            Initialize(data);
         }
 
         giveDamage = gameObject.AddComponent<GiveDamage>();
 
     }
 
-    protected override void initialize(ScriptableObject data) {
+    protected virtual void Initialize(ScriptableObject data) {
 
     }
 }

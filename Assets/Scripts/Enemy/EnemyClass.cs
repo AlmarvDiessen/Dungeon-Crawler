@@ -12,6 +12,7 @@ public class EnemyClass : Entity {
     [SerializeField] private GiveDamage giveDamage;
     [SerializeField] private NavMeshAgent navAgent;
     [SerializeField] private SphereCollider detectCollider;
+    [SerializeField] private OntriggerComponent other;
 
     [SerializeField] private EnemyState currentState;
     [SerializeField] private EnemyState patrolState;
@@ -26,24 +27,29 @@ public class EnemyClass : Entity {
     public EnemyState ChaseState { get => chaseState; set => chaseState = value; }
     public NavMeshAgent NavAgent { get => navAgent; set => navAgent = value; }
     public float WanderDistance { get => wanderDistance; set => wanderDistance = value; }
+    public OntriggerComponent Other { get => other; set => other = value; }
 
     private void Start() {
         giveDamage = gameObject.AddComponent<GiveDamage>();
+        Other = GetComponent<OntriggerComponent>();
         NavAgent = GetComponent<NavMeshAgent>();
 
         if (data != null) {
-            initialize(data);
+            Initialize(data);
         }
-        patrolState = new PatrolState(this, NavAgent);
-        chaseState = new ChaseState(this, NavAgent);
+
+        currentState = new EnemyState(this, NavAgent,Other);
+        patrolState = new PatrolState(this, NavAgent,Other);
+        chaseState = new ChaseState(this, NavAgent, Other);
+
         currentState = patrolState;
     }
 
-    void Update() {
+    private void Update() {
         currentState.Update();
     }
 
-    protected override void initialize(ScriptableObject data) {
+    private void Initialize(ScriptableObject data) {
         EnemyData enemyData = data as EnemyData;
         EntityName = enemyData.EnemyName;
         NavAgent.speed = enemyData.Speed;
@@ -55,14 +61,5 @@ public class EnemyClass : Entity {
 
     public void ChangeState(EnemyState stateChange) {
         CurrentState = stateChange;
-    }
-
-
-    private void OnTriggerEnter(Collider other) {
-
-    }
-
-    private void OnTriggerExit(Collider other) {
-
     }
 }

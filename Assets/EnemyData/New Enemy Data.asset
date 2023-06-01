@@ -10,13 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 284ab9e29525ea64f88aa024435a819e, type: 3}
-  m_Name: NormalEnemy
+  m_Name: New Enemy Data
   m_EditorClassIdentifier: 
-  enemyName: Goblin
-  enemyModel: {fileID: 8992397893200743632, guid: c7a4300eb91421a45a07526a509d5376,
-    type: 3}
+  enemyName: 
+  enemyModel: {fileID: 0}
   health: 20
   speed: 2
-  wanderDistance: 8
   detectRange: 10
   damage: 1
