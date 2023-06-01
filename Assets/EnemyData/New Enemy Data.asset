@@ -12,9 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 284ab9e29525ea64f88aa024435a819e, type: 3}
   m_Name: New Enemy Data
   m_EditorClassIdentifier: 
-  enemyName: 
-  enemyModel: {fileID: 0}
+  enemyName: FarEnemey
+  enemyModel: {fileID: 6533635057425246376, guid: 24d92a8998a586844a2fdf41c5a8d31d,
+    type: 3}
   health: 20
-  speed: 2
-  detectRange: 10
+  speed: 6
+  wanderDistance: 10
+  detectRange: 20
   damage: 1

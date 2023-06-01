@@ -11,8 +11,7 @@ using UnityEngine.AI;
 public class EnemyClass : Entity {
     [SerializeField] private GiveDamage giveDamage;
     [SerializeField] private NavMeshAgent navAgent;
-    [SerializeField] private SphereCollider detectCollider;
-    [SerializeField] private OntriggerComponent other;
+    [SerializeField] private Player player;
 
     [SerializeField] private EnemyState currentState;
     [SerializeField] private EnemyState patrolState;
@@ -27,22 +26,22 @@ public class EnemyClass : Entity {
     public EnemyState ChaseState { get => chaseState; set => chaseState = value; }
     public NavMeshAgent NavAgent { get => navAgent; set => navAgent = value; }
     public float WanderDistance { get => wanderDistance; set => wanderDistance = value; }
-    public OntriggerComponent Other { get => other; set => other = value; }
+    public float DetectRange { get => detectRange; set => detectRange = value; }
 
     private void Start() {
         giveDamage = gameObject.AddComponent<GiveDamage>();
-        Other = GetComponent<OntriggerComponent>();
         NavAgent = GetComponent<NavMeshAgent>();
-
+        player = FindObjectOfType<Player>();
         if (data != null) {
             Initialize(data);
         }
 
-        currentState = new EnemyState(this, NavAgent,Other);
-        patrolState = new PatrolState(this, NavAgent,Other);
-        chaseState = new ChaseState(this, NavAgent, Other);
+        currentState = new EnemyState(this, NavAgent,player);
+        patrolState = new PatrolState(this, NavAgent,player);
+        chaseState = new ChaseState(this, NavAgent, player);
 
         currentState = patrolState;
+        currentState.EnterState();
     }
 
     private void Update() {
@@ -53,13 +52,15 @@ public class EnemyClass : Entity {
         EnemyData enemyData = data as EnemyData;
         EntityName = enemyData.EnemyName;
         NavAgent.speed = enemyData.Speed;
-        detectCollider.radius = enemyData.DetectRange;
+        DetectRange = enemyData.DetectRange;
         giveDamage.SetDamage(damage = enemyData.Damage);
         health.SetHealth(enemyData.Health);
         WanderDistance = enemyData.WanderDistance;
     }
 
     public void ChangeState(EnemyState stateChange) {
+        currentState.ExitState();
         CurrentState = stateChange;
+        currentState.EnterState();
     }
 }

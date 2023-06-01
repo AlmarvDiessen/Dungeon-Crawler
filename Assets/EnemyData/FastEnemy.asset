@@ -16,6 +16,7 @@ MonoBehaviour:
   enemyModel: {fileID: 8992397893200743632, guid: c7a4300eb91421a45a07526a509d5376,
     type: 3}
   health: 10
-  speed: 4
+  speed: 6
+  wanderDistance: 20
   detectRange: 10
   damage: 1

@@ -9,11 +9,6 @@ public class Health : MonoBehaviour, IDamagable
 
     public int getHealth { get => healthValue; set => healthValue = value; }
 
-    public static void CreateHealth(GameObject parent, Entity entity, int health) {
-
-    }
-
-
     public void TakeDamage(int pDamage)
     {
         healthValue -= pDamage;
