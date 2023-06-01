@@ -51,7 +51,6 @@ public class InventoryManager : MonoBehaviour {
     private void OnTriggerEnter(Collider other) {
         var interactable = other.GetComponent<IInteractable>();
         ItemController = other.GetComponent<ItemController>();
-        Debug.Log("trigger");
         if (interactable != null) {
             itemsInRange.Add(interactable);
         }

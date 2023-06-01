@@ -17,6 +17,6 @@ MonoBehaviour:
     type: 3}
   health: 20
   speed: 2
-  wanderDistance: 4
+  wanderDistance: 8
   detectRange: 10
   damage: 1

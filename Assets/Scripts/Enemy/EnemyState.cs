@@ -7,17 +7,12 @@ namespace Assets.Scripts.Enemy {
     public class EnemyState {
         public EnemyClass enemy;
         public GameObject player;
-        public OntriggerComponent gameObject;
+        public OntriggerComponent onTrigger;
         public NavMeshAgent agent;
 
-        public EnemyState(EnemyClass pEnemy, NavMeshAgent pAgent, OntriggerComponent gameObject) {
+        public EnemyState(EnemyClass pEnemy, NavMeshAgent pAgent, OntriggerComponent trigger) {
             enemy = pEnemy;
-            this.gameObject = gameObject;
-            agent = pAgent;
-        }
-
-        public EnemyState(EnemyClass pEnemy, NavMeshAgent pAgent) {
-            enemy = pEnemy;
+            onTrigger = trigger;
             agent = pAgent;
         }
 
@@ -26,17 +21,21 @@ namespace Assets.Scripts.Enemy {
         }
 
         public void LookForPlayer() {
-            player = gameObject.GetGameObject;
-            Debug.Log(player);
-            if (player != null)
-                enemy.ChangeState(enemy.ChaseState);
-            else
-                enemy.ChangeState(enemy.PatrolState);
+
+            if (onTrigger.GetGameObject != null) {
+                player = onTrigger.GetGameObject;
+                Debug.Log(player);
+
+                if (player != null)
+                    enemy.ChangeState(enemy.ChaseState);
+                else
+                    enemy.ChangeState(enemy.PatrolState);
+            }
         }
     }
 
     public class PatrolState : EnemyState {
-        public PatrolState(EnemyClass pEnemy, NavMeshAgent pAgent) : base(pEnemy, pAgent) {
+        public PatrolState(EnemyClass pEnemy, NavMeshAgent agent, OntriggerComponent gameObject) : base(pEnemy, agent, gameObject) {
 
         }
         public override void Update() {
@@ -62,6 +61,10 @@ namespace Assets.Scripts.Enemy {
 
         public override void Update() {
             Debug.Log("chasing");
+            if(onTrigger.GetGameObject == null) {
+                enemy.ChangeState(enemy.PatrolState);
+            }
+
         }
     }
 }

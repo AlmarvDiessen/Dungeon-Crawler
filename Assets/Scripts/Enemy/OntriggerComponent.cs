@@ -4,8 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class OntriggerComponent : MonoBehaviour {
-    private GameObject gameObject;
-
+    private GameObject? gameObject;
     public GameObject GetGameObject { get => gameObject; }
 
     private void OnTriggerEnter(Collider other) {
@@ -15,6 +14,7 @@ public class OntriggerComponent : MonoBehaviour {
     }
 
     private void OnTriggerExit(Collider other) {
-
+        gameObject = null;
+        Debug.Log("null");
     }
 }
