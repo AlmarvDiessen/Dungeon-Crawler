@@ -6,6 +6,7 @@ using UnityEngine;
 public class Player : Entity {
 
     [SerializeField] private GiveDamage giveDamage;
+    [SerializeField]private ScriptableObject data;
 
     [SerializeField] private float speed;
     [SerializeField] private int damage;
@@ -19,7 +20,7 @@ public class Player : Entity {
 
     }
 
-    protected override void initialize(ScriptableObject data) {
+    protected virtual void initialize(ScriptableObject data) {
 
     }
 }

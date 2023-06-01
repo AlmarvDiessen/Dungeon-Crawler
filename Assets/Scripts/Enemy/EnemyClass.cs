@@ -13,6 +13,7 @@ public class EnemyClass : Entity {
     [SerializeField] private NavMeshAgent navAgent;
     [SerializeField] private SphereCollider detectCollider;
     [SerializeField] private OntriggerComponent other;
+    [SerializeField] private ScriptableObject data;
 
     [SerializeField] private EnemyState currentState;
     [SerializeField] private EnemyState patrolState;
@@ -40,7 +41,7 @@ public class EnemyClass : Entity {
 
         currentState = new EnemyState(this, NavAgent);
         patrolState = new PatrolState(this, NavAgent);
-        chaseState = new ChaseState(this, NavAgent,Other);
+        chaseState = new ChaseState(this, NavAgent, Other);
         currentState = patrolState;
     }
 
@@ -48,7 +49,7 @@ public class EnemyClass : Entity {
         currentState.Update();
     }
 
-    protected override void initialize(ScriptableObject data) {
+    private void initialize(ScriptableObject data) {
         EnemyData enemyData = data as EnemyData;
         EntityName = enemyData.EnemyName;
         NavAgent.speed = enemyData.Speed;
