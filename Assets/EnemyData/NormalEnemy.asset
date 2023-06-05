@@ -18,5 +18,5 @@ MonoBehaviour:
   health: 20
   speed: 2
   wanderDistance: 8
-  detectRange: 10
+  detectRange: 15
   damage: 1
