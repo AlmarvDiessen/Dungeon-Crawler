@@ -4,7 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : Entity, IDashable {
+public class Player : Entity {
 
     [SerializeField] private DashComponent dash;
     [SerializeField] private BetterMovement playerMovement;

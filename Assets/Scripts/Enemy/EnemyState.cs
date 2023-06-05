@@ -78,6 +78,7 @@ public class ChaseState : EnemyState {
     }
     public override void EnterState() {
         playerPos = player.gameObject;
+        enemy.transform.LookAt(player.transform);
     }
 
     public override void Update() {
@@ -85,15 +86,15 @@ public class ChaseState : EnemyState {
     }
 
     public void ChasePlayer(Transform transform) {
-        Vector3 posistion = transform.transform.position;
-        float distance = Vector3.Distance(enemy.transform.position, posistion);
+        Vector3 playerPosistion = transform.transform.position;
+        float distance = Vector3.Distance(enemy.transform.position, playerPosistion);
 
         Debug.Log(distance);
-        if (posistion != null && distance <= enemy.DetectRange)
-            agent.SetDestination(posistion);
+        if (playerPosistion != null && distance <= enemy.DetectRange)
+            agent.SetDestination(playerPosistion);
 
-
-        enemy.ChangeState(enemy.PatrolState);
+        if (playerPosistion == null && distance > enemy.DetectRange)
+            enemy.ChangeState(enemy.PatrolState);
     }
 }
 
