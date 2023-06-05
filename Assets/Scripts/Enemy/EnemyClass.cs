@@ -32,6 +32,7 @@ public class EnemyClass : Entity {
         giveDamage = gameObject.AddComponent<GiveDamage>();
         NavAgent = GetComponent<NavMeshAgent>();
         player = FindObjectOfType<Player>();
+
         if (data != null) {
             Initialize(data);
         }
