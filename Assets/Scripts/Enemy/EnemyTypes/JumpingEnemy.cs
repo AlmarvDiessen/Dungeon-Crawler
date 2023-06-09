@@ -2,17 +2,20 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class JumpingEnemy : EnemyClass {
-    [SerializeField] JumpComponent jumpComponent;
+    private JumpComponent jumpComponent;
+    private NavMeshAgent navMeshAgent;
 
     private void Start() {
         base.Start();
-        jumpComponent.GetComponent<JumpComponent>();
-        //subscribe
+        jumpComponent = gameObject.GetComponent<JumpComponent>();
+        navMeshAgent = gameObject.GetComponent<NavMeshAgent>();
         StateMachine.OnChaseUpdate += jumpComponent.Jump;
-        //Unsubscribe        StateMachine.OnChaseUpdate -= jumpComponent.Jump;
 
+        //subscribe
+        //Unsubscribe        StateMachine.OnChaseUpdate -= jumpComponent.Jump;
     }
 
 

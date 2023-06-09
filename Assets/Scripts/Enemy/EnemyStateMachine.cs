@@ -44,13 +44,12 @@ public class EnemyStateMachine : MonoBehaviour {
 
         CurrentState.Update();
 
-        //if(currentState == patrolState) {
-        //    OnChaseExit();
-        //}
-
         if (currentState == chaseState) {
             OnChaseUpdate();
         }
+        //if(currentState == patrolState) {
+        //    OnChaseExit();
+        //}
     }
 
     public void ChangeState(EnemyState stateChange) {
