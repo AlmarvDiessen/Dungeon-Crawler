@@ -6,15 +6,12 @@ using UnityEngine.AI;
 
 public class DashingEnemy : EnemyClass
 {
-    [SerializeField] private DashComponent dashComponent;
+    private DashComponent dashComponent;
 
+    private void Start() {
+        base.Start();
+        dashComponent = gameObject.GetComponent<DashComponent>();
 
-
-    private void Update() {
-        //CurrentState.Update();
-
-        //if(CurrentState == ChaseState && dashComponent.CanDash) {
-        //    dashComponent.Dash();
-        //}
+        StateMachine.OnChaseUpdate += dashComponent.Dash;
     }
 }

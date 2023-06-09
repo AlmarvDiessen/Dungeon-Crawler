@@ -8,7 +8,7 @@ public class JumpComponent : MonoBehaviour {
     [SerializeField] private bool canJump = true;
     [SerializeField] private bool isJumping = false;
     [SerializeField] private float jumpPower;
-    [SerializeField] private float jumpTimer = 3f;
+    [SerializeField] private float jumpTimer = 8f;
     [SerializeField] private float jumpCooldown;
 
 
@@ -27,7 +27,6 @@ public class JumpComponent : MonoBehaviour {
 
 
     public void Jump() {
-        Debug.Log("jumping");
         jumpTimer -= Time.deltaTime;
         if (ground != null && CanJump && isJumping == false) {
             TurnAgentOff();
@@ -37,7 +36,6 @@ public class JumpComponent : MonoBehaviour {
             rb.AddForce(jumpDirection, ForceMode.Impulse);
         }
 
-
         if (ground == null) {
             isJumping = true;
         }
@@ -45,19 +43,18 @@ public class JumpComponent : MonoBehaviour {
             isJumping = false;
         }
 
-
         // cooldown timer
         if (jumpTimer <= 0) {
-            jumpTimer = 3f;
+            jumpTimer = 8f;
             canJump = true;
         }
-
     }
 
 
     private void OnCollisionEnter(Collision collision) {
         GameObject currentGround = Ground;
         OnCollisionStay(collision);
+        agent.nextPosition = gameObject.transform.position;
         TurnAgentOn();
 
     }

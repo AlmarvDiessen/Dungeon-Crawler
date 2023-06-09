@@ -43,8 +43,6 @@ public class PatrolState : EnemyState {
     }
 
     public override void Update() {
-        Debug.Log("Patrolling");
-
         if (agent.remainingDistance < 1f) {
             if (enemy.StateMachine.CurrentState != enemy.StateMachine.ChaseState)
                 SetNewDestination();
@@ -79,7 +77,6 @@ public class ChaseState : EnemyState {
     }
 
     public override void Update() {
-        Debug.Log("Chasing");
         ChasePlayer(player.transform);
     }
 

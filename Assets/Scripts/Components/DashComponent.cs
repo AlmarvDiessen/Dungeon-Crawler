@@ -2,35 +2,38 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DashComponent : MonoBehaviour
-{
+public class DashComponent : MonoBehaviour {
     [SerializeField] private bool canDash = true;
     [SerializeField] private bool isDashing;
     [SerializeField] private float dashPower;
-    [SerializeField] private float dashTime;
+    [SerializeField] private float dashTimer = 8;
     [SerializeField] private float dashCooldown;
+    private Vector3 direction;
 
     [SerializeField] private Rigidbody rb;
 
     public bool CanDash { get => canDash; set => canDash = value; }
     public bool IsDashing { get => isDashing; set => isDashing = value; }
+    public Vector3 Direction { get => direction; set => direction = value; }
+    public Rigidbody Rb { get => rb; set => rb = value; }
 
-    private void Start() {
-        rb = GetComponent<Rigidbody>();
+    public void Start() {
+        Rb = GetComponent<Rigidbody>();
+        Direction = transform.forward;
     }
-    public void Dash() {
-        Debug.Log("dashing");
-        canDash = false;
-        IsDashing = true;
-        Vector3 dashDirection = transform.forward * dashPower + transform.up * 0;
-        rb.AddForce(dashDirection, ForceMode.Impulse);
-        StartCoroutine(DashCooldown());
-    }
+    public virtual void Dash() {
+        dashTimer -= Time.deltaTime;
+        if (canDash && isDashing == false) {
+            canDash = false;
+            IsDashing = true;
+            Vector3 dashDirection = Direction * dashPower + transform.up * 0;
+            Rb.AddForce(dashDirection, ForceMode.Impulse);
+        }
 
-    private IEnumerator DashCooldown() {
-        yield return new WaitForSeconds(dashTime);
-        IsDashing = false;
-        yield return new WaitForSeconds(dashCooldown);
-        canDash = true;
+        if (dashTimer <= 0) {
+            dashTimer = 8f;
+            canDash = true;
+            isDashing = false;
+        }
     }
 }
