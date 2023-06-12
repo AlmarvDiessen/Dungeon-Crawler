@@ -41,9 +41,9 @@ public class MoveWall : MonoBehaviour
         {
             Vector3 xPos = startPos + transform.right * moveX;
 
-            Vector3 yPos = startPos + transform.up * moveY;
+            Vector3 yPos = xPos + transform.up * moveY;
 
-            Vector3 zPos = startPos + transform.forward * moveZ;
+            Vector3 zPos = yPos + transform.forward * moveZ;
 
             if (moveX != 0)
             {

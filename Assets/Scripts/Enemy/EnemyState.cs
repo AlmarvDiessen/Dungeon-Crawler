@@ -89,7 +89,7 @@ public class ChaseState : EnemyState {
         Vector3 playerPosistion = transform.transform.position;
         float distance = Vector3.Distance(enemy.transform.position, playerPosistion);
 
-        Debug.Log(distance);
+        //Debug.Log(distance);
         if (playerPosistion != null && distance <= enemy.DetectRange)
             agent.SetDestination(playerPosistion);
 
