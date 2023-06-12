@@ -9,7 +9,6 @@ public class JumpComponent : MonoBehaviour {
     [SerializeField] private bool isJumping = false;
     [SerializeField] private float jumpPower;
     [SerializeField] private float jumpTimer = 8f;
-    [SerializeField] private float jumpCooldown;
 
 
     [SerializeField] private Rigidbody rb;

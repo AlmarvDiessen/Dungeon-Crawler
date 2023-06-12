@@ -10,6 +10,8 @@ public class DodgeComponent : DashComponent
         base.Start();
         dodgeDirections.Add(-transform.forward);
         dodgeDirections.Add(-transform.right);
+        dodgeDirections.Add(-transform.right);
+        dodgeDirections.Add(transform.right);
         dodgeDirections.Add(transform.right);
     }
 
