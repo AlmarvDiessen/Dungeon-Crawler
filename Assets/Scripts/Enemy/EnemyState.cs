@@ -27,14 +27,6 @@ namespace Assets.Scripts.Enemy {
         public void ExitState() {
 
         }
-        public void LookForPlayer() {
-            float distance = Vector3.Distance(enemy.transform.position, player.transform.position);
-            Debug.Log(distance);
-            if (distance <= enemy.DetectRange)
-                enemy.ChangeState(enemy.ChaseState);
-            else
-                enemy.ChangeState(enemy.PatrolState);
-        }
     }
 }
 
@@ -46,15 +38,19 @@ public class PatrolState : EnemyState {
     }
 
     public override void EnterState() {
+        //test for enter or continious
         playerPos = player.gameObject;
     }
 
     public override void Update() {
         if (agent.remainingDistance < 1f) {
-            LookForPlayer();
-            if (enemy.CurrentState != enemy.ChaseState)
+            if (enemy.StateMachine.CurrentState != enemy.StateMachine.ChaseState)
                 SetNewDestination();
         }
+
+            float distance = Vector3.Distance(enemy.transform.position, player.transform.position);
+        if (distance <= enemy.DetectRange)
+            enemy.StateMachine.ChangeState(enemy.StateMachine.ChaseState);
     }
 
     public void SetNewDestination() {
@@ -64,37 +60,38 @@ public class PatrolState : EnemyState {
         NavMeshHit hit;
         if (NavMesh.SamplePosition(newDestination, out hit, 3f, NavMesh.AllAreas)) {
             agent.SetDestination(hit.position);
-            LookForPlayer();
+            //LookForPlayer();
         }
     }
 }
 
 public class ChaseState : EnemyState {
-    private GameObject playerPos;
+    // private GameObject playerPos;
 
     public ChaseState(EnemyClass pEnemy, NavMeshAgent pAgent, Player pPlayer) : base(pEnemy, pAgent, pPlayer) {
 
 
     }
     public override void EnterState() {
-        playerPos = player.gameObject;
         enemy.transform.LookAt(player.transform);
     }
 
     public override void Update() {
-        ChasePlayer(playerPos.transform);
+        ChasePlayer(player.transform);
     }
 
     public void ChasePlayer(Transform transform) {
-        Vector3 playerPosistion = transform.transform.position;
+
+        Vector3 playerPosistion = transform.position;
+        agent.SetDestination(playerPosistion);
+
+        //if (/*playerPosistion != null && */distance <= enemy.DetectRange)
+
+
         float distance = Vector3.Distance(enemy.transform.position, playerPosistion);
+        if (/*playerPosistion == null && */distance >= enemy.DetectRange)
+            enemy.StateMachine.ChangeState(enemy.StateMachine.PatrolState);
 
-        Debug.Log(distance);
-        if (playerPosistion != null && distance <= enemy.DetectRange)
-            agent.SetDestination(playerPosistion);
-
-        if (playerPosistion == null && distance > enemy.DetectRange)
-            enemy.ChangeState(enemy.PatrolState);
     }
 }
 

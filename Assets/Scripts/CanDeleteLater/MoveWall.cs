@@ -11,6 +11,8 @@ public class MoveWall : MonoBehaviour
     [SerializeField] float moveZ;
     [SerializeField] float duration;
 
+    [SerializeField] KeyCode keyCode;
+
     [SerializeField] float snapDistance;
 
     bool doorOpen;
@@ -26,7 +28,7 @@ public class MoveWall : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.F))
+        if (Input.GetKeyDown(keyCode))
         {
             StartCoroutine(OperateDoor());
         }
@@ -79,7 +81,7 @@ public class MoveWall : MonoBehaviour
 
         while (timeElapsed < duration)
         {
-            transform.position = Vector3.Lerp(startPosition, targetPosition, timeElapsed / duration);
+            transform.position = Vector3.Lerp(startPosition, targetPosition, timeElapsed / duration).normalized;
             timeElapsed += Time.deltaTime;
             yield return null;
         }
