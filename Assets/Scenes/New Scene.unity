@@ -1017,7 +1017,6 @@ GameObject:
   - component: {fileID: 949056617}
   - component: {fileID: 949056616}
   - component: {fileID: 949056615}
-  - component: {fileID: 949056614}
   - component: {fileID: 949056613}
   - component: {fileID: 949056612}
   - component: {fileID: 949056610}
@@ -1043,11 +1042,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df81732f339918641b26f3cdbdad23c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  abilityTimer: 8
+  abilityTimer: 0
+  abilityUsed: 0
   rb: {fileID: 0}
   canDodge: 1
   isDodging: 0
   dodgePower: 10
+  cooldown: 5
 --- !u!114 &949056610
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1118,19 +1119,6 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!135 &949056614
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 949056608}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &949056615
 Rigidbody:
@@ -1226,6 +1214,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   abilityTimer: 8
+  abilityUsed: 0
 --- !u!1 &977664289
 GameObject:
   m_ObjectHideFlags: 0
@@ -1236,6 +1225,7 @@ GameObject:
   m_Component:
   - component: {fileID: 977664291}
   - component: {fileID: 977664290}
+  - component: {fileID: 977664292}
   m_Layer: 0
   m_Name: Directional Light
   m_TagString: Untagged
@@ -1320,6 +1310,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!114 &977664292
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 977664289}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Version: 1
+  m_UsePipelineSettings: 1
+  m_AdditionalLightsShadowResolutionTier: 2
+  m_LightLayerMask: 1
+  m_CustomShadowLayers: 0
+  m_ShadowLayerMask: 1
+  m_LightCookieSize: {x: 1, y: 1}
+  m_LightCookieOffset: {x: 0, y: 0}
 --- !u!1 &1076664541
 GameObject:
   m_ObjectHideFlags: 0
@@ -2456,10 +2466,15 @@ PrefabInstance:
       propertyPath: m_Name
       value: Capsule
       objectReference: {fileID: 0}
+    - target: {fileID: 4483105489237786426, guid: 20b554d74ad083d48a87238fe152b5b0,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 08c64cd7265427b4ba2c72d5bbcf2391, type: 2}
     - target: {fileID: 4483105489639134206, guid: 20b554d74ad083d48a87238fe152b5b0,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: -868.22833
       objectReference: {fileID: 0}
     - target: {fileID: 4483105489639134206, guid: 20b554d74ad083d48a87238fe152b5b0,
         type: 3}
@@ -2478,3 +2493,29 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 20b554d74ad083d48a87238fe152b5b0, type: 3}
+--- !u!1 &4483105488835044590 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1092493548, guid: 20b554d74ad083d48a87238fe152b5b0,
+    type: 3}
+  m_PrefabInstance: {fileID: 4483105488835044589}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4483105488835044591
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4483105488835044590}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Version: 1
+  m_UsePipelineSettings: 1
+  m_AdditionalLightsShadowResolutionTier: 2
+  m_LightLayerMask: 1
+  m_CustomShadowLayers: 0
+  m_ShadowLayerMask: 1
+  m_LightCookieSize: {x: 1, y: 1}
+  m_LightCookieOffset: {x: 0, y: 0}
