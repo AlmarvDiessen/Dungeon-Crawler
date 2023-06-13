@@ -11,7 +11,6 @@ public class DashingEnemy : EnemyClass
     private void Start() {
         base.Start();
         dashComponent = gameObject.GetComponent<DashComponent>();
-        dashComponent.Direction = transform.forward;
         StateMachine.OnChaseUpdate += dashComponent.Dash;
     }
 }

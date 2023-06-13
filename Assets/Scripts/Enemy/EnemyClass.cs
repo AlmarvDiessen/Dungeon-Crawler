@@ -37,7 +37,7 @@ public class EnemyClass : Entity {
 
     }
 
-    private void Update() {
+    public void Update() {
         stateMachine.Update();  
     }
 

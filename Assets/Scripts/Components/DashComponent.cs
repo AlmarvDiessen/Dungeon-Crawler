@@ -21,19 +21,13 @@ public class DashComponent : MonoBehaviour {
         
     }
 
-    public Vector3 DashDirection() {
-        Vector3 dashDirection = Direction * dashPower + transform.up * 0;
-
-
-        return dashDirection;
-    }
     public virtual void Dash() {
         dashTimer -= Time.deltaTime;
         if (canDash && isDashing == false) {
             canDash = false;
             IsDashing = true;
-            //Vector3 dashDirection = transform.forward * dashPower + transform.up * 0;
-            Rb.AddForce(DashDirection(), ForceMode.Impulse);
+            Vector3 dashDirection = transform.forward * dashPower + transform.up * 0;
+            Rb.AddForce(dashDirection, ForceMode.Impulse);
         }
 
         if (dashTimer <= 0) {
