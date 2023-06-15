@@ -13,40 +13,32 @@ public class EnemyClass : Entity {
     [SerializeField] private NavMeshAgent navAgent;
     [SerializeField] private Player player;
 
-    [SerializeField] private EnemyState currentState;
-    [SerializeField] private EnemyState patrolState;
-    [SerializeField] private EnemyState chaseState;
+    //EnemyStateMachine
+    private EnemyStateMachine stateMachine;
 
     [SerializeField] private float detectRange;
     [SerializeField] private int damage;
     [SerializeField] private float wanderDistance;
 
-    public EnemyState CurrentState { get => currentState; set => currentState = value; }
-    public EnemyState PatrolState { get => patrolState; set => patrolState = value; }
-    public EnemyState ChaseState { get => chaseState; set => chaseState = value; }
     public NavMeshAgent NavAgent { get => navAgent; set => navAgent = value; }
     public float WanderDistance { get => wanderDistance; set => wanderDistance = value; }
     public float DetectRange { get => detectRange; set => detectRange = value; }
+    public EnemyStateMachine StateMachine { get => stateMachine; set => stateMachine = value; }
 
-    private void Start() {
+    public void Start() {
         giveDamage = gameObject.AddComponent<GiveDamage>();
         NavAgent = GetComponent<NavMeshAgent>();
         player = FindObjectOfType<Player>();
+        stateMachine = GetComponent<EnemyStateMachine>();
 
         if (data != null) {
             Initialize(data);
         }
 
-        currentState = new EnemyState(this, NavAgent,player);
-        patrolState = new PatrolState(this, NavAgent,player);
-        chaseState = new ChaseState(this, NavAgent, player);
-
-        currentState = patrolState;
-        currentState.EnterState();
     }
 
-    private void Update() {
-        currentState.Update();
+    public void Update() {
+        stateMachine.Update();  
     }
 
     private void Initialize(ScriptableObject data) {
@@ -59,9 +51,5 @@ public class EnemyClass : Entity {
         WanderDistance = enemyData.WanderDistance;
     }
 
-    public void ChangeState(EnemyState stateChange) {
-        currentState.ExitState();
-        CurrentState = stateChange;
-        currentState.EnterState();
-    }
+
 }
