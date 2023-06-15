@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: NormalEnemy
   m_EditorClassIdentifier: 
   enemyName: Goblin
-  enemyModel: {fileID: 8992397893200743632, guid: c7a4300eb91421a45a07526a509d5376,
+  enemyModel: {fileID: 7564638783374153818, guid: e9be7be0a27ec154dbd5df87ce6c500c,
     type: 3}
   health: 20
   speed: 2

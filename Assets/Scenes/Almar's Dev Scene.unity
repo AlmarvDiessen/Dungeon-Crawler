@@ -14298,7 +14298,7 @@ PrefabInstance:
     - target: {fileID: 7564638783374575034, guid: e9be7be0a27ec154dbd5df87ce6c500c,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -9.33
+      value: -19.59
       objectReference: {fileID: 0}
     - target: {fileID: 7564638783374575034, guid: e9be7be0a27ec154dbd5df87ce6c500c,
         type: 3}
@@ -14417,7 +14417,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canDash: 1
   isDashing: 0
-  dashPower: 0
+  dashPower: 15
   dashTimer: 8
   rb: {fileID: 0}
 --- !u!114 &1318680825
