@@ -5,10 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Assets.Scripts.Interfaces {
-    internal interface IDashable {
+    public interface IEffects {
 
-        void Dash() {
-
-        }
+        void ApplyEffect() { }
     }
 }

@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour, IEquippable
 {
-    // Start is called before the first frame update
+    // add weapon stats
     void Start()
     {
         

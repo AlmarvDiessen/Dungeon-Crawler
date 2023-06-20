@@ -15,6 +15,10 @@ public  class Entity : MonoBehaviour {
         health = this.gameObject.AddComponent<Health>();
     }
 
+    private void Start() {
+        
+    }
+
 
     protected virtual void initialize(ScriptableObject data) {
 
