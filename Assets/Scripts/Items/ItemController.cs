@@ -1,4 +1,5 @@
 using Assets.Scripts;
+using Assets.Scripts.Interfaces;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -35,7 +36,7 @@ public class ItemController : MonoBehaviour, IInteractable
         item = new ItemInstance(itemData);
 
         inventoryManager = player.GetComponentInChildren<InventoryManager>();
-        inventoryManager.inventory.AddItem(item);
+        inventoryManager.Inventory.AddItem(item);
         Destroy(gameObject);
     }
 }

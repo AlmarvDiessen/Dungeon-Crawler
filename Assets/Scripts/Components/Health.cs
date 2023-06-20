@@ -21,5 +21,9 @@ public class Health : MonoBehaviour, IDamagable
     public void SetHealth(int value) {
         healthValue = value;
     }
+
+    public void HealHealth(int amount) {
+        healthValue += amount;
+    }
 }
 
