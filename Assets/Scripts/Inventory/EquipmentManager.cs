@@ -48,6 +48,7 @@ public class EquipmentManager : MonoBehaviour {
         if (equipped != null) {
             Destroy(equipped);
             GameObject dropEquipped = Instantiate(equippedWeapon.gameObject, transform.position, Quaternion.identity);
+            dropEquipped.GetComponentInChildren<RotateUiComponent>().enabled = true;
             dropEquipped.GetComponent<RotateObjectComponent>().enabled = true;
             dropEquipped.GetComponent<RotateObjectComponent>().RotateSpeed = 100f;
             equipped = null;
