@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6674553933494064193}
   - component: {fileID: 6674553933494064192}
   - component: {fileID: 6674553933494064195}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: LongCock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -73,6 +73,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotateSpeed: 100
+  rotateUpSpeed: 0
 --- !u!1001 &6674553932227585119
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -93,7 +94,7 @@ PrefabInstance:
     - target: {fileID: 1377784065294677133, guid: a3884a940f9a8d3418a27008b045837c,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 1377784065294677133, guid: a3884a940f9a8d3418a27008b045837c,
         type: 3}
@@ -139,6 +140,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Sword1_1_3 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1753325093932854839, guid: a3884a940f9a8d3418a27008b045837c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a3884a940f9a8d3418a27008b045837c, type: 3}
