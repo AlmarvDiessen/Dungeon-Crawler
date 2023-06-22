@@ -8,13 +8,16 @@ public class Player : Entity {
 
     [SerializeField] private DashComponent dash;
     [SerializeField] private BetterMovement playerMovement;
+    [SerializeField] private int playerHealth;
     private void Awake() {
-
+        playerHealth = 20;
     }
 
     private void Start() {
         dash = GetComponent<DashComponent>();
         playerMovement = GetComponent<BetterMovement>();
+
+        health.SetHealth(playerHealth);
 
     }
     private void FixedUpdate() {

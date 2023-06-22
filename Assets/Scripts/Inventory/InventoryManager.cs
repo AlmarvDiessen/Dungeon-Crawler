@@ -1,68 +1,33 @@
 using Assets.Scripts;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class InventoryManager : MonoBehaviour {
-
-    [SerializeField] private List<IInteractable> itemsInRange = new List<IInteractable>();
-    [SerializeField] ItemController ItemController;
     public Inventory inventory = new Inventory();
-    [SerializeField] private int itemCount;
+    public ItemInstance item;
+    public Inventory Inventory { get => inventory; set => inventory = value; }
 
+    // Start is called before the first frame update
+    void Start() {
 
-    [SerializeField] private GameObject itemPrefab;
-    [SerializeField] private GameObject InventoryUI;
-
-    private void Awake() {
     }
+
+    // Update is called once per frame
     void Update() {
-        if (Input.GetButtonDown("Interact") && itemsInRange.Count > 0) {
-            var interactable = itemsInRange[0];
-            if (ItemController != null) {
-                ItemController.Interact(gameObject);
-                itemCount = inventory.CurrentItemCount;
-                itemsInRange.Remove(interactable);
-            }
-            UpdateInventory();
-        }
-    }
-
-    private void UpdateInventory() {
-        ItemInstance item = inventory.Items.LastOrDefault();
-        GameObject child;
-        child = Instantiate(itemPrefab, InventoryUI.transform);
-
-        Image[] itemImage = child.GetComponentsInChildren<Image>();
-        itemImage.Last().sprite = item.ItemData.Icon;
 
     }
 
-
-    /// <summary>
-    /// getting the component of Interface IInteractable when colliding with a ontrigger.
-    /// making sure that iteractable is not null and can be interacted with.
-    /// to then add it to the list of items in range of the player to be picked up.
-    /// </summary>
-    /// <param name="other"></param>
-
-    private void OnTriggerEnter(Collider other) {
-        var interactable = other.GetComponent<IInteractable>();
-        ItemController = other.GetComponent<ItemController>();
-        if (interactable != null) {
-            itemsInRange.Add(interactable);
-        }
+    public void OnItemUse() {
+        Debug.Log("used");
+        item = GetComponent<ItemInstance>();
+        
     }
-    /// <summary>
-    /// when leaving the trigger just removing the ability to interact with it.
-    /// </summary>
-    /// <param name="other"></param>
-    private void OnTriggerExit(Collider other) {
-        var interactable = other.GetComponent<IInteractable>();
-        if (itemsInRange.Contains(interactable)) {
-            itemsInRange.Remove(interactable);
-        }
+
+    public void OnItemHover() {
     }
+
+    public void OnItemExit() {
+    }
+
 }
