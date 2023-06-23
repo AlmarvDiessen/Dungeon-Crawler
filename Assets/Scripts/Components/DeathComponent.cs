@@ -4,15 +4,21 @@ using UnityEngine;
 
 public class DeathComponent : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public Health health;
     void Start()
     {
-        
+        health = gameObject.GetComponent<Health>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        Kill();
+    }
+
+    void Kill() {
+        if(health.getHealth <= 0) {
+            Destroy(gameObject);
+        }
     }
 }

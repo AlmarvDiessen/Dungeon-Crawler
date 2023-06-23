@@ -25,6 +25,10 @@ public class EnemyClass : Entity {
     public float DetectRange { get => detectRange; set => detectRange = value; }
     public EnemyStateMachine StateMachine { get => stateMachine; set => stateMachine = value; }
 
+    public void Awake() {
+        base.Awake();
+    }
+
     public void Start() {
         giveDamage = gameObject.AddComponent<GiveDamage>();
         NavAgent = GetComponent<NavMeshAgent>();
@@ -34,7 +38,6 @@ public class EnemyClass : Entity {
         if (data != null) {
             Initialize(data);
         }
-
     }
 
     public void Update() {
@@ -50,6 +53,4 @@ public class EnemyClass : Entity {
         health.SetHealth(enemyData.Health);
         WanderDistance = enemyData.WanderDistance;
     }
-
-
 }
