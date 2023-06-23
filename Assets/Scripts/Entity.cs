@@ -10,18 +10,9 @@ public  class Entity : MonoBehaviour {
     [SerializeField] protected string EntityName;
 
 
-    private void Awake() {
+    public void Awake() {
         
         health = this.gameObject.AddComponent<Health>();
-    }
-
-    private void Start() {
-        
-    }
-
-
-    protected virtual void initialize(ScriptableObject data) {
-
     }
 
 }
