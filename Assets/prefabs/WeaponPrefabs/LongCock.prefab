@@ -12,8 +12,10 @@ GameObject:
   - component: {fileID: 5767440518319674046}
   - component: {fileID: 5767440518319674044}
   - component: {fileID: 5767440518319674047}
+  - component: {fileID: 576125308}
+  - component: {fileID: 576125303}
   m_Layer: 0
-  m_Name: Longcock
+  m_Name: LongCock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -66,6 +68,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotateSpeed: 100
+  rotateUpSpeed: 0
 --- !u!65 &5767440518319674047
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -74,11 +77,39 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5767440518319674016}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.21625301, y: 1.1786612, z: 0.08534306}
   m_Center: {x: 0, y: 0.4, z: -0.000000035390258}
+--- !u!135 &576125308
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5767440518319674016}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 2.5
+  m_Center: {x: 0, y: 0.5, z: 0}
+--- !u!111 &576125303
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5767440518319674016}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: dc2a2644ed7911241bbb4bd1a71e446a, type: 2}
+  m_Animations: []
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1 &5767440518950028143
 GameObject:
   m_ObjectHideFlags: 0

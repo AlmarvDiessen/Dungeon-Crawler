@@ -8,7 +8,9 @@ public class Weapon : MonoBehaviour, IEquippable
     // add weapon stats
     void Start()
     {
-        
+        this.GetComponent<Animation>().enabled = true;
+        this.GetComponent<SwordSwing>().enabled = true;
+        this.GetComponent<SphereCollider>().enabled = false;
     }
 
     // Update is called once per frame
