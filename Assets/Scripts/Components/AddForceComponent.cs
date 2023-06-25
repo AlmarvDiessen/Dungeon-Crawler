@@ -15,21 +15,31 @@ public class AddForceComponent : MonoBehaviour {
     public float Cooldown { get => cooldown; set => cooldown = value; }
     public TimerComponent Timer { get => timer; set => timer = value; }
 
-    void Start()
-    {
+    public void Start() {
         Rb = GetComponent<Rigidbody>();
-        timer = GetComponent<TimerComponent>();
+        timer = new TimerComponent();
+    }
+
+    public void Update() {
+        timer.checkCooldown(cooldown);
     }
 
     public virtual void AddForce(Vector3 direction) {
-        if (canUse && timer.AbilityUsed == false) {
-            canUse = false;
+        if (timer.CanUse && timer.AbilityUsed == false) {
+            timer.CanUse = false;
+            timer.AbilityUsed = true;
+            Vector3 dashDirection = direction * forcePower + transform.up * 0;
+            Rb.AddForce(dashDirection, ForceMode.Impulse);
+        }
+    }
+
+    public virtual void AddForce(List<Vector3> directions) {
+        if (timer.CanUse && timer.AbilityUsed == false) {
+            timer.CanUse = false;
             timer.AbilityUsed = true;
             Vector3 dashDirection = transform.forward * forcePower + transform.up * 0;
             Rb.AddForce(dashDirection, ForceMode.Impulse);
         }
     }
-
-
 
 }

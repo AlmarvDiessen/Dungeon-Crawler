@@ -29,7 +29,7 @@ public class Player : Entity {
     }
     public void PlayerDash() {
         if(Input.GetKeyDown(KeyCode.LeftShift)&& dash.CanDash) {
-           dash.Dash();
+           //dash.Dash();
         }
     }
 

@@ -10,7 +10,7 @@ public class DodgingEnemy : EnemyClass
     {
         base.Start();
         dodgeComponent = gameObject.GetComponent<DodgeComponent>();
-        StateMachine.OnChaseUpdate += dodgeComponent.Dodge;
+        //StateMachine.OnChaseUpdate += dodgeComponent.Dodge;
     }
 
 }

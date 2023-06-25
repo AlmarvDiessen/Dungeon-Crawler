@@ -11,7 +11,7 @@ public class EnemyStateMachine : MonoBehaviour {
 
     //public List<EnemyState> allStates = new List<EnemyState>();
 
-    public event Action OnChaseUpdate = delegate { };
+    public event Action<Vector3> OnChaseUpdate = delegate { };
     //public event Action OnChaseExit = delegate { };
 
     [SerializeField] private NavMeshAgent navAgent;
@@ -45,7 +45,7 @@ public class EnemyStateMachine : MonoBehaviour {
         CurrentState.Update();
 
         if (currentState == chaseState) {
-            OnChaseUpdate();
+            OnChaseUpdate(Vector3.zero);
         }
         //if(currentState == patrolState) {
         //    OnChaseExit();
@@ -59,7 +59,7 @@ public class EnemyStateMachine : MonoBehaviour {
     }
 
     public void OnChaseActive() {
-        OnChaseUpdate();
+        OnChaseUpdate(Vector3.zero);
 
     }
 

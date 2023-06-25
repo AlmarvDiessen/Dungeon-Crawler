@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class DashComponent : TimerComponent {
+public class DashComponent : AddForceComponent {
+    private TimerComponent timer;
     [SerializeField] private bool canDash = true;
     [SerializeField] private bool isDashing;
     [SerializeField] private float dashPower;
@@ -18,22 +19,16 @@ public class DashComponent : TimerComponent {
     public Rigidbody Rb { get => rb; set => rb = value; }
 
     public void Start() {
-        Rb = GetComponent<Rigidbody>();
-        
+        base.Start();
     }
 
-    public virtual void Dash() {
-        if (canDash && AbilityUsed == false) {
-            canDash = false;
-            AbilityUsed = true;
-            Vector3 dashDirection = transform.forward * dashPower + transform.up * 0;
-            Rb.AddForce(dashDirection, ForceMode.Impulse);
-        }
+    public void Update() {
+        base.Update();
     }
 
-    protected override void OnAbilityReset() {
-        AbilityTimer = cooldown;
-        canDash = true;
-        AbilityUsed = false;
+    public override void AddForce(Vector3 direction) {
+        direction = transform.forward;
+        base.AddForce(direction);
     }
+
 }

@@ -17,41 +17,41 @@ public class JumpComponent : TimerComponent {
     public bool CanJump { get => canJump; set => canJump = value; }
     public GameObject Ground { get => ground; set => ground = value; }
 
-    private void Start() {
-        rb = GetComponent<Rigidbody>();
-        agent = GetComponent<NavMeshAgent>();
-    }
+    //private void Start() {
+    //    rb = GetComponent<Rigidbody>();
+    //    agent = GetComponent<NavMeshAgent>();
+    //}
 
-    public void Jump() {
-        if (ground != null && CanJump && AbilityUsed == false) {
-            TurnAgentOff();
-            CanJump = false;
-            AbilityUsed = true;
-            Vector3 jumpDirection = transform.forward * 0 + transform.up * jumpPower;
-            rb.AddForce(jumpDirection, ForceMode.Impulse);
-            Debug.Log("jumped");
-        }
+    //public void Jump() {
+    //    if (ground != null && CanJump && AbilityUsed == false) {
+    //        TurnAgentOff();
+    //        CanJump = false;
+    //        AbilityUsed = true;
+    //        Vector3 jumpDirection = transform.forward * 0 + transform.up * jumpPower;
+    //        rb.AddForce(jumpDirection, ForceMode.Impulse);
+    //        Debug.Log("jumped");
+    //    }
 
-        if (ground == null) {
-            isJumping = true;
-        }
-        else {
-            isJumping = false;
-        }
-    }
+    //    if (ground == null) {
+    //        isJumping = true;
+    //    }
+    //    else {
+    //        isJumping = false;
+    //    }
+    //}
 
-    protected override void OnAbilityReset() {
-        AbilityTimer = cooldown;
-        canJump = true;
-        AbilityUsed = false;
-    }
+    //protected override void OnAbilityReset() {
+    //    AbilityTimer = cooldown;
+    //    canJump = true;
+    //    AbilityUsed = false;
+    //}
 
-    private void OnCollisionEnter(Collision collision) {
-        GameObject currentGround = Ground;
-        OnCollisionStay(collision);
-        agent.nextPosition = gameObject.transform.position;
-        TurnAgentOn();
-    }
+    //private void OnCollisionEnter(Collision collision) {
+    //    GameObject currentGround = Ground;
+    //    OnCollisionStay(collision);
+    //    agent.nextPosition = gameObject.transform.position;
+    //    TurnAgentOn();
+    //}
 
     private void TurnAgentOff() {
         agent.updatePosition = false;
