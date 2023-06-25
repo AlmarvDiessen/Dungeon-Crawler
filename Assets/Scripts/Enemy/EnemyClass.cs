@@ -12,7 +12,6 @@ public class EnemyClass : Entity {
     [SerializeField] private GiveDamage giveDamage;
     [SerializeField] private NavMeshAgent navAgent;
     [SerializeField] private Player player;
-
     //EnemyStateMachine
     private EnemyStateMachine stateMachine;
 
@@ -41,7 +40,8 @@ public class EnemyClass : Entity {
     }
 
     public void Update() {
-        stateMachine.Update();  
+        stateMachine.Update();
+        Kill();
     }
 
     private void Initialize(ScriptableObject data) {
@@ -52,5 +52,10 @@ public class EnemyClass : Entity {
         giveDamage.SetDamage(damage = enemyData.Damage);
         health.SetHealth(enemyData.Health);
         WanderDistance = enemyData.WanderDistance;
+    }
+
+    public override void Kill() {
+
+       
     }
 }

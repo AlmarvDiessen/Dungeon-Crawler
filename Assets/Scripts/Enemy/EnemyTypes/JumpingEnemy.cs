@@ -1,3 +1,4 @@
+using Assets.Scripts;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -16,10 +17,5 @@ public class JumpingEnemy : EnemyClass {
 
         //subscribe
         //Unsubscribe        StateMachine.OnChaseUpdate -= jumpComponent.Jump;
-    }
-
-
-    private void Update() {
-
     }
 }
