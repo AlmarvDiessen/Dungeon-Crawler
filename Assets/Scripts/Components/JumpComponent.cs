@@ -9,12 +9,11 @@ public class JumpComponent : TimerComponent {
     [SerializeField] private bool canJump = true;
     [SerializeField] private bool isJumping = false;
     [SerializeField] private float jumpPower;
-    [SerializeField] private float jumpTimer = 8f;
     [SerializeField] private float cooldown;
 
     private Rigidbody rb;
     private NavMeshAgent agent;
-    private GameObject ground = null;
+    [SerializeField]private GameObject ground = null;
     public bool CanJump { get => canJump; set => canJump = value; }
     public GameObject Ground { get => ground; set => ground = value; }
 
@@ -30,6 +29,7 @@ public class JumpComponent : TimerComponent {
             AbilityUsed = true;
             Vector3 jumpDirection = transform.forward * 0 + transform.up * jumpPower;
             rb.AddForce(jumpDirection, ForceMode.Impulse);
+            Debug.Log("jumped");
         }
 
         if (ground == null) {

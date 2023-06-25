@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
-public class DashComponent : MonoBehaviour {
+public class DashComponent : TimerComponent {
     [SerializeField] private bool canDash = true;
     [SerializeField] private bool isDashing;
     [SerializeField] private float dashPower;
-    [SerializeField] private float dashTimer = 8;
+    [SerializeField] private float cooldown;
     private Vector3 direction;
 
     [SerializeField] private Rigidbody rb;
@@ -22,18 +23,17 @@ public class DashComponent : MonoBehaviour {
     }
 
     public virtual void Dash() {
-        dashTimer -= Time.deltaTime;
-        if (canDash && isDashing == false) {
+        if (canDash && AbilityUsed == false) {
             canDash = false;
-            IsDashing = true;
+            AbilityUsed = true;
             Vector3 dashDirection = transform.forward * dashPower + transform.up * 0;
             Rb.AddForce(dashDirection, ForceMode.Impulse);
         }
+    }
 
-        if (dashTimer <= 0) {
-            dashTimer = 8f;
-            canDash = true;
-            isDashing = false;
-        }
+    protected override void OnAbilityReset() {
+        AbilityTimer = cooldown;
+        canDash = true;
+        AbilityUsed = false;
     }
 }
