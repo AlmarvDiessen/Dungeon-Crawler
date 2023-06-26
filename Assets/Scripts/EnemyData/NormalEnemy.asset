@@ -19,4 +19,4 @@ MonoBehaviour:
   speed: 2
   wanderDistance: 8
   detectRange: 15
-  damage: 1
+  damage: 3

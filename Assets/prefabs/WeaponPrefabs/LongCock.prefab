@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5767440518319674044}
   - component: {fileID: 5767440518319674047}
   m_Layer: 0
-  m_Name: Longcock
+  m_Name: LongCock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
