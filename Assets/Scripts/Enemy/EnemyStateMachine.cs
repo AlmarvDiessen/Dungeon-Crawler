@@ -45,7 +45,7 @@ public class EnemyStateMachine : MonoBehaviour {
         CurrentState.Update();
 
         if (currentState == chaseState) {
-            OnChaseUpdate(Vector3.zero);
+            //OnChaseUpdate();
         }
         //if(currentState == patrolState) {
         //    OnChaseExit();

@@ -48,7 +48,7 @@ public class PatrolState : EnemyState {
                 SetNewDestination();
         }
 
-            float distance = Vector3.Distance(enemy.transform.position, player.transform.position);
+        float distance = Vector3.Distance(enemy.transform.position, player.transform.position);
         if (distance <= enemy.DetectRange)
             enemy.StateMachine.ChangeState(enemy.StateMachine.ChaseState);
     }
@@ -67,17 +67,32 @@ public class PatrolState : EnemyState {
 
 public class ChaseState : EnemyState {
     // private GameObject playerPos;
-
     public ChaseState(EnemyClass pEnemy, NavMeshAgent pAgent, Player pPlayer) : base(pEnemy, pAgent, pPlayer) {
 
 
     }
     public override void EnterState() {
         enemy.transform.LookAt(player.transform);
+        //jump.gameObject.GetComponent<AddForceComponent>();
+        //dash.gameObject.GetComponent<AddForceComponent>();
+
     }
 
     public override void Update() {
         ChasePlayer(player.transform);
+        //addforcecomp.Addforce gebruiken
+        foreach (AddForceComponent force in enemy.AddForceComponents) {
+
+
+            if (force.GetType() != typeof(JumpComponent))
+                force.AddForce(enemy.transform.forward, 0);
+
+
+            if(force.GetType() == typeof(JumpComponent)) {
+                force.AddForce(enemy.transform.forward, force.ForceUpPower);
+            }
+
+        }
     }
 
     public void ChasePlayer(Transform transform) {

@@ -2,11 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AddForceComponent : MonoBehaviour {
+public class AddForceComponent : TimerComponent {
     [SerializeField] private Rigidbody rb;
     [SerializeField] private TimerComponent timer;
     [SerializeField] private bool canUse = true;
+    [SerializeField] private bool isUsing = false;
     [SerializeField] private float forcePower;
+    [SerializeField] private float forceUpPower;
     [SerializeField] private float cooldown;
 
     public Rigidbody Rb { get => rb; set => rb = value; }
@@ -14,32 +16,28 @@ public class AddForceComponent : MonoBehaviour {
     public float ForcePower { get => forcePower; set => forcePower = value; }
     public float Cooldown { get => cooldown; set => cooldown = value; }
     public TimerComponent Timer { get => timer; set => timer = value; }
+    public bool IsUsing { get => isUsing; set => isUsing = value; }
+    public float ForceUpPower { get => forceUpPower; set => forceUpPower = value; }
 
     public void Start() {
         Rb = GetComponent<Rigidbody>();
         timer = new TimerComponent();
     }
 
-    public void Update() {
-        timer.checkCooldown(cooldown);
-    }
-
-    public virtual void AddForce(Vector3 direction) {
-        if (timer.CanUse && timer.AbilityUsed == false) {
-            timer.CanUse = false;
+    public virtual void AddForce(Vector3 direction, float upwardForce) {
+        if (canUse && timer.AbilityUsed == false) {
+            canUse = false;
+            IsUsing = true;
             timer.AbilityUsed = true;
-            Vector3 dashDirection = direction * forcePower + transform.up * 0;
+            Vector3 dashDirection = direction * forcePower + transform.up * ForceUpPower;
             Rb.AddForce(dashDirection, ForceMode.Impulse);
         }
     }
 
-    public virtual void AddForce(List<Vector3> directions) {
-        if (timer.CanUse && timer.AbilityUsed == false) {
-            timer.CanUse = false;
-            timer.AbilityUsed = true;
-            Vector3 dashDirection = transform.forward * forcePower + transform.up * 0;
-            Rb.AddForce(dashDirection, ForceMode.Impulse);
-        }
+    protected override void OnAbilityReset() {
+        AbilityTimer = cooldown;
+        canUse = true;
+        IsUsing = false;
+        AbilityUsed = false;
     }
-
 }

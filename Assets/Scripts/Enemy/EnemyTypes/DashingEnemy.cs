@@ -10,7 +10,7 @@ public class DashingEnemy : EnemyClass
 
     private void Start() {
         base.Start();
-        dashComponent = gameObject.GetComponent<DashComponent>();
-        StateMachine.OnChaseUpdate += dashComponent.AddForce;
+        //dashComponent = gameObject.GetComponent<DashComponent>();
+        //StateMachine.OnChaseUpdate += dashComponent.Dash;
     }
 }

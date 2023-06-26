@@ -4,23 +4,29 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class JumpComponent : TimerComponent {
+public class JumpComponent : AddForceComponent {
 
-    [SerializeField] private bool canJump = true;
     [SerializeField] private bool isJumping = false;
-    [SerializeField] private float jumpPower;
-    [SerializeField] private float cooldown;
-
-    private Rigidbody rb;
+    [SerializeField] private GameObject ground = null;
     private NavMeshAgent agent;
-    [SerializeField]private GameObject ground = null;
-    public bool CanJump { get => canJump; set => canJump = value; }
+
     public GameObject Ground { get => ground; set => ground = value; }
 
-    //private void Start() {
-    //    rb = GetComponent<Rigidbody>();
-    //    agent = GetComponent<NavMeshAgent>();
-    //}
+    private void Start() {
+        base.Start();
+    }
+
+    public override void AddForce(Vector3 direction, float upwardForce) {
+        TurnAgentOff();
+        base.AddForce(direction, upwardForce);
+
+        if (Ground == null) {
+            isJumping = true;
+        }
+        else {
+            isJumping = false;
+        }
+    }
 
     //public void Jump() {
     //    if (ground != null && CanJump && AbilityUsed == false) {
@@ -40,18 +46,12 @@ public class JumpComponent : TimerComponent {
     //    }
     //}
 
-    //protected override void OnAbilityReset() {
-    //    AbilityTimer = cooldown;
-    //    canJump = true;
-    //    AbilityUsed = false;
-    //}
-
-    //private void OnCollisionEnter(Collision collision) {
-    //    GameObject currentGround = Ground;
-    //    OnCollisionStay(collision);
-    //    agent.nextPosition = gameObject.transform.position;
-    //    TurnAgentOn();
-    //}
+    private void OnCollisionEnter(Collision collision) {
+        GameObject currentGround = Ground;
+        OnCollisionStay(collision);
+        agent.nextPosition = gameObject.transform.position;
+        TurnAgentOn();
+    }
 
     private void TurnAgentOff() {
         agent.updatePosition = false;
@@ -76,7 +76,6 @@ public class JumpComponent : TimerComponent {
             }
         }
     }
-
     private void OnCollisionExit(Collision collision) {
         if (Ground == collision.gameObject) Ground = null;
     }

@@ -12,6 +12,7 @@ public class EnemyClass : Entity {
     [SerializeField] private GiveDamage giveDamage;
     [SerializeField] private NavMeshAgent navAgent;
     [SerializeField] private Player player;
+    [SerializeField] private List<AddForceComponent> addForceComponents = new List<AddForceComponent>();
     //EnemyStateMachine
     private EnemyStateMachine stateMachine;
 
@@ -23,6 +24,7 @@ public class EnemyClass : Entity {
     public float WanderDistance { get => wanderDistance; set => wanderDistance = value; }
     public float DetectRange { get => detectRange; set => detectRange = value; }
     public EnemyStateMachine StateMachine { get => stateMachine; set => stateMachine = value; }
+    public List<AddForceComponent> AddForceComponents { get => addForceComponents; set => addForceComponents = value; }
 
     public void Awake() {
         base.Awake();
