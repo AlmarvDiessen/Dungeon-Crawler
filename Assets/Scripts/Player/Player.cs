@@ -22,7 +22,6 @@ public class Player : Entity {
     }
     private void FixedUpdate() {
         playerMovement.Movement();
-       
     }
 
     private void Update() {
@@ -32,5 +31,10 @@ public class Player : Entity {
         if(Input.GetKeyDown(KeyCode.LeftShift)&& dash.CanDash) {
            dash.Dash();
         }
+    }
+
+    public override void Kill() {
+        base.Kill();
+        //player dies, show gameover screen or smt.
     }
 }

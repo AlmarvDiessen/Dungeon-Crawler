@@ -1,21 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class JumpComponent : MonoBehaviour {
+public class JumpComponent : TimerComponent {
 
     [SerializeField] private bool canJump = true;
     [SerializeField] private bool isJumping = false;
     [SerializeField] private float jumpPower;
-    [SerializeField] private float jumpTimer = 8f;
+    [SerializeField] private float cooldown;
 
-
-    [SerializeField] private Rigidbody rb;
-    [SerializeField] private NavMeshAgent agent;
-    [SerializeField] private GameObject ground = null;
-
-
+    private Rigidbody rb;
+    private NavMeshAgent agent;
+    [SerializeField]private GameObject ground = null;
     public bool CanJump { get => canJump; set => canJump = value; }
     public GameObject Ground { get => ground; set => ground = value; }
 
@@ -24,15 +22,14 @@ public class JumpComponent : MonoBehaviour {
         agent = GetComponent<NavMeshAgent>();
     }
 
-
     public void Jump() {
-        jumpTimer -= Time.deltaTime;
-        if (ground != null && CanJump && isJumping == false) {
+        if (ground != null && CanJump && AbilityUsed == false) {
             TurnAgentOff();
             CanJump = false;
-            isJumping = true;
+            AbilityUsed = true;
             Vector3 jumpDirection = transform.forward * 0 + transform.up * jumpPower;
             rb.AddForce(jumpDirection, ForceMode.Impulse);
+            Debug.Log("jumped");
         }
 
         if (ground == null) {
@@ -41,21 +38,19 @@ public class JumpComponent : MonoBehaviour {
         else {
             isJumping = false;
         }
-
-        // cooldown timer
-        if (jumpTimer <= 0) {
-            jumpTimer = 8f;
-            canJump = true;
-        }
     }
 
+    protected override void OnAbilityReset() {
+        AbilityTimer = cooldown;
+        canJump = true;
+        AbilityUsed = false;
+    }
 
     private void OnCollisionEnter(Collision collision) {
         GameObject currentGround = Ground;
         OnCollisionStay(collision);
         agent.nextPosition = gameObject.transform.position;
         TurnAgentOn();
-
     }
 
     private void TurnAgentOff() {

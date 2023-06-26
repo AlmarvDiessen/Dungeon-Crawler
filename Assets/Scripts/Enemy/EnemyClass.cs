@@ -12,7 +12,6 @@ public class EnemyClass : Entity {
     [SerializeField] private GiveDamage giveDamage;
     [SerializeField] private NavMeshAgent navAgent;
     [SerializeField] private Player player;
-
     //EnemyStateMachine
     private EnemyStateMachine stateMachine;
 
@@ -25,6 +24,10 @@ public class EnemyClass : Entity {
     public float DetectRange { get => detectRange; set => detectRange = value; }
     public EnemyStateMachine StateMachine { get => stateMachine; set => stateMachine = value; }
 
+    public void Awake() {
+        base.Awake();
+    }
+
     public void Start() {
         giveDamage = gameObject.AddComponent<GiveDamage>();
         NavAgent = GetComponent<NavMeshAgent>();
@@ -34,11 +37,11 @@ public class EnemyClass : Entity {
         if (data != null) {
             Initialize(data);
         }
-
     }
 
     public void Update() {
-        stateMachine.Update();  
+        stateMachine.Update();
+        Kill();
     }
 
     private void Initialize(ScriptableObject data) {
@@ -51,5 +54,8 @@ public class EnemyClass : Entity {
         WanderDistance = enemyData.WanderDistance;
     }
 
+    public override void Kill() {
 
+       
+    }
 }
