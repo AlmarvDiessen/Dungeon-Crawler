@@ -12,10 +12,6 @@ public class Health : MonoBehaviour, IDamagable
     public void TakeDamage(int pDamage)
     {
         healthValue -= pDamage;
-        if (healthValue <= 0)
-        {
-            Destroy(this.gameObject);
-        }
     }
 
     public void SetHealth(int value) {

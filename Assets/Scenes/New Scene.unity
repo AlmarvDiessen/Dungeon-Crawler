@@ -4843,7 +4843,8 @@ PrefabInstance:
         type: 3}
       propertyPath: dropItem
       value: 
-      objectReference: {fileID: 170560, guid: cc5de5e674870ca479a40105f80555ad, type: 3}
+      objectReference: {fileID: 4851089125147154953, guid: 7489cfe1d61ea414b9beb874f41c71f0,
+        type: 3}
     - target: {fileID: 2337705492902734895, guid: 8b8b5abb75fb63443a419cc7a81b138d,
         type: 3}
       propertyPath: m_Name
@@ -5126,7 +5127,7 @@ PrefabInstance:
     - target: {fileID: 7954633582807362542, guid: 55bde6a359fcc404d8c0a80f8626fb55,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.000091552734
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 55bde6a359fcc404d8c0a80f8626fb55, type: 3}
