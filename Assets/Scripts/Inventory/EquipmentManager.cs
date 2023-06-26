@@ -7,6 +7,8 @@ public class EquipmentManager : MonoBehaviour {
     [SerializeField] private Weapon equippedWeapon;
     [SerializeField] private GameObject equipped;
     [SerializeField] private Transform hand = null;
+    [SerializeField] private AnimationComponent animationComp;
+
 
     [SerializeField] private List<Weapon> weaponsOnGround = new List<Weapon>();
 
@@ -40,6 +42,8 @@ public class EquipmentManager : MonoBehaviour {
             equipped.transform.localPosition = Vector3.zero;
             equipped.transform.localRotation = Quaternion.identity;
             equippedWeapon = equipped.GetComponent<Weapon>();
+
+            animationComp.Clip = equippedWeapon.AnimationClip;
         }
     }
 
@@ -51,6 +55,7 @@ public class EquipmentManager : MonoBehaviour {
             dropEquipped.GetComponentInChildren<RotateUiComponent>().enabled = true;
             dropEquipped.GetComponent<RotateObjectComponent>().enabled = true;
             dropEquipped.GetComponent<RotateObjectComponent>().RotateSpeed = 100f;
+            dropEquipped.GetComponent<SphereCollider>().enabled = true;
             equipped = null;
             equippedWeapon = null;
         }

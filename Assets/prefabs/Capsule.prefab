@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &5788174085430532348
+--- !u!1 &5061985313453200332
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,9 +8,9 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 5788174085430532350}
-  - component: {fileID: 5788174085430532349}
-  - component: {fileID: 5788174084372920338}
+  - component: {fileID: 7541708833301289942}
+  - component: {fileID: 5771476548390571947}
+  - component: {fileID: 4331887625665814374}
   m_Layer: 0
   m_Name: Directional Light
   m_TagString: Untagged
@@ -18,36 +18,36 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &5788174085430532350
+--- !u!4 &7541708833301289942
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5788174085430532348}
-  m_LocalRotation: {x: -0, y: -0.7071068, z: 0.7071068, w: 0}
-  m_LocalPosition: {x: 0, y: 2, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_GameObject: {fileID: 5061985313453200332}
+  m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7954633582406027044}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
---- !u!108 &5788174085430532349
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!108 &5771476548390571947
 Light:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5788174085430532348}
+  m_GameObject: {fileID: 5061985313453200332}
   m_Enabled: 1
   serializedVersion: 10
   m_Type: 0
   m_Shape: 0
-  m_Color: {r: 1, g: 0.7568628, b: 0.027450982, a: 1}
-  m_Intensity: 1
-  m_Range: 100
-  m_SpotAngle: 90
+  m_Color: {r: 0.6603774, g: 0.45501983, b: 0.13394447, a: 1}
+  m_Intensity: 100
+  m_Range: 60.448097
+  m_SpotAngle: 179
   m_InnerSpotAngle: 1
   m_CookieSize: 10
   m_Shadows:
@@ -82,7 +82,7 @@ Light:
   m_RenderMode: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 439
   m_RenderingLayerMask: 1
   m_Lightmapping: 4
   m_LightShadowCasterMode: 0
@@ -95,13 +95,13 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
---- !u!114 &5788174084372920338
+--- !u!114 &4331887625665814374
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5788174085430532348}
+  m_GameObject: {fileID: 5061985313453200332}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
@@ -109,7 +109,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Version: 1
   m_UsePipelineSettings: 1
-  m_AdditionalLightsShadowResolutionTier: 2
+  m_AdditionalLightsShadowResolutionTier: 1
   m_LightLayerMask: 1
   m_CustomShadowLayers: 0
   m_ShadowLayerMask: 1
@@ -159,7 +159,7 @@ Transform:
   m_Children:
   - {fileID: 7954633583591231103}
   - {fileID: 7954633582530166121}
-  - {fileID: 5788174085430532350}
+  - {fileID: 7541708833301289942}
   - {fileID: 7954633584180585698}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -326,6 +326,7 @@ MonoBehaviour:
   data: {fileID: 0}
   health: {fileID: 7954633583478066956}
   EntityName: Player
+  dropItem: {fileID: 0}
   dash: {fileID: 0}
   playerMovement: {fileID: 0}
   playerHealth: 0
@@ -341,10 +342,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5abd8c766df2194aa520ac7d6489b4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  abilityTimer: 1
+  abilityUsed: 0
   canDash: 1
   isDashing: 0
   dashPower: 0
-  dashTimer: 8
+  cooldown: 0
   rb: {fileID: 0}
 --- !u!114 &7954633583478066956
 MonoBehaviour:
@@ -371,10 +374,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5abd8c766df2194aa520ac7d6489b4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  abilityTimer: 1
+  abilityUsed: 0
   canDash: 1
   isDashing: 0
   dashPower: 25
-  dashTimer: 3
+  cooldown: 0
   rb: {fileID: 0}
 --- !u!114 &5788174084372920332
 MonoBehaviour:
@@ -404,6 +409,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5bd3510c2233efe4689e9de5c3ab3d31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  item: {fileID: 0}
 --- !u!1 &7954633582530166126
 GameObject:
   m_ObjectHideFlags: 0

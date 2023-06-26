@@ -9,8 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5774092430408779382}
-  - component: {fileID: 5898728123996907787}
-  - component: {fileID: 4420277257816555867}
   m_Layer: 6
   m_Name: Hando
   m_TagString: Untagged
@@ -34,38 +32,6 @@ Transform:
   m_Father: {fileID: 7932671595788309531}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 85, z: 25}
---- !u!95 &5898728123996907787
-Animator:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5774092430408779383}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: af35c2cef007f3140b54cdd964360dff, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &4420277257816555867
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5774092430408779383}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0c98a41f03e9b984bb9c45041fed7b08, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &5774092430906312016
 GameObject:
   m_ObjectHideFlags: 0
@@ -533,6 +499,7 @@ MonoBehaviour:
   data: {fileID: 0}
   health: {fileID: 0}
   EntityName: 
+  dropItem: {fileID: 0}
   dash: {fileID: 0}
   playerMovement: {fileID: 0}
   playerHealth: 0
@@ -548,10 +515,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5abd8c766df2194aa520ac7d6489b4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  abilityTimer: 1
+  abilityUsed: 0
   canDash: 1
   isDashing: 0
   dashPower: 0
-  dashTimer: 0
+  cooldown: 0
   rb: {fileID: 0}
 --- !u!114 &5774092432010527401
 MonoBehaviour:
