@@ -2,21 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DodgeComponent : TimerComponent {
-    private List<Vector3> dodgeDirections = new List<Vector3>();
-    [SerializeField] private Rigidbody rb;
-    private Vector3 direction;
+public class DodgeComponent : AddForceComponent {
 
-    [SerializeField] private bool canDodge = true;
-    [SerializeField] private bool isDodging;
-    [SerializeField] private float dodgePower;
-    [SerializeField] private float cooldown;
+    public void Start() {
+        base.Start();
+    }
 
+    public override void AddForce(Vector3 direction, float upwardForce) {
+        direction = Random.insideUnitCircle * ForcePower;
+        upwardForce = 0;
+        base.AddForce(direction, upwardForce);
+    }
 
-    public bool CanDash { get => canDodge; set => canDodge = value; }
-    public bool IsDashing { get => isDodging; set => isDodging = value; }
-    public Vector3 Direction { get => direction; set => direction = value; }
-    public Rigidbody Rb { get => rb; set => rb = value; }
+}
 
     //private void Start() {
     //    Rb = GetComponent<Rigidbody>();
@@ -43,4 +41,4 @@ public class DodgeComponent : TimerComponent {
     //    canDodge = true;
     //    AbilityUsed = false;
     //}
-}
+

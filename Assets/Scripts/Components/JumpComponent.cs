@@ -14,6 +14,7 @@ public class JumpComponent : AddForceComponent {
 
     private void Start() {
         base.Start();
+        agent = GetComponent<NavMeshAgent>();
     }
 
     public override void AddForce(Vector3 direction, float upwardForce) {

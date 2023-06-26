@@ -17,6 +17,7 @@ public class EnemyStateMachine : MonoBehaviour {
     [SerializeField] private NavMeshAgent navAgent;
     [SerializeField] private Player player;
     [SerializeField] private EnemyClass enemy;
+    [SerializeField] private Rigidbody rb;
 
     [SerializeField] private EnemyState currentState;
     [SerializeField] private EnemyState patrolState;
@@ -25,6 +26,7 @@ public class EnemyStateMachine : MonoBehaviour {
     public EnemyState CurrentState { get => currentState; set => currentState = value; }
     public EnemyState PatrolState { get => patrolState; set => patrolState = value; }
     public EnemyState ChaseState { get => chaseState; set => chaseState = value; }
+    public Rigidbody Rb { get => rb; set => rb = value; }
 
     public EnemyStateMachine(EnemyClass enemy, NavMeshAgent agent, Player player) {
         this.enemy = enemy;
@@ -38,6 +40,7 @@ public class EnemyStateMachine : MonoBehaviour {
         ChaseState = new ChaseState(enemy, navAgent, this.player);
 
         currentState = patrolState;
+        rb = GetComponent<Rigidbody>();
     }
 
     public void Update() {

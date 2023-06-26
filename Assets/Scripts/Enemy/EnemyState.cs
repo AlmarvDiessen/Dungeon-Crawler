@@ -11,6 +11,12 @@ namespace Assets.Scripts.Enemy {
         public Player player;
         public NavMeshAgent agent;
 
+
+        private bool attacked;
+        private bool walking;
+        public bool Attacked { get => attacked; set => attacked = value; }
+        public bool Walking { get => walking; set => walking = value; }
+
         public EnemyState(EnemyClass pEnemy, NavMeshAgent pAgent, Player pPlayer) {
             enemy = pEnemy;
             agent = pAgent;
@@ -18,6 +24,17 @@ namespace Assets.Scripts.Enemy {
         }
         public virtual void Update() {
 
+        }
+
+        public bool checkMovement() {
+            if (agent.velocity.magnitude >= 0) {
+                walking = true;
+                return walking;
+            }
+            else {
+                walking = false;
+                return walking;
+            }
         }
 
         public virtual void EnterState() {
@@ -43,6 +60,8 @@ public class PatrolState : EnemyState {
     }
 
     public override void Update() {
+        base.Update();
+
         if (agent.remainingDistance < 1f) {
             if (enemy.StateMachine.CurrentState != enemy.StateMachine.ChaseState)
                 SetNewDestination();
@@ -67,6 +86,8 @@ public class PatrolState : EnemyState {
 
 public class ChaseState : EnemyState {
     // private GameObject playerPos;
+
+
     public ChaseState(EnemyClass pEnemy, NavMeshAgent pAgent, Player pPlayer) : base(pEnemy, pAgent, pPlayer) {
 
 
@@ -79,6 +100,8 @@ public class ChaseState : EnemyState {
     }
 
     public override void Update() {
+        base.Update();
+
         ChasePlayer(player.transform);
         //addforcecomp.Addforce gebruiken
         foreach (AddForceComponent force in enemy.AddForceComponents) {
@@ -88,7 +111,7 @@ public class ChaseState : EnemyState {
                 force.AddForce(enemy.transform.forward, 0);
 
 
-            if(force.GetType() == typeof(JumpComponent)) {
+            if (force.GetType() == typeof(JumpComponent)) {
                 force.AddForce(enemy.transform.forward, force.ForceUpPower);
             }
 
@@ -107,6 +130,12 @@ public class ChaseState : EnemyState {
         if (/*playerPosistion == null && */distance >= enemy.DetectRange)
             enemy.StateMachine.ChangeState(enemy.StateMachine.PatrolState);
 
+        if (distance <= 5f) {
+            Attacked = true;
+        }
+        else {
+            Attacked = false;
+        }
     }
 }
 

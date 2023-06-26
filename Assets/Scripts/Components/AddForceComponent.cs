@@ -21,7 +21,7 @@ public class AddForceComponent : TimerComponent {
 
     public void Start() {
         Rb = GetComponent<Rigidbody>();
-        timer = new TimerComponent();
+        timer = GetComponent<TimerComponent>();
     }
 
     public virtual void AddForce(Vector3 direction, float upwardForce) {
@@ -37,7 +37,7 @@ public class AddForceComponent : TimerComponent {
     protected override void OnAbilityReset() {
         AbilityTimer = cooldown;
         canUse = true;
-        IsUsing = false;
+        IsUsing = false;//
         AbilityUsed = false;
     }
 }
