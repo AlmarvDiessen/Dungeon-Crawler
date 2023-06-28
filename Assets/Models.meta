@@ -1,0 +1,12 @@
+fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Scripts/Components.meta
+guid: da6a4286d06ce2d459121b8f76cadec6
+========
+guid: 5a48cf15cc08231489fe63562f6f1637
+>>>>>>>> feature/pickup_Key:Assets/Models.meta
+folderAsset: yes
+DefaultImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
