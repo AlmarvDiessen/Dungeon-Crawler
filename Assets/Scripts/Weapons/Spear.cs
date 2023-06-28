@@ -5,19 +5,15 @@ using UnityEngine;
 public class Spear : Weapon
 {
 
-    //damage
-    //range
-
-    //reference naar givedamage 
-    // Start is called before the first frame update
-    void Start()
-    {
-        //givedamage.setdamage(damage)
+    private void Start() {
+        base.Start();
+        DamageValue = 5;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    private void Update() {
+        Attack();
+    }
+
+    public override void Attack() {
     }
 }

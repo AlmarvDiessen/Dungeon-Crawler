@@ -14,8 +14,8 @@ public class JumpDashingEnemy : EnemyClass
         jumpComponent = gameObject.GetComponent<JumpComponent>();
         dashComponent = gameObject.GetComponent<DashComponent>();
         navMeshAgent = gameObject.GetComponent<NavMeshAgent>();
-        StateMachine.OnChaseUpdate += dashComponent.Dash;
-        StateMachine.OnChaseUpdate += jumpComponent.Jump;
+        //StateMachine.OnChaseUpdate += dashComponent.Dash;
+        //StateMachine.OnChaseUpdate += jumpComponent.Jump;
         //subscribe
         //Unsubscribe        StateMachine.OnChaseUpdate -= jumpComponent.Jump;
     }

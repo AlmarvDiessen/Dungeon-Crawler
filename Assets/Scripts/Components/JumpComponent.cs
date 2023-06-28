@@ -4,35 +4,24 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class JumpComponent : TimerComponent {
+public class JumpComponent : AddForceComponent {
 
-    [SerializeField] private bool canJump = true;
     [SerializeField] private bool isJumping = false;
-    [SerializeField] private float jumpPower;
-    [SerializeField] private float cooldown;
-
-    private Rigidbody rb;
+    [SerializeField] private GameObject ground = null;
     private NavMeshAgent agent;
-    [SerializeField]private GameObject ground = null;
-    public bool CanJump { get => canJump; set => canJump = value; }
+
     public GameObject Ground { get => ground; set => ground = value; }
 
     private void Start() {
-        rb = GetComponent<Rigidbody>();
+        base.Start();
         agent = GetComponent<NavMeshAgent>();
     }
 
-    public void Jump() {
-        if (ground != null && CanJump && AbilityUsed == false) {
-            TurnAgentOff();
-            CanJump = false;
-            AbilityUsed = true;
-            Vector3 jumpDirection = transform.forward * 0 + transform.up * jumpPower;
-            rb.AddForce(jumpDirection, ForceMode.Impulse);
-            Debug.Log("jumped");
-        }
+    public override void AddForce(Vector3 direction, float upwardForce) {
+        base.AddForce(direction, upwardForce, agent);
+        //TurnAgentOff();
 
-        if (ground == null) {
+        if (Ground == null) {
             isJumping = true;
         }
         else {
@@ -40,11 +29,23 @@ public class JumpComponent : TimerComponent {
         }
     }
 
-    protected override void OnAbilityReset() {
-        AbilityTimer = cooldown;
-        canJump = true;
-        AbilityUsed = false;
-    }
+    //public void Jump() {
+    //    if (ground != null && CanJump && AbilityUsed == false) {
+    //        TurnAgentOff();
+    //        CanJump = false;
+    //        AbilityUsed = true;
+    //        Vector3 jumpDirection = transform.forward * 0 + transform.up * jumpPower;
+    //        rb.AddForce(jumpDirection, ForceMode.Impulse);
+    //        Debug.Log("jumped");
+    //    }
+
+    //    if (ground == null) {
+    //        isJumping = true;
+    //    }
+    //    else {
+    //        isJumping = false;
+    //    }
+    //}
 
     private void OnCollisionEnter(Collision collision) {
         GameObject currentGround = Ground;
@@ -54,11 +55,13 @@ public class JumpComponent : TimerComponent {
     }
 
     private void TurnAgentOff() {
+        Debug.Log("Off");
         agent.updatePosition = false;
         agent.updateRotation = false;
         agent.isStopped = true;
     }
     private void TurnAgentOn() {
+        Debug.Log("ON");
         agent.updatePosition = true;
         agent.updateRotation = true;
         agent.isStopped = false;
@@ -76,7 +79,6 @@ public class JumpComponent : TimerComponent {
             }
         }
     }
-
     private void OnCollisionExit(Collision collision) {
         if (Ground == collision.gameObject) Ground = null;
     }

@@ -6,7 +6,10 @@ public class RotateObjectComponent : MonoBehaviour
 {
     [SerializeField] float rotateSpeed;
 
+
     public float RotateSpeed { get => rotateSpeed; set => rotateSpeed = value; }
+
+
 
     void Update()
     {

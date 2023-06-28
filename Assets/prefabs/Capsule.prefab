@@ -135,7 +135,6 @@ GameObject:
   - component: {fileID: 5736343259152214400}
   - component: {fileID: 5788174084222367070}
   - component: {fileID: 7954633583478066956}
-  - component: {fileID: 7954633583478066945}
   - component: {fileID: 5788174084372920332}
   - component: {fileID: 5788174084372920326}
   m_Layer: 0
@@ -326,6 +325,7 @@ MonoBehaviour:
   data: {fileID: 0}
   health: {fileID: 7954633583478066956}
   EntityName: Player
+  dropItem: {fileID: 0}
   dash: {fileID: 0}
   playerMovement: {fileID: 0}
   playerHealth: 0
@@ -341,11 +341,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5abd8c766df2194aa520ac7d6489b4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canDash: 1
-  isDashing: 0
-  dashPower: 0
-  dashTimer: 8
+  abilityTimer: 1
+  abilityUsed: 0
   rb: {fileID: 0}
+  timer: {fileID: 0}
+  canUse: 1
+  isUsing: 0
+  forcePower: 0
+  forceUpPower: 0
+  cooldown: 0
 --- !u!114 &7954633583478066956
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -359,23 +363,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthValue: 10
---- !u!114 &7954633583478066945
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7954633582406027048}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e5abd8c766df2194aa520ac7d6489b4c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  canDash: 1
-  isDashing: 0
-  dashPower: 25
-  dashTimer: 3
-  rb: {fileID: 0}
 --- !u!114 &5788174084372920332
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -404,6 +391,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5bd3510c2233efe4689e9de5c3ab3d31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  item: {fileID: 0}
 --- !u!1 &7954633582530166126
 GameObject:
   m_ObjectHideFlags: 0
@@ -420,7 +408,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &7954633582530166121
 Transform:
   m_ObjectHideFlags: 0
@@ -486,8 +474,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0.00012207031}
-  m_SizeDelta: {x: 0, y: -868.22833}
+  m_AnchoredPosition: {x: 0, y: 7414.1323}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.4999999, y: 0.9999999}
 --- !u!114 &7954633582807362537
 MonoBehaviour:

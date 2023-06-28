@@ -19,7 +19,7 @@ namespace Assets.Scripts {
             dash = GetComponent<DashComponent>();
         }
         public void Movement() {
-            if (!dash.IsDashing) {
+            if (!dash.IsUsing) {
                 PlayerMovementInput = new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical"));
 
                 Vector3 movement = transform.TransformDirection(PlayerMovementInput) * speed;
