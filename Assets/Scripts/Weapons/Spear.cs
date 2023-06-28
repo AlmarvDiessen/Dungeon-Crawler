@@ -4,20 +4,29 @@ using UnityEngine;
 
 public class Spear : Weapon
 {
-
     //damage
     //range
 
     //reference naar givedamage 
-    // Start is called before the first frame update
-    void Start()
+
+    //void Start()
+    //{
+    //    //givedamage.setdamage(damage)
+    //}
+
+    private void Update()
     {
-        //givedamage.setdamage(damage)
+        Attack();
     }
 
-    // Update is called once per frame
-    void Update()
+    public override void Attack()
     {
-        
+        //if (Input.GetMouseButtonDown(0))
+        //{
+        //    Debug.Log("Playing Spear Anim");
+        //    Animator.SetBool("SpearStab", true);
+        //    Animator.SetBool("SwordSwing", false);
+        //}
+        //Animator.SetBool("SwordSwing", false);
     }
 }

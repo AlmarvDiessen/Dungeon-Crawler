@@ -9,7 +9,9 @@ public class Player : Entity {
     [SerializeField] private AddForceComponent dash;
     [SerializeField] private BetterMovement playerMovement;
     [SerializeField] private int playerHealth;
+
     private void Awake() {
+        base.Awake();
         playerHealth = 20;
     }
 
