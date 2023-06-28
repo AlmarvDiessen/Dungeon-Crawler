@@ -18,8 +18,8 @@ public class JumpComponent : AddForceComponent {
     }
 
     public override void AddForce(Vector3 direction, float upwardForce) {
-        TurnAgentOff();
-        base.AddForce(direction, upwardForce);
+        base.AddForce(direction, upwardForce, agent);
+        //TurnAgentOff();
 
         if (Ground == null) {
             isJumping = true;
@@ -55,11 +55,13 @@ public class JumpComponent : AddForceComponent {
     }
 
     private void TurnAgentOff() {
+        Debug.Log("Off");
         agent.updatePosition = false;
         agent.updateRotation = false;
         agent.isStopped = true;
     }
     private void TurnAgentOn() {
+        Debug.Log("ON");
         agent.updatePosition = true;
         agent.updateRotation = true;
         agent.isStopped = false;

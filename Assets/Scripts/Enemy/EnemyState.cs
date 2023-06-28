@@ -14,7 +14,7 @@ namespace Assets.Scripts.Enemy {
 
         private bool attacked;
         private bool walking;
-        public bool Attacked { get => attacked; set => attacked = value; }
+        public bool inAttackRange { get => attacked; set => attacked = value; }
         public bool Walking { get => walking; set => walking = value; }
 
         public EnemyState(EnemyClass pEnemy, NavMeshAgent pAgent, Player pPlayer) {
@@ -106,15 +106,10 @@ public class ChaseState : EnemyState {
         //addforcecomp.Addforce gebruiken
         foreach (AddForceComponent force in enemy.AddForceComponents) {
 
-
-            if (force.GetType() != typeof(JumpComponent))
-                force.AddForce(enemy.transform.forward, 0);
-
-
             if (force.GetType() == typeof(JumpComponent)) {
                 force.AddForce(enemy.transform.forward, force.ForceUpPower);
             }
-
+            force.AddForce(enemy.transform.forward, 0);
         }
     }
 
@@ -131,11 +126,13 @@ public class ChaseState : EnemyState {
             enemy.StateMachine.ChangeState(enemy.StateMachine.PatrolState);
 
         if (distance <= 5f) {
-            Attacked = true;
+            inAttackRange = true;
         }
         else {
-            Attacked = false;
+            inAttackRange = false;
         }
+
+
     }
 }
 
