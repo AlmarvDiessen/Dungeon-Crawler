@@ -21,6 +21,7 @@ public class AnimatonController : MonoBehaviour {
     private static readonly int doubleAttack = Animator.StringToHash("DoubleClawsAttack");
     private static readonly int getHit = Animator.StringToHash("GetHitFront");
     private static readonly int death = Animator.StringToHash("Death");
+    private static readonly int jumpAttack = Animator.StringToHash("JumpDoubleClawsAttack");
 
 
     private void Start() {
@@ -37,13 +38,17 @@ public class AnimatonController : MonoBehaviour {
 
     private int GetState() {
         if (Time.time < lockAnimation) return currentState;
+        Vector3 currentVelocity = esm.Rb.velocity;
 
+        if (currentVelocity.magnitude > 4) {
+            return LockState(jumpAttack, attackAnimationTime - 0.25f);
+        }
 
-
-        //if (esm.CurrentState.Attacked) return esm.CurrentState.Attacked ? (currentState == rightAttack ? leftAttack : rightAttack) : currentState;
-        if (esm.CurrentState.Attacked) {
+        if (esm.CurrentState.inAttackRange) {
             int currentAttack = attackingRight ? rightAttack : leftAttack;
-            attackingRight = !attackingRight; // Toggle the attack direction for the next invocation
+            attackingRight = !attackingRight;
+            // Toggle the attack direction for the next invocation
+            //if (esm.CurrentState.Attacked) return esm.CurrentState.Attacked ? (currentState == rightAttack ? leftAttack : rightAttack) : currentState;
 
             return LockState(currentAttack, attackAnimationTime);
         }

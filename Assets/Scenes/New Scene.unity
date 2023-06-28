@@ -123,6 +123,18 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 23800000, guid: da2bd1163c529be4bbcecb0a42bb64f2, type: 2}
+--- !u!114 &73854181 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2003315405886539471, guid: 7bec02afca7be6a488981506b280d66f,
+    type: 3}
+  m_PrefabInstance: {fileID: 2003315405534805439}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad205989bc691fc49a87d97220ca1412, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &130032158
 GameObject:
   m_ObjectHideFlags: 0
@@ -1089,6 +1101,25 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 720100848}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &727548155 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1314480791672395859, guid: 80e078c4fb861d642aff48b5b022083b,
+    type: 3}
+  m_PrefabInstance: {fileID: 7795816522581626358}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &727548158
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 727548155}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d71b7e7fa69b5fb40a69e370321e95a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  esm: {fileID: 1661285637}
 --- !u!1 &728530127
 GameObject:
   m_ObjectHideFlags: 0
@@ -1168,6 +1199,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotateSpeed: 100
+--- !u!1 &734566013 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8302326932647945340, guid: 7bec02afca7be6a488981506b280d66f,
+    type: 3}
+  m_PrefabInstance: {fileID: 2003315405534805439}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &734566016
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 734566013}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d71b7e7fa69b5fb40a69e370321e95a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  esm: {fileID: 73854181}
 --- !u!1 &754243074
 GameObject:
   m_ObjectHideFlags: 0
@@ -2870,6 +2920,30 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1661285634 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1934311424854485173, guid: 80e078c4fb861d642aff48b5b022083b,
+    type: 3}
+  m_PrefabInstance: {fileID: 7795816522581626358}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 834fe2841f58ea94c89c701bf4957159, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1661285637 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7148376014155039946, guid: 80e078c4fb861d642aff48b5b022083b,
+    type: 3}
+  m_PrefabInstance: {fileID: 7795816522581626358}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad205989bc691fc49a87d97220ca1412, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1673420778
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4700,6 +4774,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2003315405886539470, guid: 7bec02afca7be6a488981506b280d66f,
+        type: 3}
+      propertyPath: forceUpPower
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 2003315405886539471, guid: 7bec02afca7be6a488981506b280d66f,
         type: 3}
       propertyPath: player
@@ -4709,6 +4788,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: JumpingEnemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003315405886539474, guid: 7bec02afca7be6a488981506b280d66f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7bec02afca7be6a488981506b280d66f, type: 3}
@@ -4784,6 +4868,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: DodgingEnemy
       objectReference: {fileID: 0}
+    - target: {fileID: 2337705492902734895, guid: 8b8b5abb75fb63443a419cc7a81b138d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8b8b5abb75fb63443a419cc7a81b138d, type: 3}
 --- !u!114 &2449708419487102333 stripped
@@ -4810,17 +4899,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: JumpDashingEnemy
       objectReference: {fileID: 0}
+    - target: {fileID: 7749874034965704620, guid: 703a1c86b8073c54f82daf5152952dc8,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7749874034965704624, guid: 703a1c86b8073c54f82daf5152952dc8,
         type: 3}
       propertyPath: forceUpPower
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7749874034965704625, guid: 703a1c86b8073c54f82daf5152952dc8,
-        type: 3}
-      propertyPath: player
-      value: 
-      objectReference: {fileID: 2449708419487102333}
-    - target: {fileID: 7749874034965704630, guid: 703a1c86b8073c54f82daf5152952dc8,
         type: 3}
       propertyPath: player
       value: 
@@ -4883,7 +4972,7 @@ PrefabInstance:
     - target: {fileID: 7749874034965704635, guid: 703a1c86b8073c54f82daf5152952dc8,
         type: 3}
       propertyPath: forcePower
-      value: 5
+      value: 11
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 703a1c86b8073c54f82daf5152952dc8, type: 3}
@@ -4894,6 +4983,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 774428537306952539, guid: 80e078c4fb861d642aff48b5b022083b,
+        type: 3}
+      propertyPath: timer
+      value: 
+      objectReference: {fileID: 1661285634}
+    - target: {fileID: 1934311424854485173, guid: 80e078c4fb861d642aff48b5b022083b,
+        type: 3}
+      propertyPath: cooldown
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 7148376014155039946, guid: 80e078c4fb861d642aff48b5b022083b,
         type: 3}
       propertyPath: player
@@ -4958,6 +5057,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: DashingEnemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 8738880330783849934, guid: 80e078c4fb861d642aff48b5b022083b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 80e078c4fb861d642aff48b5b022083b, type: 3}
@@ -5036,7 +5140,7 @@ PrefabInstance:
     - target: {fileID: 7954633582807362542, guid: 55bde6a359fcc404d8c0a80f8626fb55,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.000091552734
+      value: -0.00012207031
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 55bde6a359fcc404d8c0a80f8626fb55, type: 3}
