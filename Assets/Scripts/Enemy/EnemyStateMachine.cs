@@ -11,12 +11,13 @@ public class EnemyStateMachine : MonoBehaviour {
 
     //public List<EnemyState> allStates = new List<EnemyState>();
 
-    public event Action OnChaseUpdate = delegate { };
+    public event Action<Vector3> OnChaseUpdate = delegate { };
     //public event Action OnChaseExit = delegate { };
 
     [SerializeField] private NavMeshAgent navAgent;
     [SerializeField] private Player player;
     [SerializeField] private EnemyClass enemy;
+    [SerializeField] private Rigidbody rb;
 
     [SerializeField] private EnemyState currentState;
     [SerializeField] private EnemyState patrolState;
@@ -25,6 +26,7 @@ public class EnemyStateMachine : MonoBehaviour {
     public EnemyState CurrentState { get => currentState; set => currentState = value; }
     public EnemyState PatrolState { get => patrolState; set => patrolState = value; }
     public EnemyState ChaseState { get => chaseState; set => chaseState = value; }
+    public Rigidbody Rb { get => rb; set => rb = value; }
 
     public EnemyStateMachine(EnemyClass enemy, NavMeshAgent agent, Player player) {
         this.enemy = enemy;
@@ -38,6 +40,7 @@ public class EnemyStateMachine : MonoBehaviour {
         ChaseState = new ChaseState(enemy, navAgent, this.player);
 
         currentState = patrolState;
+        rb = GetComponent<Rigidbody>();
     }
 
     public void Update() {
@@ -45,7 +48,7 @@ public class EnemyStateMachine : MonoBehaviour {
         CurrentState.Update();
 
         if (currentState == chaseState) {
-            OnChaseUpdate();
+            //OnChaseUpdate();
         }
         //if(currentState == patrolState) {
         //    OnChaseExit();
@@ -59,7 +62,7 @@ public class EnemyStateMachine : MonoBehaviour {
     }
 
     public void OnChaseActive() {
-        OnChaseUpdate();
+        OnChaseUpdate(Vector3.zero);
 
     }
 

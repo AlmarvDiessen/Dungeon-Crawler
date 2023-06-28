@@ -4700,51 +4700,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2003315405886539466, guid: 7bec02afca7be6a488981506b280d66f,
-        type: 3}
-      propertyPath: m_Drag
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2003315405886539466, guid: 7bec02afca7be6a488981506b280d66f,
-        type: 3}
-      propertyPath: m_Constraints
-      value: 112
-      objectReference: {fileID: 0}
-    - target: {fileID: 2003315405886539466, guid: 7bec02afca7be6a488981506b280d66f,
-        type: 3}
-      propertyPath: m_CollisionDetection
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2003315405886539467, guid: 7bec02afca7be6a488981506b280d66f,
-        type: 3}
-      propertyPath: m_Size.y
-      value: 2.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2003315405886539467, guid: 7bec02afca7be6a488981506b280d66f,
-        type: 3}
-      propertyPath: m_Center.y
-      value: 0.44131088
-      objectReference: {fileID: 0}
-    - target: {fileID: 2003315405886539467, guid: 7bec02afca7be6a488981506b280d66f,
-        type: 3}
-      propertyPath: m_IsTrigger
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2003315405886539470, guid: 7bec02afca7be6a488981506b280d66f,
-        type: 3}
-      propertyPath: cooldown
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2003315405886539470, guid: 7bec02afca7be6a488981506b280d66f,
-        type: 3}
-      propertyPath: jumpPower
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2003315405886539470, guid: 7bec02afca7be6a488981506b280d66f,
-        type: 3}
-      propertyPath: abilityTimer
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2003315405886539471, guid: 7bec02afca7be6a488981506b280d66f,
         type: 3}
       propertyPath: player
@@ -4754,11 +4709,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: JumpingEnemy
-      objectReference: {fileID: 0}
-    - target: {fileID: 2003315405886539474, guid: 7bec02afca7be6a488981506b280d66f,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7bec02afca7be6a488981506b280d66f, type: 3}
@@ -4824,36 +4774,15 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2337705492902734888, guid: 8b8b5abb75fb63443a419cc7a81b138d,
-        type: 3}
-      propertyPath: m_Drag
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2337705492902734892, guid: 8b8b5abb75fb63443a419cc7a81b138d,
         type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 2449708419487102333}
-    - target: {fileID: 2337705492902734893, guid: 8b8b5abb75fb63443a419cc7a81b138d,
-        type: 3}
-      propertyPath: key
-      value: 
-      objectReference: {fileID: 170560, guid: cc5de5e674870ca479a40105f80555ad, type: 3}
-    - target: {fileID: 2337705492902734893, guid: 8b8b5abb75fb63443a419cc7a81b138d,
-        type: 3}
-      propertyPath: dropItem
-      value: 
-      objectReference: {fileID: 4851089125147154953, guid: 7489cfe1d61ea414b9beb874f41c71f0,
-        type: 3}
     - target: {fileID: 2337705492902734895, guid: 8b8b5abb75fb63443a419cc7a81b138d,
         type: 3}
       propertyPath: m_Name
       value: DodgingEnemy
-      objectReference: {fileID: 0}
-    - target: {fileID: 2337705492902734895, guid: 8b8b5abb75fb63443a419cc7a81b138d,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8b8b5abb75fb63443a419cc7a81b138d, type: 3}
@@ -4881,10 +4810,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: JumpDashingEnemy
       objectReference: {fileID: 0}
-    - target: {fileID: 7749874034965704620, guid: 703a1c86b8073c54f82daf5152952dc8,
+    - target: {fileID: 7749874034965704624, guid: 703a1c86b8073c54f82daf5152952dc8,
         type: 3}
-      propertyPath: m_IsActive
-      value: 0
+      propertyPath: forceUpPower
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7749874034965704625, guid: 703a1c86b8073c54f82daf5152952dc8,
         type: 3}
@@ -4951,6 +4880,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7749874034965704635, guid: 703a1c86b8073c54f82daf5152952dc8,
+        type: 3}
+      propertyPath: forcePower
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 703a1c86b8073c54f82daf5152952dc8, type: 3}
 --- !u!1001 &7795816522581626358
@@ -4960,21 +4894,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 774428537306952539, guid: 80e078c4fb861d642aff48b5b022083b,
-        type: 3}
-      propertyPath: cooldown
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 774428537306952539, guid: 80e078c4fb861d642aff48b5b022083b,
-        type: 3}
-      propertyPath: dashPower
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7025179582091433946, guid: 80e078c4fb861d642aff48b5b022083b,
-        type: 3}
-      propertyPath: m_Drag
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7148376014155039946, guid: 80e078c4fb861d642aff48b5b022083b,
         type: 3}
       propertyPath: player
@@ -5039,11 +4958,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: DashingEnemy
-      objectReference: {fileID: 0}
-    - target: {fileID: 8738880330783849934, guid: 80e078c4fb861d642aff48b5b022083b,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 80e078c4fb861d642aff48b5b022083b, type: 3}
@@ -5114,11 +5028,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Capsule
       objectReference: {fileID: 0}
-    - target: {fileID: 7954633582530166126, guid: 55bde6a359fcc404d8c0a80f8626fb55,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7954633582807362542, guid: 55bde6a359fcc404d8c0a80f8626fb55,
         type: 3}
       propertyPath: m_SizeDelta.y
@@ -5127,7 +5036,7 @@ PrefabInstance:
     - target: {fileID: 7954633582807362542, guid: 55bde6a359fcc404d8c0a80f8626fb55,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -0.000091552734
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 55bde6a359fcc404d8c0a80f8626fb55, type: 3}

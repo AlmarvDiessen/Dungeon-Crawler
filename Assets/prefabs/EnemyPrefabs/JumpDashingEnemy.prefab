@@ -24,7 +24,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7749874034965704634
 Transform:
   m_ObjectHideFlags: 0
@@ -107,9 +107,13 @@ MonoBehaviour:
   data: {fileID: 11400000, guid: 072432e8e9e608f4c9e17e5ba0c735de, type: 2}
   health: {fileID: 0}
   EntityName: JumpDasher
+  dropItem: {fileID: 0}
   giveDamage: {fileID: 0}
   navAgent: {fileID: 7749874034965704631}
   player: {fileID: 0}
+  addForceComponents:
+  - {fileID: 7749874034965704624}
+  - {fileID: 7749874034965704635}
   detectRange: 0
   damage: 0
   wanderDistance: 0
@@ -128,6 +132,7 @@ MonoBehaviour:
   navAgent: {fileID: 7749874034965704631}
   player: {fileID: 0}
   enemy: {fileID: 7749874034965704630}
+  rb: {fileID: 0}
 --- !u!114 &7749874034965704624
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -142,10 +147,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   abilityTimer: 1
   abilityUsed: 0
-  canJump: 1
-  isJumping: 0
-  jumpPower: 5
+  rb: {fileID: 0}
+  timer: {fileID: 0}
+  canUse: 1
+  isUsing: 0
+  forcePower: 0
+  forceUpPower: 0
   cooldown: 5
+  isJumping: 0
   ground: {fileID: 0}
 --- !u!114 &7749874034965704635
 MonoBehaviour:
@@ -161,11 +170,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   abilityTimer: 1
   abilityUsed: 0
-  canDash: 1
-  isDashing: 0
-  dashPower: 10
-  cooldown: 5
   rb: {fileID: 0}
+  timer: {fileID: 0}
+  canUse: 1
+  isUsing: 0
+  forcePower: 0
+  forceUpPower: 0
+  cooldown: 5
 --- !u!114 &7749874034965704626
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -193,6 +204,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: {fileID: 0}
+  entity: {fileID: 0}
 --- !u!1001 &4113662127736352930
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class Player : Entity {
 
-    [SerializeField] private DashComponent dash;
+    [SerializeField] private AddForceComponent dash;
     [SerializeField] private BetterMovement playerMovement;
     [SerializeField] private int playerHealth;
 
@@ -30,8 +30,8 @@ public class Player : Entity {
         PlayerDash();
     }
     public void PlayerDash() {
-        if(Input.GetKeyDown(KeyCode.LeftShift)&& dash.CanDash) {
-           dash.Dash();
+        if(Input.GetKeyDown(KeyCode.LeftShift)&& dash.CanUse) {
+            dash.AddForce(transform.forward, 0f);
         }
     }
 

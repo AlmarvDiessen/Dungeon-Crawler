@@ -13,7 +13,7 @@ public class JumpingEnemy : EnemyClass {
         base.Start();
         jumpComponent = gameObject.GetComponent<JumpComponent>();
         navMeshAgent = gameObject.GetComponent<NavMeshAgent>();
-        StateMachine.OnChaseUpdate += jumpComponent.Jump;
+        //StateMachine.OnChaseUpdate += jumpComponent.Jump;
 
         //subscribe
         //Unsubscribe        StateMachine.OnChaseUpdate -= jumpComponent.Jump;
