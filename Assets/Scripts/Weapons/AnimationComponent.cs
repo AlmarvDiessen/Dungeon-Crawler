@@ -13,7 +13,7 @@ public class AnimationComponent : MonoBehaviour {
     [SerializeField] private AnimationClip clip;
 
     private float lockAnimation;
-    private float attackAnimationTime = 0.27f;
+    private float attackAnimationTime = 0.5f;
 
     private int attack;
     private int currentState;
@@ -28,7 +28,7 @@ public class AnimationComponent : MonoBehaviour {
         var state = GetState();
 
         if (state == currentState) return;
-        animator.CrossFade(state, 0.3f, 0);
+        animator.CrossFade(state, 0, 0);
         currentState = state;
     }
 

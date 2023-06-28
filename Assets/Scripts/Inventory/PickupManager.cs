@@ -66,6 +66,7 @@ public class PickupManager : MonoBehaviour {
     /// <param name="other"></param>
     private void OnTriggerExit(Collider other) {
         var interactable = other.GetComponent<IInteractable>();
+        ItemController = other.GetComponent<ItemController>();
         if (itemsInRange.Contains(interactable)) {
             itemsInRange.Remove(interactable);
         }

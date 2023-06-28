@@ -63,7 +63,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2111e70f4b7f7242adc74b1b72d78a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 0}
+  clip: {fileID: 7400000, guid: 8acbf9676d473d54f8b98b119892fab6, type: 2}
   damageValue: 0
 --- !u!114 &6434927143056756687
 MonoBehaviour:

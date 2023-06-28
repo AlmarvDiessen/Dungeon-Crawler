@@ -23,7 +23,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2003315405886539465
 Transform:
   m_ObjectHideFlags: 0
@@ -129,13 +129,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   abilityTimer: 0
   abilityUsed: 0
-  rb: {fileID: 2003315405886539466}
-  timer: {fileID: 0}
   canUse: 1
+  cooldown: 5
+  rb: {fileID: 2003315405886539466}
+  timer: {fileID: 2003315405886539472}
   isUsing: 0
   forcePower: 0
-  forceUpPower: 0
-  cooldown: 5
+  forceUpPower: 5
+  direction: {x: 0, y: 0, z: 0}
   isJumping: 0
   ground: {fileID: 0}
 --- !u!114 &2003315405886539471
@@ -168,6 +169,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   abilityTimer: 8
   abilityUsed: 0
+  canUse: 1
+  cooldown: 5
 --- !u!114 &2003315405886539473
 MonoBehaviour:
   m_ObjectHideFlags: 0
