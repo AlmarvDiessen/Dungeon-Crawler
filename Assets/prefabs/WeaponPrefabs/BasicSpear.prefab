@@ -10,10 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 6434927143056756684}
   - component: {fileID: 6434927143056756686}
-  - component: {fileID: 2021780262}
   - component: {fileID: 2021780267}
   - component: {fileID: 6434927143056756687}
   - component: {fileID: 7853221394607762006}
+  - component: {fileID: -5674718598465445524}
   m_Layer: 0
   m_Name: BasicSpear
   m_TagString: Untagged
@@ -51,19 +51,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.23107877, y: 1.8482347, z: 0.16216706}
   m_Center: {x: -0.0010416771, y: 0.4, z: 0.00000009313228}
---- !u!135 &2021780262
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6434927143056756680}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 2.5
-  m_Center: {x: 0, y: 0.5, z: 0}
 --- !u!114 &2021780267
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -76,8 +63,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2111e70f4b7f7242adc74b1b72d78a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animationClip: {fileID: 7400000, guid: 8acbf9676d473d54f8b98b119892fab6, type: 2}
-  parent: {fileID: 0}
+  clip: {fileID: 0}
+  damageValue: 0
 --- !u!114 &6434927143056756687
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -106,6 +93,19 @@ MonoBehaviour:
   bounceUp: 0.01
   bounceSpeed: 0.5
   loop: 0
+--- !u!114 &-5674718598465445524
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6434927143056756680}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ed7ea224f49dd246b334c370c5ecc7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageValue: 0
 --- !u!1 &6434927144555134704
 GameObject:
   m_ObjectHideFlags: 0

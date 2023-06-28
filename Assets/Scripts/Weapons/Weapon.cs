@@ -7,9 +7,10 @@ using static UnityEngine.UIElements.UxmlAttributeDescription;
 
 public class Weapon : MonoBehaviour, IEquippable
 {
-    [SerializeField] AnimationClip animationClip;
-    public AnimationClip AnimationClip { get => animationClip; set => animationClip = value; }
-    [SerializeField] GameObject parent;
+    [SerializeField] private AnimationClip clip;
+    [SerializeField] private int damageValue;
+    public AnimationClip Clip { get => clip; set => clip = value; }
+    public int DamageValue { get => damageValue; set => damageValue = value; }
 
     // add weapon stats
     public void Start()

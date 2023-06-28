@@ -9,7 +9,7 @@ public class DodgeComponent : AddForceComponent {
     }
 
     public override void AddForce(Vector3 direction, float upwardForce) {
-        direction = Random.insideUnitCircle * ForcePower;
+        Direction = Random.insideUnitCircle * ForcePower;
         upwardForce = 0;
         base.AddForce(direction, upwardForce);
     }

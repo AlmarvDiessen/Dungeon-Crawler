@@ -124,7 +124,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5774092430408779382}
-  - component: {fileID: 1908233049}
   - component: {fileID: 1908233050}
   m_Layer: 6
   m_Name: Hando
@@ -149,21 +148,6 @@ Transform:
   m_Father: {fileID: 7932671595788309531}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 85, z: 25}
---- !u!111 &1908233049
-Animation:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5774092430408779383}
-  m_Enabled: 0
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 0
-  m_AnimatePhysics: 0
-  m_CullingType: 0
 --- !u!95 &1908233050
 Animator:
   serializedVersion: 4
@@ -458,6 +442,7 @@ GameObject:
   - component: {fileID: 7932671595788309529}
   - component: {fileID: 7932671595788309534}
   - component: {fileID: 7932671595788309533}
+  - component: {fileID: 3545847783530628053}
   - component: {fileID: 7932671595788309538}
   - component: {fileID: 7932671595788309539}
   - component: {fileID: 5758307448914328255}
@@ -603,6 +588,19 @@ MonoBehaviour:
   rb: {fileID: 0}
   dash: {fileID: 0}
   PlayerMovementInput: {x: 0, y: 0, z: 0}
+--- !u!114 &3545847783530628053
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7932671595788309527}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5bd3510c2233efe4689e9de5c3ab3d31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: {fileID: 0}
 --- !u!114 &7932671595788309538
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -671,13 +669,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   abilityTimer: 1
   abilityUsed: 0
+  canUse: 1
+  cooldown: 0
   rb: {fileID: 0}
   timer: {fileID: 0}
-  canUse: 1
   isUsing: 0
   forcePower: 0
   forceUpPower: 0
-  cooldown: 0
 --- !u!114 &5774092432010527401
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -694,6 +692,7 @@ MonoBehaviour:
   equipped: {fileID: 0}
   hand: {fileID: 5774092430408779382}
   animationComp: {fileID: 1686592895}
+  giveDamage: {fileID: 0}
   weaponsOnGround: []
 --- !u!114 &1686592895
 MonoBehaviour:
@@ -707,7 +706,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c98a41f03e9b984bb9c45041fed7b08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animation: {fileID: 0}
+  animator: {fileID: 1908233050}
   clip: {fileID: 0}
 --- !u!1 &7932671595923863760
 GameObject:
@@ -744,7 +743,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.000061035156, y: 0.00024414062}
+  m_AnchoredPosition: {x: 0.000061035156, y: 14962.49}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.4999999, y: 0.9999999}
 --- !u!114 &7932671595923863766

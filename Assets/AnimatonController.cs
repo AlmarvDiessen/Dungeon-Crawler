@@ -40,7 +40,7 @@ public class AnimatonController : MonoBehaviour {
         if (Time.time < lockAnimation) return currentState;
         Vector3 currentVelocity = esm.Rb.velocity;
 
-        if (currentVelocity.magnitude > 4) {
+        if (currentVelocity.magnitude > 10 ) {
             return LockState(jumpAttack, attackAnimationTime - 0.25f);
         }
 

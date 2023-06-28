@@ -109,7 +109,7 @@ public class ChaseState : EnemyState {
             if (force.GetType() == typeof(JumpComponent)) {
                 force.AddForce(enemy.transform.forward, force.ForceUpPower);
             }
-            force.AddForce(enemy.transform.forward, 0);
+            force.AddForce(force.Direction, 0);
         }
     }
 

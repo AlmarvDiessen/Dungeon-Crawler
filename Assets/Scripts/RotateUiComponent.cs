@@ -15,17 +15,24 @@ public class RotateUiComponent : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-        float distance = Vector3.Distance(gameObject.transform.position, cam.transform.position);
-        if (distance <= detectDistance) {
-            ui.GetComponent<TextMeshPro>().enabled = true;
-            RotateUI();
-        }
+        if (cam != null) {
+            float distance = Vector3.Distance(gameObject.transform.position, cam.transform.position);
+            if (distance <= detectDistance) {
+                ui.GetComponent<TextMeshPro>().enabled = true;
+                RotateUI();
+            }
 
-        if (distance >= detectDistance)
-            ui.GetComponent<TextMeshPro>().enabled = false;
+            if (distance >= detectDistance)
+                ui.GetComponent<TextMeshPro>().enabled = false;
+        }
     }
 
     public void RotateUI() {
+        if(cam == null) {
+            
+            
+        }
+
         Vector3 direction = gameObject.transform.position - cam.transform.position;
         ui.transform.rotation = Quaternion.LookRotation(direction);
     }
