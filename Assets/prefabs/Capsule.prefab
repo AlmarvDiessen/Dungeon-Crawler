@@ -343,13 +343,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   abilityTimer: 1
   abilityUsed: 0
+  canUse: 1
+  cooldown: 0
   rb: {fileID: 0}
   timer: {fileID: 0}
-  canUse: 1
   isUsing: 0
   forcePower: 0
   forceUpPower: 0
-  cooldown: 0
+  direction: {x: 0, y: 0, z: 0}
 --- !u!114 &7954633583478066956
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -378,6 +379,8 @@ MonoBehaviour:
   equippedWeapon: {fileID: 0}
   equipped: {fileID: 0}
   hand: {fileID: 7954633584180585698}
+  animationComp: {fileID: 0}
+  giveDamage: {fileID: 0}
   weaponsOnGround: []
 --- !u!114 &5788174084372920326
 MonoBehaviour:
@@ -474,7 +477,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 7414.1323}
+  m_AnchoredPosition: {x: 0, y: 7867.557}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.4999999, y: 0.9999999}
 --- !u!114 &7954633582807362537
