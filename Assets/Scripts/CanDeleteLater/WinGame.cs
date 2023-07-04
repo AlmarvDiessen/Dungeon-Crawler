@@ -12,7 +12,7 @@ public class WinGame : MonoBehaviour
     {
         //Time.timeScale = 0.0f;
         //CanvasObject.GetComponent<Canvas> ().enabled = false;    
-
+        Cursor.lockState = CursorLockMode.None;
         SceneManager.LoadScene(0);
     }
 }

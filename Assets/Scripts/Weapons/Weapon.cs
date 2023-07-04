@@ -1,9 +1,5 @@
 using Assets.Scripts.Interfaces;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.Animations;
 using UnityEngine;
-using static UnityEngine.UIElements.UxmlAttributeDescription;
 
 public class Weapon : MonoBehaviour, IEquippable
 {
