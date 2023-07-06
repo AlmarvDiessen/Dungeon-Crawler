@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// SCRIPT BY ALMAR
+
 public class BasicJump : MonoBehaviour {
 
     [SerializeField] private float jumpPower;

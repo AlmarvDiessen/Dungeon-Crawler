@@ -6,6 +6,8 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
+// SCRIPT BY ALMAR
+
 [RequireComponent(typeof(UnityEngine.AI.NavMeshAgent))]
 
 public class EnemyClass : Entity {

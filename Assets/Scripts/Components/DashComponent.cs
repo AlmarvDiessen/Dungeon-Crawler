@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
+// SCRIPT BY ALMAR
+
 public class DashComponent : AddForceComponent {
 
     public void Start() {

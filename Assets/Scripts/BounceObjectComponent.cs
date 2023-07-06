@@ -2,14 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// SCRIPT BY PAULO
+
 public class BounceObjectComponent : MonoBehaviour
 {
     [SerializeField] float bounceUp;
     [SerializeField] float bounceSpeed;
     [SerializeField] float loop;
+    
     private float startAmpPosY;
-
-    //public float bounceUpper { get => bounceUp; set => bounceUp = value; }
 
     public void Awake()
     {

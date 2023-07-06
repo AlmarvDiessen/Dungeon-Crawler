@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+// SCRIPT BY ALMAR
+
 public class AddForceComponent : TimerComponent {
     [SerializeField] private Rigidbody rb;
     [SerializeField] private TimerComponent timer;

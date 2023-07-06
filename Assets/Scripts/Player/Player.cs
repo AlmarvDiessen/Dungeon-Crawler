@@ -4,6 +4,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// SCRIPT BY ALMAR
+
 public class Player : Entity {
 
     [SerializeField] private AddForceComponent dash;
