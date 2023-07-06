@@ -1,5 +1,7 @@
 using UnityEngine;
 
+// SCRIPT BY ALMAR
+
 public class AnimationComponent : MonoBehaviour {
     private static readonly int idle = Animator.StringToHash("WeaponIdle");
 

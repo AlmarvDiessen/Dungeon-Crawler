@@ -5,7 +5,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public  class Entity : MonoBehaviour, IKillable {
+// SCRIPT BY ALMAR
+
+public class Entity : MonoBehaviour, IKillable {
     [SerializeField] protected ScriptableObject data;
     [SerializeField] protected Health health;
     [SerializeField] protected string EntityName;

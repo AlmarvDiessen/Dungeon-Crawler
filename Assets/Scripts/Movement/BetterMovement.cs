@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using Unity.VisualScripting;
 using UnityEngine;
 
+// SCRIPT BY ALMAR
+
 namespace Assets.Scripts {
     public class BetterMovement : MonoBehaviour {
 

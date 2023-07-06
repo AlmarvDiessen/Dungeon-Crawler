@@ -4,6 +4,8 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 
+// SCRIPT BY ALMAR
+
 public class RotateUiComponent : MonoBehaviour {
     [SerializeField] private TextMeshPro ui;
     [SerializeField] private Camera cam;

@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// SCRIPT BY ALMAR
+
 public class HealComponent : MonoBehaviour, IEffects
 {
     [SerializeField] private int healAmount;

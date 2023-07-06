@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// SCRIPT BY ALMAR & PAULO
+
 public class Health : MonoBehaviour, IDamagable
 {
     [SerializeField] private int healthValue;

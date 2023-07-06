@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// SCRIPT BY PAULO & ALMAR
+
 public class GiveDamage : MonoBehaviour
 {
     [SerializeField] private int damageValue;

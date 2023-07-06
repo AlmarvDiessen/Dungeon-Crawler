@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 
+// SCRIPT BY ALMAR
+
 namespace Assets.Scripts {
     // class for the first person camera movement using mouse. this is attached to the camera object
     public class PlayerCamera : MonoBehaviour {
@@ -44,5 +46,4 @@ namespace Assets.Scripts {
             float rotate = player.transform.rotation.y;
         }
     }
-
 }
