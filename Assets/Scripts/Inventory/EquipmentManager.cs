@@ -3,8 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-// SCRIPT BY ALMAR
-
 public class EquipmentManager : MonoBehaviour {
     [SerializeField] private Weapon equippedWeapon;
     [SerializeField] private GameObject equipped;
