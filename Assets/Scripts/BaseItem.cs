@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+// SCRIPT BY ALMAR
+
 public class BaseItem : MonoBehaviour, IInteractable {
     // Start is called before the first frame update
     [SerializeField] private string itemName;

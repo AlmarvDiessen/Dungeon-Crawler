@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// SCRIPT BY ALMAR
+
 public class InventoryManager : MonoBehaviour {
     public Inventory inventory = new Inventory();
     public ItemInstance item;

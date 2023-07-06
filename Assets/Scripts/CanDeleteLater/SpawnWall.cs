@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// SCRIPT BY PAULO
+
 public class SpawnWall : MonoBehaviour
 {
    public GameObject wall;

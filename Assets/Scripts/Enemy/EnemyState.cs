@@ -5,6 +5,8 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UIElements;
 
+// SCRIPT BY ALMAR
+
 namespace Assets.Scripts.Enemy {
     public class EnemyState {
         public EnemyClass enemy;

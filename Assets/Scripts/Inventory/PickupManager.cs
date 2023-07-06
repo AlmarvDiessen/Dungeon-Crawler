@@ -6,6 +6,8 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
+// SCRIPT BY ALMAR
+
 public class PickupManager : MonoBehaviour
 {
 

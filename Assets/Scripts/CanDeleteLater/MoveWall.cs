@@ -4,6 +4,8 @@ using System.Net;
 using UnityEngine;
 using UnityEngine.XR.OpenXR.Input;
 
+// SCRIPT BY PAULO
+
 public class MoveWall : MonoBehaviour
 {
     [SerializeField] float moveX;

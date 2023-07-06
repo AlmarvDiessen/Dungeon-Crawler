@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+// SCRIPT BY PAULO
+
 public class SceneLoader : MonoBehaviour
 {
     public void LoadGameScene()
