@@ -4,8 +4,6 @@ using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
 
-// SCRIPT BY ALMAR & PAULO
-
 public class Health : MonoBehaviour, IDamagable
 {
     public delegate void HealthChangeHandler(int currentHealth, int maxHealth);

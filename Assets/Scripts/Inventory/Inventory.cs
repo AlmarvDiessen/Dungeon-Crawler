@@ -3,8 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-// SCRIPT BY ALMAR
-
 public class Inventory {
     [SerializeField] private List<ItemInstance> items = new();
     [SerializeField] private int maxItems = 10;

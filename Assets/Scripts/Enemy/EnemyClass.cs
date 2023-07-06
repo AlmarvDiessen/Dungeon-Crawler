@@ -8,8 +8,6 @@ using UnityEngine;
 using UnityEngine.AI;
 using static UnityEngine.EventSystems.EventTrigger;
 
-// SCRIPT BY ALMAR
-
 [RequireComponent(typeof(UnityEngine.AI.NavMeshAgent))]
 
 public class EnemyClass : Entity, IKillable {
