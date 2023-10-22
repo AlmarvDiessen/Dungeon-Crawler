@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f9afef89901b5b4799b08cf79c39c30, type: 3}
+  m_Name: HealthPotion
+  m_EditorClassIdentifier: 
+  itemName: BigHealthPotion
+  itemModel: {fileID: 1285016284248652, guid: a7a9ae6be1309724e81aea94e691f57a, type: 3}
+  icon: {fileID: 21300000, guid: d44baa660cc84014091d6de98255e0f9, type: 3}
+  canInteract: 1
