@@ -15,6 +15,7 @@ public class EnemyClass : Entity {
     [SerializeField] private NavMeshAgent navAgent;
     [SerializeField] private Player player;
     [SerializeField] private List<AddForceComponent> addForceComponents = new List<AddForceComponent>();
+    [SerializeField] private AnimationComponent animation;
     //EnemyStateMachine
     private EnemyStateMachine stateMachine;
 
@@ -37,7 +38,8 @@ public class EnemyClass : Entity {
         NavAgent = GetComponent<NavMeshAgent>();
         player = FindObjectOfType<Player>();
         stateMachine = GetComponent<EnemyStateMachine>();
-
+        animation = GetComponentInChildren<AnimationComponent>();
+        
         if (data != null) {
             Initialize(data);
         }
@@ -45,7 +47,6 @@ public class EnemyClass : Entity {
 
     public void Update() {
         stateMachine.Update();
-        Kill();
     }
 
     private void Initialize(ScriptableObject data) {
@@ -54,12 +55,7 @@ public class EnemyClass : Entity {
         NavAgent.speed = enemyData.Speed;
         DetectRange = enemyData.DetectRange;
         giveDamage.SetDamage(damage = enemyData.Damage);
-        health.SetHealth(enemyData.Health);
+        Health.SetHealth(enemyData.Health);
         WanderDistance = enemyData.WanderDistance;
-    }
-
-    public override void Kill() {
-
-       
     }
 }

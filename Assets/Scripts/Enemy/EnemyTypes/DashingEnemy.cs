@@ -13,4 +13,5 @@ public class DashingEnemy : EnemyClass
         //dashComponent = gameObject.GetComponent<DashComponent>();
         //StateMachine.OnChaseUpdate += dashComponent.Dash;
     }
+
 }

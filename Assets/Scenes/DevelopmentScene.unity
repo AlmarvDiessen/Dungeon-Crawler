@@ -727,6 +727,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 637f42539ee534549847fccfadba1398, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  clip: {fileID: 0}
+  damageValue: 0
 --- !u!4 &502464631
 Transform:
   m_ObjectHideFlags: 0
@@ -1120,6 +1122,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   esm: {fileID: 1661285637}
+  enemy: {fileID: 0}
 --- !u!1 &728530127
 GameObject:
   m_ObjectHideFlags: 0
@@ -1164,6 +1167,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 637f42539ee534549847fccfadba1398, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  clip: {fileID: 0}
+  damageValue: 0
 --- !u!224 &728530130
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1218,6 +1223,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   esm: {fileID: 73854181}
+  enemy: {fileID: 0}
 --- !u!1 &754243074
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,10 +1,11 @@
+using Assets.Scripts.Interfaces;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 // SCRIPT BY PAULO
 
-public class Sword : Weapon {
+public class Sword : Weapon, IAttack {
 
     private void Start() {
         base.Start();
@@ -15,6 +16,6 @@ public class Sword : Weapon {
         Attack();
     }
 
-    public override void Attack() {
+    public void Attack() {
     }
 }

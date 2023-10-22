@@ -20,6 +20,7 @@ public class GiveDamage : MonoBehaviour
             if (damagable != null)
             {
                 damagable.TakeDamage(damageValue);
+                //Player feedback of hitting something
             }
         }
         giveDamage = false;

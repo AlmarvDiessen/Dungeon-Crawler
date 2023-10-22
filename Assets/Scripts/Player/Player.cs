@@ -21,7 +21,7 @@ public class Player : Entity {
         dash = GetComponent<DashComponent>();
         playerMovement = GetComponent<BetterMovement>();
 
-        health.SetHealth(playerHealth);
+        Health.SetHealth(playerHealth);
 
     }
     private void FixedUpdate() {
@@ -35,10 +35,5 @@ public class Player : Entity {
         if(Input.GetKeyDown(KeyCode.LeftShift)&& dash.CanUse) {
             dash.AddForce(transform.forward, 0f);
         }
-    }
-
-    public override void Kill() {
-        base.Kill();
-        //player dies, show gameover screen or smt.
     }
 }

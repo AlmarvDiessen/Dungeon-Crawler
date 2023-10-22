@@ -7,18 +7,18 @@ using UnityEngine;
 
 // SCRIPT BY ALMAR
 
-public class Entity : MonoBehaviour, IKillable {
+public class Entity : MonoBehaviour {
     [SerializeField] protected ScriptableObject data;
     [SerializeField] protected Health health;
     [SerializeField] protected string EntityName;
     [SerializeField] private GameObject dropItem;
 
     public GameObject DropItem { get => dropItem; set => dropItem = value; }
-
+    public Health Health { get => health; set => health = value; }
 
     public void Awake() {
         
-        health = this.gameObject.AddComponent<Health>();
+        Health = this.gameObject.AddComponent<Health>();
     }
 
     public virtual void Kill() {
