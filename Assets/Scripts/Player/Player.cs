@@ -6,11 +6,13 @@ using UnityEngine;
 
 // SCRIPT BY ALMAR
 
-public class Player : Entity {
+public class Player : Entity, IKillable {
 
     [SerializeField] private AddForceComponent dash;
     [SerializeField] private BetterMovement playerMovement;
+    [SerializeField] private EquipmentManager equipmentManager;
     [SerializeField] private int playerHealth;
+
 
     private void Awake() {
         base.Awake();
@@ -20,20 +22,29 @@ public class Player : Entity {
     private void Start() {
         dash = GetComponent<DashComponent>();
         playerMovement = GetComponent<BetterMovement>();
+        equipmentManager = GetComponent<EquipmentManager>();
 
-        Health.SetHealth(playerHealth);
+        Health.Initialize(playerHealth, playerHealth);
+        health.onHealthZero += Die;
 
     }
     private void FixedUpdate() {
         playerMovement.Movement();
+
+
+    }
+    public void Die() {
+        //show game over screen
+        Debug.Log("player dies");
     }
 
+
     private void Update() {
-        PlayerDash();
-    }
-    public void PlayerDash() {
-        if(Input.GetKeyDown(KeyCode.LeftShift)&& dash.CanUse) {
-            dash.AddForce(transform.forward, 0f);
+        if (Input.GetMouseButtonDown(0)) // Left mouse button click
+{
+            if (equipmentManager.Weapon != null) {
+                equipmentManager.Weapon.Attack();
+            }
         }
     }
 }

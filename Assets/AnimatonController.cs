@@ -51,6 +51,7 @@ public class AnimatonController : MonoBehaviour {
 
         if (esm.CurrentState.inAttackRange) {
             int currentAttack = attackingRight ? rightAttack : leftAttack;
+            enemy.EnemyAttack.Attack();
             attackingRight = !attackingRight;
             // Toggle the attack direction for the next invocation
             //if (esm.CurrentState.Attacked) return esm.CurrentState.Attacked ? (currentState == rightAttack ? leftAttack : rightAttack) : currentState;
