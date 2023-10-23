@@ -8,9 +8,12 @@ public class EquipmentManager : MonoBehaviour {
     [SerializeField] private GameObject equipped;
     [SerializeField] private Transform hand = null;
     [SerializeField] private AnimationComponent animationComp;
-    [SerializeField] private GiveDamage giveDamage;
 
     [SerializeField] private List<Weapon> weaponsOnGround = new List<Weapon>();
+
+    private IAttack weapon; 
+    public Weapon EquippedWeapon { get => equippedWeapon; set => equippedWeapon = value; }
+    internal IAttack Weapon { get => weapon; set => weapon = value; }
 
     void Start() {
 
@@ -41,11 +44,9 @@ public class EquipmentManager : MonoBehaviour {
             equipped.GetComponent<Weapon>().enabled = true;
             equipped.transform.localPosition = Vector3.zero;
             equipped.transform.localRotation = Quaternion.identity;
-            equippedWeapon = equipped.GetComponent<Weapon>();
-            giveDamage = equippedWeapon.GetComponent<GiveDamage>();
-
-            giveDamage.SetDamage(equippedWeapon.DamageValue);
-            animationComp.Clip = equippedWeapon.Clip;
+            EquippedWeapon = equipped.GetComponent<Weapon>();
+            Weapon = equippedWeapon.GetComponent<IAttack>();
+            animationComp.Clip = EquippedWeapon.Clip;
         }
     }
 
@@ -53,13 +54,13 @@ public class EquipmentManager : MonoBehaviour {
         weaponsOnGround.Clear();
         if (equipped != null) {
             Destroy(equipped);
-            GameObject dropEquipped = Instantiate(equippedWeapon.gameObject, transform.position, Quaternion.identity);
+            GameObject dropEquipped = Instantiate(EquippedWeapon.gameObject, transform.position, Quaternion.identity);
             dropEquipped.GetComponentInChildren<RotateUiComponent>().enabled = true;
             dropEquipped.GetComponent<RotateObjectComponent>().enabled = true;
             dropEquipped.GetComponent<BounceObjectComponent>().enabled = true;
             dropEquipped.GetComponent<RotateObjectComponent>().RotateSpeed = 100f;
             equipped = null;
-            equippedWeapon = null;
+            EquippedWeapon = null;
             animationComp.Clip = null;
         }
     }

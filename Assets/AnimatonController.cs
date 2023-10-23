@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class AnimatonController : MonoBehaviour {
     [SerializeField] private EnemyStateMachine esm;
+    [SerializeField] private EnemyClass enemy;
     private Animator animator;
     private int currentState;
     private float lockAnimation;
@@ -26,6 +27,7 @@ public class AnimatonController : MonoBehaviour {
 
     private void Start() {
         animator = GetComponent<Animator>();
+        enemy = GetComponentInParent<EnemyClass>();
     }
     // Update is called once per frame
     void Update() {
@@ -40,12 +42,16 @@ public class AnimatonController : MonoBehaviour {
         if (Time.time < lockAnimation) return currentState;
         Vector3 currentVelocity = esm.Rb.velocity;
 
+        if(enemy.Health.getHealth <= 0)
+            return death;
+
         if (currentVelocity.magnitude > 10 ) {
             return LockState(jumpAttack, attackAnimationTime - 0.25f);
         }
 
         if (esm.CurrentState.inAttackRange) {
             int currentAttack = attackingRight ? rightAttack : leftAttack;
+            enemy.EnemyAttack.Attack();
             attackingRight = !attackingRight;
             // Toggle the attack direction for the next invocation
             //if (esm.CurrentState.Attacked) return esm.CurrentState.Attacked ? (currentState == rightAttack ? leftAttack : rightAttack) : currentState;
@@ -61,5 +67,6 @@ public class AnimatonController : MonoBehaviour {
         }
 
     }
+
 
 }

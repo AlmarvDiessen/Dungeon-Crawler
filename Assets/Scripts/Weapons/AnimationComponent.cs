@@ -36,7 +36,6 @@ public class AnimationComponent : MonoBehaviour {
 
 
         if (clip != null && Input.GetMouseButtonDown(0)) {
-            Debug.Log(clip.name);
             attack = Animator.StringToHash(clip.name);
             return LockState(attack, attackAnimationTime);
 
