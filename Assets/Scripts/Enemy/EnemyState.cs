@@ -115,8 +115,10 @@ public class ChaseState : EnemyState {
 
     public void ChasePlayer(Transform transform) {
 
-        Vector3 playerPosistion = transform.position;
+        float offset = 3f;
+        Vector3 playerPosistion = transform.position + (transform.forward * offset);
         agent.SetDestination(playerPosistion);
+        enemy.transform.LookAt(transform);    
 
         //if (/*playerPosistion != null && */distance <= enemy.DetectRange)
 
@@ -125,7 +127,7 @@ public class ChaseState : EnemyState {
         if (/*playerPosistion == null && */distance >= enemy.DetectRange)
             enemy.StateMachine.ChangeState(enemy.StateMachine.PatrolState);
 
-        if (distance <= 5f) {
+        if (distance <= 3f) {
             inAttackRange = true;
         }
         else {

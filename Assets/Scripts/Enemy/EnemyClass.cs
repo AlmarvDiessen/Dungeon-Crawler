@@ -63,6 +63,7 @@ public class EnemyClass : Entity, IKillable {
         DetectRange = enemyData.DetectRange;
         Health.Initialize(enemyData.Health, enemyData.Health);
         WanderDistance = enemyData.WanderDistance;
+        
     }
 
 }
