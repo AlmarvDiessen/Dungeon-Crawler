@@ -7,8 +7,6 @@ using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.AI;
 
-// SCRIPT BY ALMAR
-
 public class EnemyStateMachine : MonoBehaviour {
 
     //public List<EnemyState> allStates = new List<EnemyState>();

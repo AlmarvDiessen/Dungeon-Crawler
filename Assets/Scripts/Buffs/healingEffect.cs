@@ -1,8 +1,6 @@
 ﻿using Assets.Scripts;
 using UnityEngine;
 
-// SCRIPT BY ALMAR
-
 [CreateAssetMenu]
 public class healingEffect : Effect {
     [SerializeField] private string description;
