@@ -27,7 +27,7 @@ public class Claws : Weapon, IAttack {
 
             // Perform a box cast in the forward direction of the sword
             RaycastHit hit;
-            if (Physics.BoxCast(transform.position + transform.forward * attackRange, Vector3.one, transform.forward, out hit, transform.rotation, 10f)) {
+            if (Physics.BoxCast(transform.position + transform.forward, new Vector3(0.75f, 0.75f, 0.75f), transform.forward, out hit, transform.rotation, 10f)) {
                 // Check if the hit object has a HealthComponent
                 Debug.Log(hit.collider.gameObject.name);
                 Health hitHealth = hit.transform.GetComponent<Health>();
@@ -44,6 +44,6 @@ public class Claws : Weapon, IAttack {
 
     private void OnDrawGizmos() {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireCube(transform.position + transform.forward * (attackRange * 1.5f), Vector3.one * 2f);
+        Gizmos.DrawWireCube(transform.position + transform.forward * (attackRange * 1.5f), Vector3.one * 1.5f);
     }
 }

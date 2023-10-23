@@ -10,13 +10,13 @@ GameObject:
   m_Component:
   - component: {fileID: 2003315405886539465}
   - component: {fileID: 2003315405886539466}
-  - component: {fileID: 2003315405886539467}
   - component: {fileID: 2003315405886539468}
   - component: {fileID: 2003315405886539469}
   - component: {fileID: 2003315405886539470}
   - component: {fileID: 2003315405886539471}
   - component: {fileID: 2003315405886539472}
   - component: {fileID: 2003315405886539473}
+  - component: {fileID: 4912548836201067038}
   m_Layer: 0
   m_Name: JumpingEnemy
   m_TagString: Untagged
@@ -56,19 +56,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 1
---- !u!65 &2003315405886539467
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2003315405886539474}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 2.4, y: 2.1, z: 2.425}
-  m_Center: {x: 0, y: 0.44131088, z: 0}
 --- !u!195 &2003315405886539468
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -112,6 +99,7 @@ MonoBehaviour:
   player: {fileID: 0}
   addForceComponents:
   - {fileID: 2003315405886539470}
+  animation: {fileID: 0}
   detectRange: 0
   damage: 0
   wanderDistance: 0
@@ -185,6 +173,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: {fileID: 0}
   entity: {fileID: 0}
+--- !u!114 &4912548836201067038
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2003315405886539474}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59cd5edf60a5e3a4295df7d5a927ce8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clip: {fileID: 0}
+  damageValue: 0
+  attackInterval: 2
+  attackRange: 1.5
 --- !u!1001 &2003315406282652710
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -275,6 +279,40 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 8531916489912894925, guid: e9be7be0a27ec154dbd5df87ce6c500c, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: e9be7be0a27ec154dbd5df87ce6c500c, type: 3}
+--- !u!1 &8302326932647945340 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7564638783374153818, guid: e9be7be0a27ec154dbd5df87ce6c500c,
+    type: 3}
+  m_PrefabInstance: {fileID: 2003315406282652710}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &734566016
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8302326932647945340}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d71b7e7fa69b5fb40a69e370321e95a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  esm: {fileID: 2003315405886539471}
+  enemy: {fileID: 0}
+--- !u!64 &6517318798498439438
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8302326932647945340}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: 31d7511636360e046a439c1b7e1c27ec, type: 3}
 --- !u!4 &8302326932647983516 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7564638783374575034, guid: e9be7be0a27ec154dbd5df87ce6c500c,
