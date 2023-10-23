@@ -4,8 +4,6 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
-// SCRIPT BY ALMAR
-
 public class JumpComponent : AddForceComponent {
 
     [SerializeField] private bool isJumping = false;

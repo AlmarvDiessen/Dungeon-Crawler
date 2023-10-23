@@ -3,8 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-// SCRIPT BY ALMAR
-
 [CreateAssetMenu]
 public class Effect : ScriptableObject {
     [SerializeField] ScriptableObject m_Effect;
