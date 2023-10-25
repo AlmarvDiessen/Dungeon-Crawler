@@ -24,8 +24,13 @@ namespace Assets.Scripts.Enemy {
             agent = pAgent;
             player = pPlayer;
         }
-        public virtual void Update() {
 
+        public virtual void Update() {
+            Debug.Log(enemy.StateMachine.CurrentState.ToString());
+
+            if (enemy.Health.getHealth <= 0) {
+                enemy.StateMachine.ChangeState(enemy.StateMachine.DyingState);
+            }
         }
 
         public bool checkMovement() {
@@ -120,7 +125,7 @@ public class ChaseState : EnemyState {
         float offset = 3f;
         Vector3 playerPosistion = transform.position + (transform.forward * offset);
         agent.SetDestination(playerPosistion);
-        enemy.transform.LookAt(transform);    
+        enemy.transform.LookAt(transform);
 
         //if (/*playerPosistion != null && */distance <= enemy.DetectRange)
 
@@ -129,7 +134,7 @@ public class ChaseState : EnemyState {
         if (/*playerPosistion == null && */distance >= enemy.DetectRange)
             enemy.StateMachine.ChangeState(enemy.StateMachine.PatrolState);
 
-        if (distance <= 3f) {
+        if (distance <= 2f) {
             inAttackRange = true;
         }
         else {
@@ -139,4 +144,27 @@ public class ChaseState : EnemyState {
 
     }
 }
+
+public class DieState : EnemyState {
+
+    public DieState(EnemyClass pEnemy, NavMeshAgent pAgent, Player pPlayer) : base(pEnemy, pAgent, pPlayer) {
+
+    }
+
+    public override void EnterState() {
+        DyingState();
+    }
+
+    public override void Update() {
+        base.Update();
+    }
+
+    public void DyingState() {
+        inAttackRange = false;
+        agent.isStopped = true;
+    }
+}
+
+
+
 

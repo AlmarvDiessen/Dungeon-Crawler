@@ -38,13 +38,23 @@ public class EnemyClass : Entity, IKillable {
     }
 
     public void Die() {
+        Disable();
         stateMachine.NavAgent.isStopped = true;
         stateMachine.enabled = false;
         if (DropItem != null) {
             Instantiate(DropItem, transform.position, Quaternion.identity);
+            DropItem = null;
         }
         Destroy(gameObject, 4f);
 
+    }
+
+    private void Disable() {    
+        foreach (var item in addForceComponents) {
+            item.enabled = false; 
+        }
+        
+        
     }
 
     public void Start() {
@@ -72,6 +82,10 @@ public class EnemyClass : Entity, IKillable {
         Health.Initialize(enemyData.Health, enemyData.Health);
         WanderDistance = enemyData.WanderDistance;
         
+    }
+
+    private void OnDestroy() {
+        health.onHealthZero -= Die;
     }
 
 }
