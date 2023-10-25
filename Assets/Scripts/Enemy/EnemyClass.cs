@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
+using static UnityEngine.EventSystems.EventTrigger;
 
 // SCRIPT BY ALMAR
 
@@ -37,8 +38,13 @@ public class EnemyClass : Entity, IKillable {
     }
 
     public void Die() {
-        // show death ani
-        // destroy object
+        stateMachine.NavAgent.isStopped = true;
+        stateMachine.enabled = false;
+        if (DropItem != null) {
+            Instantiate(DropItem, transform.position, Quaternion.identity);
+        }
+        Destroy(gameObject, 4f);
+
     }
 
     public void Start() {

@@ -25,6 +25,7 @@ public class Spear : Weapon, IAttack
         RaycastHit hit;
         if (Physics.Raycast(attackPoint.transform.position, attackPoint.transform.forward, out hit, attackRange)) {
             // Check if the hit object has a HealthComponent
+            Debug.Log(hit.collider.name);
             Health hitHealth = hit.transform.GetComponent<Health>();
             if (hitHealth != null) {
                 int damage = base.DamageValue;
@@ -35,6 +36,7 @@ public class Spear : Weapon, IAttack
 
     private void OnDrawGizmos() {
         Gizmos.color = Color.blue;
+        if(attackPoint != null)
         Gizmos.DrawRay(attackPoint.transform.position, attackPoint.transform.forward * attackRange);
     }
 }

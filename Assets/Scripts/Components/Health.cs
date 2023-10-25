@@ -30,9 +30,7 @@ public class Health : MonoBehaviour, IDamagable
     {
         currentHealth = math.clamp(currentHealth - pDamage, 0, maxHealth);
         onHealthChange?.Invoke(currentHealth, maxHealth);
-
         if(currentHealth <= 0) {
-            Debug.Log("Died");
             onHealthZero?.Invoke();
         }
     }

@@ -30,17 +30,18 @@ public class EnemyStateMachine : MonoBehaviour {
     public EnemyState ChaseState { get => chaseState; set => chaseState = value; }
     public Rigidbody Rb { get => rb; set => rb = value; }
     public EnemyClass Enemy { get => enemy; set => enemy = value; }
+    public NavMeshAgent NavAgent { get => navAgent; set => navAgent = value; }
 
     public EnemyStateMachine(EnemyClass enemy, NavMeshAgent agent, Player player) {
         this.Enemy = enemy;
         this.player = player;
-        navAgent = agent;
+        NavAgent = agent;
     }
 
     public void Awake() {
-        CurrentState = new EnemyState(Enemy, navAgent, this.player);
-        PatrolState = new PatrolState(Enemy, navAgent, this.player);
-        ChaseState = new ChaseState(Enemy, navAgent, this.player);
+        CurrentState = new EnemyState(Enemy, NavAgent, this.player);
+        PatrolState = new PatrolState(Enemy, NavAgent, this.player);
+        ChaseState = new ChaseState(Enemy, NavAgent, this.player);
 
         currentState = patrolState;
         rb = GetComponent<Rigidbody>();

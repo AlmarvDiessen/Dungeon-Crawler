@@ -19,7 +19,6 @@ public class Sword : Weapon, IAttack {
     }
 
     public void Attack() {
-        Debug.Log("Swinging the sword");
         attackPoint = Camera.main.transform;
 
         // Perform a box cast in the forward direction of the sword

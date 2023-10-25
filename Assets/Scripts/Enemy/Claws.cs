@@ -23,13 +23,11 @@ public class Claws : Weapon, IAttack {
     public void Attack() {
         if (canAttack) {
             // Perform the claw attack and deal damage to the target
-            Debug.Log("Claw attack!");
 
             // Perform a box cast in the forward direction of the sword
             RaycastHit hit;
             if (Physics.BoxCast(transform.position + transform.forward, new Vector3(0.75f, 0.75f, 0.75f), transform.forward, out hit, transform.rotation, 10f)) {
                 // Check if the hit object has a HealthComponent
-                Debug.Log(hit.collider.gameObject.name);
                 Health hitHealth = hit.transform.GetComponent<Health>();
                 if (hitHealth != null) {
                     int damage = base.DamageValue;

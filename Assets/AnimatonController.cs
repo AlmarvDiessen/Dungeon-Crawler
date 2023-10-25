@@ -3,13 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class AnimatonController : MonoBehaviour {
+    private Animator animator;
     [SerializeField] private EnemyStateMachine esm;
     [SerializeField] private EnemyClass enemy;
-    private Animator animator;
-    private int currentState;
+    [SerializeField] private int currentState;
+    [SerializeField] private int state;
     private float lockAnimation;
     private float attackAnimationTime = 1.1f;
     private bool attackingRight = true;
+    public bool isHit = false;
 
 
     private static readonly int idle = Animator.StringToHash("Idle");
@@ -28,10 +30,11 @@ public class AnimatonController : MonoBehaviour {
     private void Start() {
         animator = GetComponent<Animator>();
         enemy = GetComponentInParent<EnemyClass>();
+        enemy.Health.onHealthChange += OnHealthChange;
     }
     // Update is called once per frame
     void Update() {
-        var state = GetState();
+        state = GetState();
 
         if (state == currentState) return;
         animator.CrossFade(state, 0.3f, 0);
@@ -42,10 +45,15 @@ public class AnimatonController : MonoBehaviour {
         if (Time.time < lockAnimation) return currentState;
         Vector3 currentVelocity = esm.Rb.velocity;
 
-        if(enemy.Health.getHealth <= 0)
-            return death;
+        if (isHit) {
+            isHit = false;
+            return LockState(getHit, 0.9f);
+        }
 
-        if (currentVelocity.magnitude > 10 ) {
+        if (enemy.Health.getHealth <= 0)
+            return LockState(death, 2.2f);
+
+        if (currentVelocity.magnitude > 10) {
             return LockState(jumpAttack, attackAnimationTime - 0.25f);
         }
 
@@ -68,5 +76,14 @@ public class AnimatonController : MonoBehaviour {
 
     }
 
+    private void OnHealthChange(int currentHealth, int maxHealth) {
+        isHit = true;
+    }
+
+    private void OnDestroy() {
+        if (enemy.Health != null)
+            enemy.Health.onHealthChange -= OnHealthChange;
+
+    }
 
 }

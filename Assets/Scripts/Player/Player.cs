@@ -3,6 +3,7 @@ using Assets.Scripts.Interfaces;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 // SCRIPT BY ALMAR
 
@@ -36,6 +37,7 @@ public class Player : Entity, IKillable {
     public void Die() {
         //show game over screen
         Debug.Log("player dies");
+        SceneManager.LoadScene(2);//GameOver
     }
 
 
