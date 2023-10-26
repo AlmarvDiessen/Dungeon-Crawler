@@ -46,6 +46,7 @@ public class AnimatonController : MonoBehaviour {
         Vector3 currentVelocity = esm.Rb.velocity;
 
         if (isHit) {
+            enemy.StartCoroutine(enemy.Health.ChangeColor());
             isHit = false;
             return LockState(getHit, 0.9f);
         }
@@ -73,7 +74,6 @@ public class AnimatonController : MonoBehaviour {
             lockAnimation = Time.time + t;
             return s;
         }
-
     }
 
     private void OnHealthChange(int currentHealth, int maxHealth) {

@@ -11,6 +11,7 @@ public class Health : MonoBehaviour, IDamagable
     public delegate void HealthChangeHandler(int currentHealth, int maxHealth);
     public delegate void HealthZeroDelegate();
     public event HealthChangeHandler onHealthChange;
+    public SkinnedMeshRenderer mesh;
 
 
 
@@ -24,6 +25,7 @@ public class Health : MonoBehaviour, IDamagable
     public void Initialize(int currentHealth, int maxHealth) {
         this.maxHealth = maxHealth;
         this.currentHealth = currentHealth;
+        mesh = GetComponentInChildren<SkinnedMeshRenderer>();
     }
 
     public void TakeDamage(int pDamage)
@@ -34,7 +36,12 @@ public class Health : MonoBehaviour, IDamagable
             onHealthZero?.Invoke();
         }
     }
-
+    public IEnumerator ChangeColor() {
+        yield return new WaitForSeconds(0.2f);
+        mesh.material.color = Color.red;
+        yield return new WaitForSeconds(0.4f);
+        mesh.material.color = Color.white;
+    }
     public void SetHealth(int value) {
         currentHealth = value;
     }

@@ -7,7 +7,7 @@ using UnityEngine;
 
 public class Spear : Weapon, IAttack
 {
-    private float attackRange = 10f;
+    private float attackRange = 3.5f;
     [SerializeField] private Transform attackPoint;
 
     private void Start() {

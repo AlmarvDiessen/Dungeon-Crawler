@@ -27,6 +27,7 @@ public class Player : Entity, IKillable {
 
         Health.Initialize(playerHealth, playerHealth);
         health.onHealthZero += Die;
+        health.onHealthChange += OnBloodScreen;
 
     }
     private void FixedUpdate() {
@@ -38,6 +39,11 @@ public class Player : Entity, IKillable {
         //show game over screen
         Debug.Log("player dies");
         SceneManager.LoadScene(2);//GameOver
+    }
+
+    public void OnBloodScreen(int currentHealth, int maxHealth) {
+        //show boold on screen.
+        Debug.Log("Blood on screen");
     }
 
 
