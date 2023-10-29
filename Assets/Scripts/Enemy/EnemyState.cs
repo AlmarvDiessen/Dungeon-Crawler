@@ -4,10 +4,10 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UIElements;
 
-// SCRIPT BY ALMAR
-
-namespace Assets.Scripts.Enemy {
-    public class EnemyState {
+namespace Assets.Scripts.Enemy
+{
+    public class EnemyState
+    {
         public EnemyClass enemy;
         public Player player;
         public NavMeshAgent agent;
@@ -18,36 +18,42 @@ namespace Assets.Scripts.Enemy {
         public bool inAttackRange { get => attacked; set => attacked = value; }
         public bool Walking { get => walking; set => walking = value; }
 
-        public EnemyState(EnemyClass pEnemy, NavMeshAgent pAgent, Player pPlayer) {
+        public EnemyState(EnemyClass pEnemy, NavMeshAgent pAgent, Player pPlayer)
+        {
             enemy = pEnemy;
             agent = pAgent;
             player = pPlayer;
         }
 
         public virtual void Update() {
-            Debug.Log(enemy.StateMachine.CurrentState.ToString());
 
-            if (enemy.Health.getHealth <= 0) {
+            if (enemy.Health.getHealth <= 0)
+            {
                 enemy.StateMachine.ChangeState(enemy.StateMachine.DyingState);
             }
         }
 
-        public bool checkMovement() {
-            if (agent.velocity.magnitude >= 0) {
+        public bool checkMovement()
+        {
+            if (agent.velocity.magnitude >= 0)
+            {
                 walking = true;
                 return walking;
             }
-            else {
+            else
+            {
                 walking = false;
                 return walking;
             }
         }
 
-        public virtual void EnterState() {
+        public virtual void EnterState()
+        {
 
         }
 
-        public void ExitState() {
+        public void ExitState()
+        {
 
         }
 
@@ -56,22 +62,27 @@ namespace Assets.Scripts.Enemy {
 
 }
 
-public class PatrolState : EnemyState {
+public class PatrolState : EnemyState
+{
     private Vector3 playerPos;
 
-    public PatrolState(EnemyClass pEnemy, NavMeshAgent pAgent, Player pPlayer) : base(pEnemy, pAgent, pPlayer) {
+    public PatrolState(EnemyClass pEnemy, NavMeshAgent pAgent, Player pPlayer) : base(pEnemy, pAgent, pPlayer)
+    {
         player = pPlayer;
     }
 
-    public override void EnterState() {
+    public override void EnterState()
+    {
         //test for enter or continious
     }
 
-    public override void Update() {
+    public override void Update()
+    {
         base.Update();
         playerPos = player.gameObject.transform.position;
 
-        if (agent.remainingDistance < 1f) {
+        if (agent.remainingDistance < 1f)
+        {
             if (enemy.StateMachine.CurrentState != enemy.StateMachine.ChaseState)
                 SetNewDestination();
         }
@@ -81,11 +92,14 @@ public class PatrolState : EnemyState {
             enemy.StateMachine.ChangeState(enemy.StateMachine.ChaseState);
     }
 
-    private bool LineOfSight() {
+    private bool LineOfSight()
+    {
         RaycastHit hit;
-        if (Physics.Raycast(enemy.transform.position, playerPos - enemy.transform.position, out hit, enemy.DetectRange)) {
+        if (Physics.Raycast(enemy.transform.position, playerPos - enemy.transform.position, out hit, enemy.DetectRange))
+        {
             Player player = hit.collider.GetComponent<Player>();
-            if (player != null) {
+            if (player != null)
+            {
                 return true;
             }
             return false;
@@ -95,48 +109,57 @@ public class PatrolState : EnemyState {
     }
 
 
-    public void SetNewDestination() {
+    public void SetNewDestination()
+    {
         Vector3 newDestination = enemy.transform.position;
         newDestination += enemy.WanderDistance * new Vector3(Random.Range(-1f, 1f), 0f, Random.Range(-1f, 1f)).normalized;
 
         NavMeshHit hit;
-        if (NavMesh.SamplePosition(newDestination, out hit, 3f, NavMesh.AllAreas)) {
+        if (NavMesh.SamplePosition(newDestination, out hit, 3f, NavMesh.AllAreas))
+        {
             agent.SetDestination(hit.position);
             //LookForPlayer();
         }
     }
 }
 
-public class ChaseState : EnemyState {
+public class ChaseState : EnemyState
+{
     // private GameObject playerPos;
 
 
-    public ChaseState(EnemyClass pEnemy, NavMeshAgent pAgent, Player pPlayer) : base(pEnemy, pAgent, pPlayer) {
+    public ChaseState(EnemyClass pEnemy, NavMeshAgent pAgent, Player pPlayer) : base(pEnemy, pAgent, pPlayer)
+    {
 
 
     }
-    public override void EnterState() {
+    public override void EnterState()
+    {
         enemy.transform.LookAt(player.transform);
         //jump.gameObject.GetComponent<AddForceComponent>();
         //dash.gameObject.GetComponent<AddForceComponent>();
 
     }
 
-    public override void Update() {
+    public override void Update()
+    {
         base.Update();
 
         ChasePlayer(player.transform);
         //addforcecomp.Addforce gebruiken
-        foreach (AddForceComponent force in enemy.AddForceComponents) {
+        foreach (AddForceComponent force in enemy.AddForceComponents)
+        {
 
-            if (force.GetType() == typeof(JumpComponent)) {
+            if (force.GetType() == typeof(JumpComponent))
+            {
                 force.AddForce(enemy.transform.forward, force.ForceUpPower);
             }
             force.AddForce(force.Direction, 0);
         }
     }
 
-    public void ChasePlayer(Transform transform) {
+    public void ChasePlayer(Transform transform)
+    {
 
         float offset = 3f;
         Vector3 playerPosistion = transform.position + (transform.forward * offset);
@@ -150,10 +173,12 @@ public class ChaseState : EnemyState {
         if (/*playerPosistion == null && */distance >= enemy.DetectRange)
             enemy.StateMachine.ChangeState(enemy.StateMachine.PatrolState);
 
-        if (distance <= 2f) {
+        if (distance <= 2f)
+        {
             inAttackRange = true;
         }
-        else {
+        else
+        {
             inAttackRange = false;
         }
 
@@ -161,21 +186,26 @@ public class ChaseState : EnemyState {
     }
 }
 
-public class DieState : EnemyState {
+public class DieState : EnemyState
+{
 
-    public DieState(EnemyClass pEnemy, NavMeshAgent pAgent, Player pPlayer) : base(pEnemy, pAgent, pPlayer) {
+    public DieState(EnemyClass pEnemy, NavMeshAgent pAgent, Player pPlayer) : base(pEnemy, pAgent, pPlayer)
+    {
 
     }
 
-    public override void EnterState() {
+    public override void EnterState()
+    {
         DyingState();
     }
 
-    public override void Update() {
+    public override void Update()
+    {
         base.Update();
     }
 
-    public void DyingState() {
+    public void DyingState()
+    {
         inAttackRange = false;
         agent.isStopped = true;
     }

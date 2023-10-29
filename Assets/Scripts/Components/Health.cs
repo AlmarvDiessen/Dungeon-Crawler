@@ -1,13 +1,11 @@
 using Assets.Scripts;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
 
-// SCRIPT BY ALMAR & PAULO
-
-public class Health : MonoBehaviour, IDamagable
-{
+public class Health : MonoBehaviour, IDamagable {
     public delegate void HealthChangeHandler(int currentHealth, int maxHealth);
     public delegate void HealthZeroDelegate();
     public event HealthChangeHandler onHealthChange;
@@ -25,22 +23,31 @@ public class Health : MonoBehaviour, IDamagable
     public void Initialize(int currentHealth, int maxHealth) {
         this.maxHealth = maxHealth;
         this.currentHealth = currentHealth;
-        mesh = GetComponentInChildren<SkinnedMeshRenderer>();
+        try {
+            mesh = gameObject.GetComponentInChildren<SkinnedMeshRenderer>();
+        }
+        catch (Exception ex) {
+            Debug.Log(ex.Message);
+        }
     }
 
-    public void TakeDamage(int pDamage)
-    {
+    public void TakeDamage(int pDamage) {
         currentHealth = math.clamp(currentHealth - pDamage, 0, maxHealth);
         onHealthChange?.Invoke(currentHealth, maxHealth);
-        if(currentHealth <= 0) {
+        if (currentHealth <= 0) {
             onHealthZero?.Invoke();
         }
     }
     public IEnumerator ChangeColor() {
-        yield return new WaitForSeconds(0.2f);
-        mesh.material.color = Color.red;
-        yield return new WaitForSeconds(0.4f);
-        mesh.material.color = Color.white;
+        if (mesh != null) {
+            yield return new WaitForSeconds(0.2f);
+            mesh.material.color = Color.red;
+            yield return new WaitForSeconds(0.4f);
+            mesh.material.color = Color.white;
+        }
+        else {
+            yield return null;
+        }
     }
     public void SetHealth(int value) {
         currentHealth = value;

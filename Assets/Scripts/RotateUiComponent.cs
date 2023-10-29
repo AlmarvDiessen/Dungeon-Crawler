@@ -4,8 +4,6 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 
-// SCRIPT BY ALMAR
-
 public class RotateUiComponent : MonoBehaviour {
     [SerializeField] private TextMeshPro ui;
     [SerializeField] private Camera cam;
@@ -13,7 +11,6 @@ public class RotateUiComponent : MonoBehaviour {
     [SerializeField] private float grabDistance;
 
     void Start() {
-        ui = GetComponent<TextMeshPro>();
     }
 
     // Update is called once per frame

@@ -8,8 +8,6 @@ using UnityEngine;
 using UnityEngine.AI;
 using static UnityEngine.EventSystems.EventTrigger;
 
-// SCRIPT BY ALMAR
-
 [RequireComponent(typeof(UnityEngine.AI.NavMeshAgent))]
 
 public class EnemyClass : Entity, IKillable {
@@ -65,6 +63,7 @@ public class EnemyClass : Entity, IKillable {
         animation = GetComponentInChildren<AnimationComponent>();
         health.onHealthZero += Die;
         EnemyAttack = gameObject.GetComponent<IAttack>();
+
         if (data != null) {
             Initialize(data);
         }

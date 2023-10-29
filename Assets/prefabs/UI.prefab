@@ -202,7 +202,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1796610148506939802}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 875f2365c9069eb459a4bf1e71f85188, type: 3}
   m_Name: 
@@ -210,3 +210,4 @@ MonoBehaviour:
   ui: {fileID: 1796610148506939801}
   cam: {fileID: 0}
   detectDistance: 3
+  grabDistance: 0

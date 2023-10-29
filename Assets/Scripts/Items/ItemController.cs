@@ -4,8 +4,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-// SCRIPT BY ALMAR
-
 public class ItemController : MonoBehaviour, IInteractable
 {
     [SerializeField] private ItemData itemData;
