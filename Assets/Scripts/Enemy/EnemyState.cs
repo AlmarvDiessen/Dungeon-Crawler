@@ -1,4 +1,3 @@
-﻿
 using Assets.Scripts.Enemy;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -51,11 +50,14 @@ namespace Assets.Scripts.Enemy {
         public void ExitState() {
 
         }
+
+
     }
+
 }
 
 public class PatrolState : EnemyState {
-    private GameObject playerPos;
+    private Vector3 playerPos;
 
     public PatrolState(EnemyClass pEnemy, NavMeshAgent pAgent, Player pPlayer) : base(pEnemy, pAgent, pPlayer) {
         player = pPlayer;
@@ -63,21 +65,35 @@ public class PatrolState : EnemyState {
 
     public override void EnterState() {
         //test for enter or continious
-        playerPos = player.gameObject;
     }
 
     public override void Update() {
         base.Update();
+        playerPos = player.gameObject.transform.position;
 
         if (agent.remainingDistance < 1f) {
             if (enemy.StateMachine.CurrentState != enemy.StateMachine.ChaseState)
                 SetNewDestination();
         }
 
-        float distance = Vector3.Distance(enemy.transform.position, player.transform.position);
-        if (distance <= enemy.DetectRange)
+        float distance = Vector3.Distance(enemy.transform.position, playerPos);
+        if (LineOfSight())
             enemy.StateMachine.ChangeState(enemy.StateMachine.ChaseState);
     }
+
+    private bool LineOfSight() {
+        RaycastHit hit;
+        if (Physics.Raycast(enemy.transform.position, playerPos - enemy.transform.position, out hit, enemy.DetectRange)) {
+            Player player = hit.collider.GetComponent<Player>();
+            if (player != null) {
+                return true;
+            }
+            return false;
+        }
+        else
+            return false;
+    }
+
 
     public void SetNewDestination() {
         Vector3 newDestination = enemy.transform.position;

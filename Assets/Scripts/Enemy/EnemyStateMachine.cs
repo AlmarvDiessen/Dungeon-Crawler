@@ -20,6 +20,7 @@ public class EnemyStateMachine : MonoBehaviour {
     [SerializeField] private Player player;
     [SerializeField] private EnemyClass enemy;
     [SerializeField] private Rigidbody rb;
+    [SerializeField] private Vector3 playerPos; 
 
     [SerializeField] private EnemyState currentState;
     [SerializeField] private EnemyState patrolState;
@@ -33,7 +34,6 @@ public class EnemyStateMachine : MonoBehaviour {
     public Rigidbody Rb { get => rb; set => rb = value; }
     public EnemyClass Enemy { get => enemy; set => enemy = value; }
     public NavMeshAgent NavAgent { get => navAgent; set => navAgent = value; }
-
     public EnemyStateMachine(EnemyClass enemy, NavMeshAgent agent, Player player) {
         this.Enemy = enemy;
         this.player = player;
@@ -54,7 +54,7 @@ public class EnemyStateMachine : MonoBehaviour {
     public void Update() {
 
         CurrentState.Update();
-
+         playerPos = this.player.transform.position;
         if (currentState == chaseState) {
             //OnChaseUpdate();
         }
@@ -76,6 +76,11 @@ public class EnemyStateMachine : MonoBehaviour {
 
     public void OnChaseDeactive() {
         //OnChaseExit();  
+    }
+
+    private void OnDrawGizmos() {
+        Gizmos.color = Color.blue;
+        Gizmos.DrawRay(enemy.transform.position, playerPos - enemy.transform.position);
     }
 }
 
