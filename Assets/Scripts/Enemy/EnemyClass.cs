@@ -1,21 +1,24 @@
 using Assets.Scripts;
 using Assets.Scripts.Enemy;
+using Assets.Scripts.Interfaces;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
+using static UnityEngine.EventSystems.EventTrigger;
 
 // SCRIPT BY ALMAR
 
 [RequireComponent(typeof(UnityEngine.AI.NavMeshAgent))]
 
-public class EnemyClass : Entity {
+public class EnemyClass : Entity, IKillable {
     [SerializeField] private GiveDamage giveDamage;
     [SerializeField] private NavMeshAgent navAgent;
     [SerializeField] private Player player;
     [SerializeField] private List<AddForceComponent> addForceComponents = new List<AddForceComponent>();
     [SerializeField] private AnimationComponent animation;
+    [SerializeField] private IAttack enemyAttack;
     //EnemyStateMachine
     private EnemyStateMachine stateMachine;
 
@@ -28,9 +31,30 @@ public class EnemyClass : Entity {
     public float DetectRange { get => detectRange; set => detectRange = value; }
     public EnemyStateMachine StateMachine { get => stateMachine; set => stateMachine = value; }
     public List<AddForceComponent> AddForceComponents { get => addForceComponents; set => addForceComponents = value; }
+    internal IAttack EnemyAttack { get => enemyAttack; set => enemyAttack = value; }
 
     public void Awake() {
         base.Awake();
+    }
+
+    public void Die() {
+        Disable();
+        stateMachine.NavAgent.isStopped = true;
+        stateMachine.enabled = false;
+        if (DropItem != null) {
+            Instantiate(DropItem, transform.position, Quaternion.identity);
+            DropItem = null;
+        }
+        Destroy(gameObject, 4f);
+
+    }
+
+    private void Disable() {    
+        foreach (var item in addForceComponents) {
+            item.enabled = false; 
+        }
+        
+        
     }
 
     public void Start() {
@@ -39,7 +63,8 @@ public class EnemyClass : Entity {
         player = FindObjectOfType<Player>();
         stateMachine = GetComponent<EnemyStateMachine>();
         animation = GetComponentInChildren<AnimationComponent>();
-        
+        health.onHealthZero += Die;
+        EnemyAttack = gameObject.GetComponent<IAttack>();
         if (data != null) {
             Initialize(data);
         }
@@ -54,8 +79,14 @@ public class EnemyClass : Entity {
         EntityName = enemyData.EnemyName;
         NavAgent.speed = enemyData.Speed;
         DetectRange = enemyData.DetectRange;
-        giveDamage.SetDamage(damage = enemyData.Damage);
-        Health.SetHealth(enemyData.Health);
+        Health.Initialize(enemyData.Health, enemyData.Health);
         WanderDistance = enemyData.WanderDistance;
+        
     }
+
+    private void OnDestroy() {
+        health.onHealthZero -= Die;
+    }
+
+
 }

@@ -3,14 +3,17 @@ using Assets.Scripts.Interfaces;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 // SCRIPT BY ALMAR
 
-public class Player : Entity {
+public class Player : Entity, IKillable {
 
     [SerializeField] private AddForceComponent dash;
     [SerializeField] private BetterMovement playerMovement;
+    [SerializeField] private EquipmentManager equipmentManager;
     [SerializeField] private int playerHealth;
+
 
     private void Awake() {
         base.Awake();
@@ -20,20 +23,36 @@ public class Player : Entity {
     private void Start() {
         dash = GetComponent<DashComponent>();
         playerMovement = GetComponent<BetterMovement>();
+        equipmentManager = GetComponent<EquipmentManager>();
 
-        Health.SetHealth(playerHealth);
+        Health.Initialize(playerHealth, playerHealth);
+        health.onHealthZero += Die;
+        health.onHealthChange += OnBloodScreen;
 
     }
     private void FixedUpdate() {
         playerMovement.Movement();
+
+
+    }
+    public void Die() {
+        //show game over screen
+        Debug.Log("player dies");
+        SceneManager.LoadScene(2);//GameOver
     }
 
-    private void Update() {
-        PlayerDash();
+    public void OnBloodScreen(int currentHealth, int maxHealth) {
+        //show boold on screen.
+        Debug.Log("Blood on screen");
     }
-    public void PlayerDash() {
-        if(Input.GetKeyDown(KeyCode.LeftShift)&& dash.CanUse) {
-            dash.AddForce(transform.forward, 0f);
+
+
+    private void Update() {
+        if (Input.GetMouseButtonDown(0)) // Left mouse button click
+{
+            if (equipmentManager.Weapon != null) {
+                equipmentManager.Weapon.Attack();
+            }
         }
     }
 }

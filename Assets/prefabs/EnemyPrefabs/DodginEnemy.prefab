@@ -10,13 +10,12 @@ GameObject:
   m_Component:
   - component: {fileID: 2337705492902734885}
   - component: {fileID: 2337705492902734888}
-  - component: {fileID: 2337705492902734890}
   - component: {fileID: 2337705492902734891}
   - component: {fileID: 2337705492902734892}
   - component: {fileID: 2337705492902734893}
   - component: {fileID: 2337705492902734894}
   - component: {fileID: 2337705492902734884}
-  - component: {fileID: 3028656770959569433}
+  - component: {fileID: 8011029236841120793}
   m_Layer: 0
   m_Name: DodginEnemy
   m_TagString: Untagged
@@ -50,25 +49,12 @@ Rigidbody:
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 1
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0.5
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!65 &2337705492902734890
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2337705492902734895}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 2.4, y: 1.8, z: 2.425}
-  m_Center: {x: 0, y: 0.6, z: 0}
 --- !u!195 &2337705492902734891
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -128,6 +114,7 @@ MonoBehaviour:
   player: {fileID: 0}
   addForceComponents:
   - {fileID: 2337705492902734894}
+  animation: {fileID: 0}
   detectRange: 0
   damage: 0
   wanderDistance: 0
@@ -150,8 +137,9 @@ MonoBehaviour:
   rb: {fileID: 0}
   timer: {fileID: 2337705492902734884}
   isUsing: 0
-  forcePower: 3
+  forcePower: 4
   forceUpPower: 0
+  direction: {x: 0, y: 0, z: 0}
 --- !u!114 &2337705492902734884
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -168,7 +156,7 @@ MonoBehaviour:
   abilityUsed: 0
   canUse: 1
   cooldown: 5
---- !u!114 &3028656770959569433
+--- !u!114 &8011029236841120793
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -177,11 +165,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 2337705492902734895}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a0d7645c6490ab409b7f257b19e27f0, type: 3}
+  m_Script: {fileID: 11500000, guid: 59cd5edf60a5e3a4295df7d5a927ce8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: {fileID: 0}
-  entity: {fileID: 0}
+  clip: {fileID: 0}
+  damageValue: 0
+  attackInterval: 2
+  attackRange: 1.5
 --- !u!1001 &2337705493441836939
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -283,6 +273,20 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 2337705493441836939}
   m_PrefabAsset: {fileID: 0}
+--- !u!64 &4594771791467832588
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5227496257269575633}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: 31d7511636360e046a439c1b7e1c27ec, type: 3}
 --- !u!114 &679172035
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -296,3 +300,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   esm: {fileID: 2337705492902734892}
+  enemy: {fileID: 0}
+  currentState: 0
+  state: 0
+  isHit: 0

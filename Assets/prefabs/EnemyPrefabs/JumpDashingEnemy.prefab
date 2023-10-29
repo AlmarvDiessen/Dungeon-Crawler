@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7749874034965704634}
   - component: {fileID: 7749874034965704629}
-  - component: {fileID: 7749874034965704628}
   - component: {fileID: 7749874034965704631}
   - component: {fileID: 7749874034965704630}
   - component: {fileID: 7749874034965704625}
@@ -18,7 +17,7 @@ GameObject:
   - component: {fileID: 7749874034965704635}
   - component: {fileID: 4350908084537507021}
   - component: {fileID: 7749874034965704626}
-  - component: {fileID: 7749874034965704621}
+  - component: {fileID: 712008208}
   m_Layer: 0
   m_Name: JumpDashingEnemy
   m_TagString: Untagged
@@ -58,19 +57,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 1
---- !u!65 &7749874034965704628
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7749874034965704620}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 2.4, y: 2.1, z: 2.425}
-  m_Center: {x: 0, y: 0.44131088, z: 0}
 --- !u!195 &7749874034965704631
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -108,13 +94,15 @@ MonoBehaviour:
   data: {fileID: 11400000, guid: 072432e8e9e608f4c9e17e5ba0c735de, type: 2}
   health: {fileID: 0}
   EntityName: JumpDasher
-  dropItem: {fileID: 0}
+  dropItem: {fileID: 4851089125147154953, guid: 7489cfe1d61ea414b9beb874f41c71f0,
+    type: 3}
   giveDamage: {fileID: 0}
   navAgent: {fileID: 7749874034965704631}
   player: {fileID: 0}
   addForceComponents:
   - {fileID: 7749874034965704624}
   - {fileID: 7749874034965704635}
+  animation: {fileID: 0}
   detectRange: 0
   damage: 0
   wanderDistance: 0
@@ -154,7 +142,8 @@ MonoBehaviour:
   timer: {fileID: 4350908084537507021}
   isUsing: 0
   forcePower: 0
-  forceUpPower: 5
+  forceUpPower: 3
+  direction: {x: 0, y: 0, z: 0}
   isJumping: 0
   ground: {fileID: 0}
 --- !u!114 &7749874034965704635
@@ -176,8 +165,9 @@ MonoBehaviour:
   rb: {fileID: 0}
   timer: {fileID: 7749874034965704626}
   isUsing: 0
-  forcePower: 5
+  forcePower: 11
   forceUpPower: 0
+  direction: {x: 0, y: 0, z: 0}
 --- !u!114 &4350908084537507021
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -210,7 +200,7 @@ MonoBehaviour:
   abilityUsed: 0
   canUse: 1
   cooldown: 5
---- !u!114 &7749874034965704621
+--- !u!114 &712008208
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -219,11 +209,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 7749874034965704620}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a0d7645c6490ab409b7f257b19e27f0, type: 3}
+  m_Script: {fileID: 11500000, guid: 59cd5edf60a5e3a4295df7d5a927ce8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: {fileID: 0}
-  entity: {fileID: 0}
+  clip: {fileID: 0}
+  damageValue: 0
+  attackInterval: 2
+  attackRange: 1.5
 --- !u!1001 &4113662127736352930
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -299,6 +291,20 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 4113662127736352930}
   m_PrefabAsset: {fileID: 0}
+--- !u!64 &1297862421
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5903188920771487992}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: 31d7511636360e046a439c1b7e1c27ec, type: 3}
 --- !u!114 &1306103350
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -312,6 +318,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   esm: {fileID: 7749874034965704625}
+  enemy: {fileID: 0}
+  currentState: 0
+  state: 0
+  isHit: 0
 --- !u!4 &5903188920771589400 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7564638783374575034, guid: e9be7be0a27ec154dbd5df87ce6c500c,

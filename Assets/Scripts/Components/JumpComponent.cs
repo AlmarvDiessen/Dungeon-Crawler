@@ -57,13 +57,11 @@ public class JumpComponent : AddForceComponent {
     }
 
     private void TurnAgentOff() {
-        Debug.Log("Off");
         agent.updatePosition = false;
         agent.updateRotation = false;
         agent.isStopped = true;
     }
     private void TurnAgentOn() {
-        Debug.Log("ON");
         agent.updatePosition = true;
         agent.updateRotation = true;
         agent.isStopped = false;

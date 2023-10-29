@@ -17,11 +17,8 @@ public class Entity : MonoBehaviour {
     public Health Health { get => health; set => health = value; }
 
     public void Awake() {
-        
+
         Health = this.gameObject.AddComponent<Health>();
     }
 
-    public virtual void Kill() {
-
-    }
 }
