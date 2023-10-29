@@ -20,7 +20,8 @@ public class DeathComponent : MonoBehaviour {
             if (entity.DropItem != null) {
                 Instantiate(entity.DropItem, transform.position, Quaternion.identity);
             }
-            Destroy(gameObject);
+
+           // Destroy(gameObject, 2.3f);
 
         }
     }

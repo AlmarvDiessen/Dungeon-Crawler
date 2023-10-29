@@ -17,7 +17,6 @@ GameObject:
   - component: {fileID: 7749874034965704635}
   - component: {fileID: 4350908084537507021}
   - component: {fileID: 7749874034965704626}
-  - component: {fileID: 7749874034965704621}
   - component: {fileID: 712008208}
   m_Layer: 0
   m_Name: JumpDashingEnemy
@@ -95,7 +94,8 @@ MonoBehaviour:
   data: {fileID: 11400000, guid: 072432e8e9e608f4c9e17e5ba0c735de, type: 2}
   health: {fileID: 0}
   EntityName: JumpDasher
-  dropItem: {fileID: 0}
+  dropItem: {fileID: 4851089125147154953, guid: 7489cfe1d61ea414b9beb874f41c71f0,
+    type: 3}
   giveDamage: {fileID: 0}
   navAgent: {fileID: 7749874034965704631}
   player: {fileID: 0}
@@ -200,20 +200,6 @@ MonoBehaviour:
   abilityUsed: 0
   canUse: 1
   cooldown: 5
---- !u!114 &7749874034965704621
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7749874034965704620}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a0d7645c6490ab409b7f257b19e27f0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: {fileID: 0}
-  entity: {fileID: 0}
 --- !u!114 &712008208
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -333,6 +319,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   esm: {fileID: 7749874034965704625}
   enemy: {fileID: 0}
+  currentState: 0
+  state: 0
+  isHit: 0
 --- !u!4 &5903188920771589400 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7564638783374575034, guid: e9be7be0a27ec154dbd5df87ce6c500c,

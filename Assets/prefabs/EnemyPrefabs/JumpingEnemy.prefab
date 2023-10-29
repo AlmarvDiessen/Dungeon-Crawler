@@ -15,7 +15,6 @@ GameObject:
   - component: {fileID: 2003315405886539470}
   - component: {fileID: 2003315405886539471}
   - component: {fileID: 2003315405886539472}
-  - component: {fileID: 2003315405886539473}
   - component: {fileID: 4912548836201067038}
   m_Layer: 0
   m_Name: JumpingEnemy
@@ -159,20 +158,6 @@ MonoBehaviour:
   abilityUsed: 0
   canUse: 1
   cooldown: 5
---- !u!114 &2003315405886539473
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2003315405886539474}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a0d7645c6490ab409b7f257b19e27f0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: {fileID: 0}
-  entity: {fileID: 0}
 --- !u!114 &4912548836201067038
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -285,20 +270,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 2003315406282652710}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &734566016
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8302326932647945340}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d71b7e7fa69b5fb40a69e370321e95a7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  esm: {fileID: 2003315405886539471}
-  enemy: {fileID: 0}
 --- !u!64 &6517318798498439438
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -313,6 +284,40 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 31d7511636360e046a439c1b7e1c27ec, type: 3}
+--- !u!114 &734566016
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8302326932647945340}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d71b7e7fa69b5fb40a69e370321e95a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  esm: {fileID: 2003315405886539471}
+  enemy: {fileID: 0}
+  currentState: 0
+  state: 0
+  isHit: 0
+--- !u!114 &334651059
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8302326932647945340}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d71b7e7fa69b5fb40a69e370321e95a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  esm: {fileID: 2003315405886539471}
+  enemy: {fileID: 0}
+  currentState: 0
+  state: 0
+  isHit: 0
 --- !u!4 &8302326932647983516 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7564638783374575034, guid: e9be7be0a27ec154dbd5df87ce6c500c,
