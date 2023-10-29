@@ -15,10 +15,12 @@ public class HealthUI : MonoBehaviour {
         opaque.a = 1;
         bloodAroundScreen.color = transparent;
         health.onHealthChange += ChangeOpacityBlood;
+        healthText.text = "Health: " + health.getHealth.ToString();
     }
 
     private void ChangeOpacityBlood(int currentHealth, int maxHealth) {
         StartCoroutine(ChangeOpacity());
+        healthText.text = "Health: " + currentHealth.ToString();
     }
 
     public IEnumerator ChangeOpacity() {

@@ -23,7 +23,6 @@ namespace Assets.Scripts.Enemy {
         }
 
         public virtual void Update() {
-            Debug.Log(enemy.StateMachine.CurrentState.ToString());
 
             if (enemy.Health.getHealth <= 0) {
                 enemy.StateMachine.ChangeState(enemy.StateMachine.DyingState);

@@ -63,6 +63,7 @@ public class EnemyClass : Entity, IKillable {
         animation = GetComponentInChildren<AnimationComponent>();
         health.onHealthZero += Die;
         EnemyAttack = gameObject.GetComponent<IAttack>();
+
         if (data != null) {
             Initialize(data);
         }
