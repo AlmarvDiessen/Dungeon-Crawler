@@ -23,7 +23,7 @@ public class Health : MonoBehaviour, IDamagable
     public void Initialize(int currentHealth, int maxHealth) {
         this.maxHealth = maxHealth;
         this.currentHealth = currentHealth;
-        onHealthChange.Invoke(currentHealth, maxHealth);
+        mesh = GetComponentInChildren<SkinnedMeshRenderer>();
     }
 
     public void TakeDamage(int pDamage)
