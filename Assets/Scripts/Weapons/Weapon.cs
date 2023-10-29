@@ -16,7 +16,7 @@ public class Weapon : MonoBehaviour, IEquippable
       
     }
 
-    }
+    
     public void EquipItem(IEquippable equipable) {
 
     }
