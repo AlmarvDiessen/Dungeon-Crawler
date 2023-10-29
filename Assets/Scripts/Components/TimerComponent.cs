@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-// SCRIPT BY ALMAR
-
 public class TimerComponent : MonoBehaviour {
     [SerializeField] private float abilityTimer = 1;
     [SerializeField] private bool abilityUsed = false;

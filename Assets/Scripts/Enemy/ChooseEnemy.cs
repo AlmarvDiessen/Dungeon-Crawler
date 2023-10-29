@@ -2,8 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-// SCRIPT BY ALMAR
-
 public class ChooseEnemy : MonoBehaviour
 {
     [SerializeField] private GameObject enemy;

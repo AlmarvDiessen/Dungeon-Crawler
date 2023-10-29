@@ -97,6 +97,7 @@ MonoBehaviour:
   clip: {fileID: 7400000, guid: dc2a2644ed7911241bbb4bd1a71e446a, type: 2}
   damageValue: 0
   attackRange: 2
+  attackPoint: {fileID: 692001556816521577}
 --- !u!114 &5767440518319674044
 MonoBehaviour:
   m_ObjectHideFlags: 0

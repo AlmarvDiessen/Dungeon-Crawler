@@ -2,8 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-// SCRIPT BY ALMAR
-
 public class DeathComponent : MonoBehaviour {
     public Health health;
     public Entity entity;
@@ -12,7 +10,7 @@ public class DeathComponent : MonoBehaviour {
         entity = gameObject.GetComponent<Entity>();
     }
 
-    // Update is called once per frame
+    // Update is called once per frame  
     void Update() {
         Kill();
     }

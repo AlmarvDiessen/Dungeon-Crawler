@@ -4,8 +4,6 @@ using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
 
-// SCRIPT BY ALMAR & PAULO
-
 public class Health : MonoBehaviour, IDamagable
 {
     public delegate void HealthChangeHandler(int currentHealth, int maxHealth);
@@ -25,7 +23,7 @@ public class Health : MonoBehaviour, IDamagable
     public void Initialize(int currentHealth, int maxHealth) {
         this.maxHealth = maxHealth;
         this.currentHealth = currentHealth;
-        mesh = GetComponentInChildren<SkinnedMeshRenderer>();
+        onHealthChange.Invoke(currentHealth, maxHealth);
     }
 
     public void TakeDamage(int pDamage)
