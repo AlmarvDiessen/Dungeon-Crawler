@@ -21,6 +21,7 @@ public class Dummy : MonoBehaviour
 
     public void Disable() {
         if(state != null) {
+            state.CurrentState = state.DyingState;
             state.NavAgent.isStopped = true;
         }
     }
