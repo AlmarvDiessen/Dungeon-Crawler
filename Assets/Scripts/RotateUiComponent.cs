@@ -11,7 +11,6 @@ public class RotateUiComponent : MonoBehaviour {
     [SerializeField] private float grabDistance;
 
     void Start() {
-        ui = GetComponent<TextMeshPro>();
     }
 
     // Update is called once per frame

@@ -3,8 +3,9 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class HealthUI : MonoBehaviour {
-    [SerializeField] private TextMeshProUGUI healthText;    // Reference to the UI Text element
+public class HealthUI : MonoBehaviour
+{
+    [SerializeField] private TextMeshPro healthText;        // Reference to the UI Text element
     [SerializeField] private Health health;                 // Reference to Health
     [SerializeField] private Image bloodAroundScreen;       // image that shows blood effect to the screen
     Color transparent = Color.white;

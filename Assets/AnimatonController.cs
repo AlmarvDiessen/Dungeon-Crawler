@@ -8,13 +8,14 @@ public class AnimatonController : MonoBehaviour {
     [SerializeField] private EnemyClass enemy;
     [SerializeField] private int currentState;
     [SerializeField] private int state;
+    [SerializeField] private bool useIdle;
     private float lockAnimation;
     private float attackAnimationTime = 1.1f;
     private bool attackingRight = true;
     public bool isHit = false;
 
 
-    private static readonly int idle = Animator.StringToHash("Idle");
+    private static readonly int idle = Animator.StringToHash("Idle");                           // 
     private static readonly int roar = Animator.StringToHash("Roar");
     private static readonly int rollForward = Animator.StringToHash("RollForward");
     private static readonly int rollTodle = Animator.StringToHash("RollTolde");
@@ -39,6 +40,9 @@ public class AnimatonController : MonoBehaviour {
         if (state == currentState) return;
         animator.CrossFade(state, 0.3f, 0);
         currentState = state;
+
+        while (useIdle)
+            currentState = idle;
     }
 
     private int GetState() {
