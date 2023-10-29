@@ -1,43 +1,48 @@
+using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class HealthUI : MonoBehaviour
-{
+public class HealthUI : MonoBehaviour {
     [SerializeField] private TextMeshProUGUI healthText;    // Reference to the UI Text element
     [SerializeField] private Health health;                 // Reference to Health
     [SerializeField] private Image bloodAroundScreen;       // image that shows blood effect to the screen
 
-    Color alphaColor = Color.white;
+    Color transparent = Color.white;
+    Color opaque = Color.white;
     //float maxHealth = 1;
     float currentHealth;
     float maxHealth;
 
 
-    void Start()
-    {
+    void Start() {
         health = gameObject.GetComponent<Health>();
-        //health.onHealthChange +=
-        //bloodAroundScreen
+        transparent.a = 0;
+        opaque.a = 1;
+        bloodAroundScreen.color = transparent;
         health.onHealthChange += ChangeOpacityBlood;
-        alphaColor.a = 1;
-
     }
 
-    private void ChangeOpacityBlood(int currentHealth, int maxHealth)
-    {
-
+    private void ChangeOpacityBlood(int currentHealth, int maxHealth) {
+        StartCoroutine(ChangeOpacity());
         // Update the TextMeshPro Text element with the current health value
         //healthText.text = "Health: " + currentHealth;
-        healthText.text = "Health: " + health.getHealth;
+        //healthText.text = "Health: " + health.getHealth;
 
-        alphaColor.a = currentHealth / maxHealth;
-        Debug.Log("blood alpha is " + alphaColor.a);
-        bloodAroundScreen.color = alphaColor;
+        //transparent.a = currentHealth / maxHealth;
+        //Debug.Log("blood alpha is " + transparent.a);
+        //bloodAroundScreen.color = transparent;
     }
 
-    private void Update()
-    {
+    public IEnumerator ChangeOpacity() {
+        Debug.Log("Blood");
+        yield return new WaitForSeconds(0.4f);
+        bloodAroundScreen.color = opaque;
+        yield return new WaitForSeconds(0.4f);
+        bloodAroundScreen.color = transparent;
+    }
+
+    private void Update() {
         // Get the health value from your Health script
         //int currentHealth = Health.Instance.health; // Replace 'YourHealthScript' with the actual name of your health script
 

@@ -13,6 +13,7 @@ public class Player : Entity, IKillable {
     [SerializeField] private BetterMovement playerMovement;
     [SerializeField] private EquipmentManager equipmentManager;
     [SerializeField] private int playerHealth;
+    
 
 
     private void Awake() {
@@ -27,8 +28,6 @@ public class Player : Entity, IKillable {
 
         Health.Initialize(playerHealth, playerHealth);
         health.onHealthZero += Die;
-        health.onHealthChange += OnBloodScreen;
-
     }
     private void FixedUpdate() {
         playerMovement.Movement();
@@ -41,10 +40,6 @@ public class Player : Entity, IKillable {
         SceneManager.LoadScene(2);//GameOver
     }
 
-    public void OnBloodScreen(int currentHealth, int maxHealth) {
-        //show boold on screen.
-        Debug.Log("Blood on screen");
-    }
 
 
     private void Update() {
@@ -58,6 +53,5 @@ public class Player : Entity, IKillable {
 
     private void OnDestroy() {
         health.onHealthZero -= Die;
-        health.onHealthChange -= OnBloodScreen;
     }
 }
