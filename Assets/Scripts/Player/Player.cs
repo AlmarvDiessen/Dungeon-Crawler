@@ -55,4 +55,9 @@ public class Player : Entity, IKillable {
             }
         }
     }
+
+    private void OnDestroy() {
+        health.onHealthZero -= Die;
+        health.onHealthChange -= OnBloodScreen;
+    }
 }

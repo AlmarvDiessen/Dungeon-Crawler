@@ -24,6 +24,7 @@ public class Health : MonoBehaviour, IDamagable
         this.maxHealth = maxHealth;
         this.currentHealth = currentHealth;
         onHealthChange.Invoke(currentHealth, maxHealth);
+        mesh = gameObject.GetComponentInChildren<SkinnedMeshRenderer>();
     }
 
     public void TakeDamage(int pDamage)
